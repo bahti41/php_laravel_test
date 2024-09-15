@@ -18,6 +18,10 @@
     <!-- App Css-->
     <link href="{{asset('backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
+    <!-- bildiri -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <!-- bildiri -->
+
 </head>
 
 <body class="auth-body-bg">
@@ -43,25 +47,25 @@
                             @csrf
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="email" name="email" required="" placeholder="Email">
+                                    <input id="email" class="form-control" type="email" name="email" required="" placeholder="Email">
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                 </div>
                             </div>
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="password" name="password" required="" placeholder="Şifre">
+                                    <input id="password" class="form-control" type="password" name="password" required="" placeholder="Şifre">
                                 </div>
                             </div>
 
-                            <div class="form-group mb-3 row">
+                            <!-- <div class="form-group mb-3 row">
                                 <div class="col-12">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                         <label class="form-label ms-1" for="customCheck1">Beni Hatırla</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group mb-3 text-center row mt-3 pt-1">
                                 <div class="col-12">
@@ -71,7 +75,7 @@
 
                             <div class="form-group mb-0 row mt-2">
                                 <div class="col-sm-7 mt-3">
-                                    <a href="auth-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> Şifrenizi mi unuttunuz?</a>
+                                    <a href="{{route('password.request')}}" class="text-muted"><i class="mdi mdi-lock"></i> Şifrenizi mi unuttunuz?</a>
                                 </div>
                                 <div class="col-sm-5 mt-3">
                                     <a href="{{ route('register') }}" class="xt-muted"><i class="mdi mdi-account-circle"></i> Bir hesap oluşturun</a>
@@ -97,6 +101,32 @@
     <script src="{{asset('backend/assets/libs/node-waves/waves.min.js')}}"></script>
 
     <script src="assets/js/app.js"></script>
+
+    <!-- bildiri -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if(Session::has('bildirim'))
+        var type = "{{ Session::get('alert-type','info') }}"
+        switch (type) {
+            case 'info':
+                toastr.info(" {{ Session::get('bildirim') }} ");
+                break;
+
+            case 'success':
+                toastr.success(" {{ Session::get('bildirim') }} ");
+                break;
+
+            case 'warning':
+                toastr.warning(" {{ Session::get('bildirim') }} ");
+                break;
+
+            case 'error':
+                toastr.error(" {{ Session::get('bildirim') }} ");
+                break;
+        }
+        @endif
+    </script>
+    <!-- bildiri -->
 
 </body>
 

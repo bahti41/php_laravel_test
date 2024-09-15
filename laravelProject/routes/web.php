@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
+});
+
+Route::controller(BannerController::class)->group(function () {
+    Route::get('/banner/duzenle', 'HomeBanner')->name('banner');
+    Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
 });
 
 Route::get('/dashboard', function () {

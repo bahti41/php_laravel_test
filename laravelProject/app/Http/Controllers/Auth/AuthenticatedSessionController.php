@@ -28,8 +28,17 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        // toaster Bildirim
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $mesaj = array(
+            'bildirim' => 'Giriş İşlemi Başarılı...',
+            'alert-type' => 'success'
+        );
+
+
+        // toaster Bildirim
+
+        return redirect()->intended(RouteServiceProvider::HOME)->with($mesaj);
     }
 
     /**
@@ -43,6 +52,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        // toaster Bildirim
+
+        $mesaj = array(
+            'bildirim' => 'Çıkış İşlemi Başarılı..',
+            'alert-type' => 'info'
+        );
+
+        // toaster Bildirim
+
+        return redirect('/login')->with($mesaj);
     }
 }

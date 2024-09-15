@@ -5,10 +5,10 @@
                 <!-- User details -->
                 <div class="user-profile text-center mt-3">
                     <div class="">
-                        <img src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="" class="avatar-md rounded-circle">
+                        <img src="{{ (!empty(Auth::user()->resim)) ? url('upload/admin/'.Auth::user()->resim): url('upload/resim-yok.png')}}" alt="" class="avatar-md rounded-circle">
                     </div>
                     <div class="mt-3">
-                        <h4 class="font-size-16 mb-1">Julia Hudda</h4>
+                        <h4 class="font-size-16 mb-1">{{Auth::user()->name}}</h4>
                         <span class="text-muted"><i class="ri-record-circle-line align-middle font-size-14 text-success"></i> Online</span>
                     </div>
                 </div>
@@ -25,22 +25,13 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-
-                        <li>
-                            <a href="calendar.html" class=" waves-effect">
-                                <i class="ri-calendar-2-line"></i>
-                                <span>Calendar</span>
-                            </a>
-                        </li>
-
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ri-mail-send-line"></i>
-                                <span>Email</span>
+                                <span>Banner</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="email-inbox.html">Inbox</a></li>
-                                <li><a href="email-read.html">Read Email</a></li>
+                                <li><a href="{{route('banner')}}">Banner Düzenle</a></li>
                             </ul>
                         </li>
 

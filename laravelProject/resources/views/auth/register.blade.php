@@ -43,28 +43,28 @@
                             @csrf
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="email" name="email" required="" placeholder="Email">
+                                    <input id="email" class="form-control" type="email" name="email" required="" placeholder="Email">
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                 </div>
                             </div>
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="text" name="name" required="" placeholder="KullanıcıAdı">
+                                    <input id="name" class="form-control" type="text" name="name" required="" placeholder="KullanıcıAdı">
                                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                 </div>
                             </div>
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="password" name="password" required="" placeholder="Şifre">
+                                    <input id="password" class="form-control" type="password" name="password" required="" placeholder="Şifre">
                                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                 </div>
                             </div>
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="password" name="password_confirmation" required="" placeholder="ŞifreTekrar">
+                                    <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required="" placeholder="ŞifreTekrar">
                                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                 </div>
                             </div>
