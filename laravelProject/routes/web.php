@@ -30,8 +30,11 @@ Route::controller(BannerController::class)->group(function () {
 
 // Kategory Route
 Route::controller(KategoriController::class)->group(function () {
-    Route::get('/kategori/hepsi', 'kategoriHepsi')->name('kategori.hepsi');
-    Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
+    Route::get('/kategori/hepsi', 'KategoriHepsi')->name('kategori.hepsi');
+    Route::get('/kategori/ekle', 'KategoriEkle')->name('kategori.ekle');
+    Route::post('/kategori/ekle/form', 'KategoriEkleForm')->name('kategori.ekle.form');
+    Route::get('/kategori/duzenle/{id}', 'KategoriDuzenle')->name('kategori.duzenle');
+    Route::post('/kategori/guncelle/form', 'KategoriGuncelleForm')->name('kategori.guncelle.form');
 });
 
 

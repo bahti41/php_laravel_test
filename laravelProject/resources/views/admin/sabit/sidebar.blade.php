@@ -45,7 +45,7 @@
 
                                 <li>
                                 <li><a href="{{route('kategori.hepsi')}}">Hepsi</a></li>
-                                <li><a href="layouts-hori-topbar-light.html">Kategoriy Ekle</a></li>
+                                <li><a href="{{route('kategori.ekle')}}">Kategoriy Ekle</a></li>
                             </ul>
                         </li>
                     </ul>

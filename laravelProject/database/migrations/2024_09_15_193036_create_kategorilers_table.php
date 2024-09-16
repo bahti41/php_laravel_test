@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kategorilers', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori_id')->nullable();
+            $table->string('kategori_adi')->nullable();
             $table->string('kategori_url')->nullable();
             $table->string('anahtar')->nullable();
             $table->string('aciklama')->nullable();

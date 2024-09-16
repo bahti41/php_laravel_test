@@ -107,26 +107,35 @@
     <!-- App js -->
     <script src="{{asset('backend/assets/js/app.js')}}"></script>
 
+    <!-- Datatable init js -->
+    <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script>
+
+    <!-- Required datatable js -->
+    <script src="{{asset('backendassets/libs/datatables.net/js/jquery.dataTables.min.js/')}}"></script>
+    <script src="{{asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+
     <!-- bildiri -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script>
-        @if(Session::has('bildirim'))
-        var type = "{{ Session::get('alert-type','info') }}"
+        @if(session('bildirim'))
+
+        var type = "{{ session('alert-type', 'info') }}";
         switch (type) {
             case 'info':
-                toastr.info(" {{ Session::get('bildirim') }} ");
+                toastr.info("{{ session('bildirim') }}");
                 break;
 
             case 'success':
-                toastr.success(" {{ Session::get('bildirim') }} ");
+                toastr.success("{{ session('bildirim') }}");
                 break;
 
             case 'warning':
-                toastr.warning(" {{ Session::get('bildirim') }} ");
+                toastr.warning("{{ session('bildirim') }}");
                 break;
 
             case 'error':
-                toastr.error(" {{ Session::get('bildirim') }} ");
+                toastr.error("{{ session('bildirim') }}");
                 break;
         }
         @endif
