@@ -48,6 +48,20 @@
                                 <li><a href="{{route('kategori.ekle')}}">Kategoriy Ekle</a></li>
                             </ul>
                         </li>
+
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-layout-3-line"></i>
+                                <span>Alt Kategoriler</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="true">
+
+                                <li>
+                                <li><a href="{{route('altkategori.liste')}}">Liste</a></li>
+                                <li><a href="{{route('altkategori.ekle')}}">Alt Kategoriy Ekle</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     </li>
 

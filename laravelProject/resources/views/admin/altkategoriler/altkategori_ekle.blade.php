@@ -10,18 +10,33 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form method="post" action="{{ route('kategori.ekle.form') }}" enctype="multipart/form-data" id="myForm">
+                        <form method="post" action="{{ route('altkategori.ekle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
 
 
+                            <h4 class="card-title">Alt Kategori Ekle</h4>
 
-                            <h4 class="card-title">Kategori Ekle</h4>
+
+                            <!-- Select Kategori -->
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Kategori Sec</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example" name="kategori_id">
+                                        <option selected="">Kategori Sec</option>
+                                        @foreach($kategorigoster as $kategoriler)
+                                        <option value="{{$kategoriler->id}}">{{$kategoriler->kategori_adi}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Select Kategori -->
+
 
                             <!-- Kategori_Adi -->
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Adı</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Alt Kategori Adı</label>
                                 <div class="col-sm-10 form-group">
-                                    <input class="form-control" name="kategori_adi" type="text" placeholder="Kategori Adı...">
+                                    <input class="form-control" name="altkategori_adi" type="text" placeholder="Alt Kategori Adı...">
                                     @error('kategori_adi')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -107,7 +122,7 @@
     $(document).ready(function() {
         $('#myForm').validate({
             rules: {
-                kategori_adi: {
+                altkategori_adi: {
                     required: true,
                 },
 
@@ -125,8 +140,8 @@
             }, // end rules
 
             messages: {
-                kategori_adi: {
-                    required: 'Kategori adı giriniz',
+                altkategori_adi: {
+                    required: 'Alt Kategori adı giriniz',
                 },
 
                 anahtar: {

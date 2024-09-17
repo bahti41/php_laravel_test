@@ -117,10 +117,13 @@
     <!-- bildiri -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <script>
-        @if(session('bildirim'))
+    <!-- Bildirim js ile --->
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
 
-        var type = "{{ session('alert-type', 'info') }}";
+    <script>
+        if (session('bildirim'))
+
+            var type = "{{ session('alert-type', 'info') }}";
         switch (type) {
             case 'info':
                 toastr.info("{{ session('bildirim') }}");
@@ -138,9 +141,16 @@
                 toastr.error("{{ session('bildirim') }}");
                 break;
         }
-        @endif
+        endif
     </script>
     <!-- bildiri -->
+
+    <!--Silme Sweet -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('backend/assets/js/sweet.js') }}"></script>
+    <!-- Silme Sweet -->
+
+
 </body>
 
 </html>

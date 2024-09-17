@@ -9,20 +9,38 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <h4 class="card-title">Alt Kategori Düzenle</h4>
 
-                        <form method="post" action="{{ route('kategori.ekle.form') }}" enctype="multipart/form-data" id="myForm">
+
+                        <form method="post" action="{{ route('altkategori.guncelle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
 
+                            <input type="hidden" name="id" value="{{ $altkategoriler->id}}">
+                            <input type="hidden" name="onceki_resim" value="{{ $altkategoriler->resim}}">
 
 
-                            <h4 class="card-title">Kategori Ekle</h4>
+
+                            <!-- Select Kategori -->
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Kategori Sec</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example" name="kategori_id">
+                                        <option selected="">Kategori Sec</option>
+                                        @foreach($kategoriler as $kategori)
+                                        <option value="{{ $kategori->id }} " {{ $kategori->id == $altkategoriler->kategori_id ? 'selected' : '' }}>{{$kategori->kategori_adi}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Select Kategori -->
+
 
                             <!-- Kategori_Adi -->
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Adı</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Alt Kategori Adı</label>
                                 <div class="col-sm-10 form-group">
-                                    <input class="form-control" name="kategori_adi" type="text" placeholder="Kategori Adı...">
-                                    @error('kategori_adi')
+                                    <input class="form-control" name="altkategori_adi" type="text" placeholder="Alt Kategori Adı..." value="{{ $altkategoriler->altkategori_adi }}">
+                                    @error('altkategori_adi')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
@@ -34,7 +52,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Anahtar</label>
                                 <div class="col-sm-10 form-group">
-                                    <input class="form-control" name="anahtar" type="text" placeholder="Kategori Anahtar...">
+                                    <input class="form-control" name="anahtar" type="text" placeholder="Kategori Anahtar..." value="{{ $altkategoriler->anahtar }}">
                                     @error('anahtar')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -47,7 +65,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Acıklama</label>
                                 <div class="col-sm-10 form-group">
-                                    <input class="form-control" name="aciklama" type="text" placeholder="Kategori Acıklama...">
+                                    <input class="form-control" name="aciklama" type="text" placeholder="Kategori Acıklama..." value="{{ $altkategoriler->aciklama }}">
                                     @error('aciklama')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -60,7 +78,7 @@
 
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2">Resim</label>
-                                <div class="col-sm-10 form-group">
+                                <div class="col-sm-10">
                                     <input class="form-control" type="file" name="resim" id="resim">
                                 </div>
                             </div>
@@ -68,13 +86,13 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2"></label>
                                 <div class="col-sm-10">
-                                    <img class="rounded avatar-lg" src="{{ url('upload/görseli_hazrilaniyor.png')}}" alt="" id="resimGoster">
+                                    <img class="rounded avatar-lg" src="{{(!empty($altkategoriler->resim))? url($altkategoriler->resim): url('upload/görseli_hazrilaniyor.png')}}" alt="" id="resimGoster">
                                 </div>
                             </div>
 
                             <!-- Resim -->
 
-                            <input type="submit" class="btn btn-info waves-effect wave-light" value="Kategori Ekle">
+                            <input type="submit" class="btn btn-info waves-effect wave-light" value="Alt Kategori Güncelle">
                         </form>
 
 
@@ -86,8 +104,6 @@
     </div>
 </div>
 
-
-<!-- Yüklü Resim -->
 <script type="text/javascript">
     $(document).ready(function() {
         $('#resim').change(function(e) {
@@ -99,15 +115,13 @@
         });
     });
 </script>
-<!-- Yüklü Resim -->
-
 
 <!-- boş olamaz no refresh -->
 <script type="text/javascript">
     $(document).ready(function() {
         $('#myForm').validate({
             rules: {
-                kategori_adi: {
+                altkategori_adi: {
                     required: true,
                 },
 
@@ -119,14 +133,12 @@
                     required: true,
                 },
 
-                resim: {
-                    required: true,
-                },
+
             }, // end rules
 
             messages: {
-                kategori_adi: {
-                    required: 'Kategori adı giriniz',
+                altkategori_adi: {
+                    required: 'Alt Kategori adı giriniz',
                 },
 
                 anahtar: {
@@ -137,9 +149,6 @@
                     required: 'Açıklama giriniz',
                 },
 
-                resim: {
-                    required: 'Resim giriniz',
-                },
             }, // end message
 
             errorElement: 'span',

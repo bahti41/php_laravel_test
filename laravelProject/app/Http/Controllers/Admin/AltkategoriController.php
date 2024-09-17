@@ -2,37 +2,38 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Kategoriler;
+use App\Models\Altkategoriler;
+use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Carbon;
 
-
-class KategoriController extends Controller
+class AltkategoriController extends Controller
 {
-    public function KategoriHepsi()
+    public function AltKategoriListe()
     {
-        $kategorihepsi = Kategoriler::latest()->get(); //latest Eklenen ürünün en son ekleneni en başa alır
-
-        return view('admin.kategoriler.kategoriler_hepsi', compact('kategorihepsi'));
+        $altkategoriler = Altkategoriler::latest()->get();
+        return view('admin.altkategoriler.altkategori_liste', compact('altkategoriler'));
     }
 
-    public function KategoriEkle() // Sayfa Yolu
+
+    public function AltKategoriEkle()
     {
-        return view('admin.kategoriler.kategori_ekle');
+        $kategorigoster = Kategoriler::orderBy('kategori_adi', 'ASC')->get();
+        return view('admin.altkategoriler.altkategori_ekle', compact('kategorigoster'));
     }
 
-    public function KategoriEkleForm(Request $request)
+
+    public function AltKategoriEkleForm(Request $request)
     {
 
         $request->validate([
-            'kategori_adi' => 'required',
+            'altkategori_adi' => 'required',
             'anahtar' => 'required',
             'aciklama' => 'required',
         ], [
-            'kategori_adi.required' => 'Kategori Adı Boş Bırakılamz...',
+            'altkategori_adi.required' => 'Alt Kategori Adı Boş Bırakılamz...',
             'anahtar.required' => 'Anahtar Kısmı Boş Bırakılamz...',
             'aciklama.required' => 'Acıklama Kısmı Boş Bırakılamz...'
         ]);
@@ -43,14 +44,15 @@ class KategoriController extends Controller
             $resimadi = hexdec(uniqid()) . '.' . $resim->getClientOriginalExtension();  // Resime Verilen adın benzersiz olmasonı saglar
 
 
-            Image::make($resim)->resize(700, 400)->save('upload/kategoriler/' . $resimadi);
+            Image::make($resim)->resize(700, 400)->save('upload/altkategoriler/' . $resimadi);
 
-            $resim_kaydet = 'upload/kategoriler/' . $resimadi;
+            $resim_kaydet = 'upload/altkategoriler/' . $resimadi;
 
-            Kategoriler::insert(
+            Altkategoriler::insert(
                 [
-                    'kategori_adi' => $request->kategori_adi,
-                    'kategori_url' => str()->slug($request->kategori_adi),
+                    'kategori_id' => $request->kategori_id,
+                    'altkategori_adi' => $request->altkategori_adi,
+                    'altkategori_url' => str()->slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
                     'resim' => $resim_kaydet,
@@ -69,13 +71,14 @@ class KategoriController extends Controller
 
             // toaster Bildirim
 
-            return Redirect()->route('kategori.hepsi')->with($mesaj);
+            return Redirect()->route('altkategori.liste')->with($mesaj);
         } // }  end if
         else {
-            Kategoriler::insert(
+            Altkategoriler::insert(
                 [
-                    'kategori_adi' => $request->kategori_adi,
-                    'kategori_url' => str()->slug($request->kategori_adi),
+                    'kategori_id' => $request->kategori_id,
+                    'altkategori_adi' => $request->altkategori_adi,
+                    'altkategori_url' => str()->slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
                     'created_at' => Carbon::now(),
@@ -93,30 +96,33 @@ class KategoriController extends Controller
 
             // toaster Bildirim
 
-            return Redirect()->route('kategori.hepsi')->with($mesaj);
+            return Redirect()->route('altkategori.liste')->with($mesaj);
         }
     }
 
-    public function KategoriDuzenle($id)
+
+    public function AltKategoriDuzenle($id)
     {
-        $KategoriDuzenle = Kategoriler::findOrFail($id);
-        return view('admin.kategoriler.kategoriler_duzenle', compact('KategoriDuzenle'));
+        $kategoriler = Kategoriler::orderBy('kategori_adi', 'ASC')->get();
+        $altkategoriler = Altkategoriler::findOrFail($id);
+        return view('admin.altkategoriler.altkategori_duzenle', compact('kategoriler', 'altkategoriler'));
     }
 
-    public function KategoriGuncelleForm(Request $request)
+
+    public function AltKategoriGuncelleForm(Request $request)
     {
 
         $request->validate([
-            'kategori_adi' => 'required',
+            'altkategori_adi' => 'required',
             'anahtar' => 'required',
             'aciklama' => 'required',
         ], [
-            'kategori_adi.required' => 'Kategori Adı Boş Bırakılamz...',
+            'altkategori_adi.required' => 'Alt Kategori Adı Boş Bırakılamz...',
             'anahtar.required' => 'Anahtar Kısmı Boş Bırakılamz...',
             'aciklama.required' => 'Acıklama Kısmı Boş Bırakılamz...'
         ]);
 
-        $kategori_id = $request->id;
+        $altkategori_id = $request->id;
         $eski_resim = $request->onceki_resim;
 
         if ($request->file('resim'))   // Type File veya resim Olana Uygula
@@ -125,9 +131,9 @@ class KategoriController extends Controller
             $resimadi = hexdec(uniqid()) . '.' . $resim->getClientOriginalExtension();  // Resime Verilen adın benzersiz olmasonı saglar
 
 
-            Image::make($resim)->resize(700, 400)->save('upload/kategoriler/' . $resimadi);
+            Image::make($resim)->resize(700, 400)->save('upload/altkategoriler/' . $resimadi);
 
-            $resim_kaydet = 'upload/kategoriler/' . $resimadi;
+            $resim_kaydet = 'upload/altkategoriler/' . $resimadi;
 
             // Eski Resim Sil
             if (file_exists($eski_resim)) {
@@ -135,10 +141,11 @@ class KategoriController extends Controller
             }
             // Eski Resim Sil
 
-            Kategoriler::findOrfail($kategori_id)->update(
+            AltKategoriler::findOrfail($altkategori_id)->update(
                 [
-                    'kategori_adi' => $request->kategori_adi,
-                    'kategori_url' => str()->slug($request->kategori_adi),
+                    'kategori_id' => $request->kategori_id,
+                    'altkategori_adi' => $request->altkategori_adi,
+                    'altkategori_url' => str()->slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
                     'resim' => $resim_kaydet,
@@ -156,13 +163,14 @@ class KategoriController extends Controller
 
             // toaster Bildirim
 
-            return Redirect()->route('kategori.hepsi')->with($mesaj);
+            return Redirect()->route('altkategori.liste')->with($mesaj);
         } // }  end if
         else {
-            Kategoriler::findOrfail($kategori_id)->update(
+            AltKategoriler::findOrfail($altkategori_id)->update(
                 [
-                    'kategori_adi' => $request->kategori_adi,
-                    'kategori_url' => str()->slug($request->kategori_adi),
+                    'kategori_id' => $request->kategori_id,
+                    'altkategori_adi' => $request->altkategori_adi,
+                    'altkategori_url' => str()->slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
                 ]
@@ -179,17 +187,18 @@ class KategoriController extends Controller
 
             // toaster Bildirim
 
-            return Redirect()->route('kategori.hepsi')->with($mesaj);
+            return Redirect()->route('altkategori.liste')->with($mesaj);
         }
     }
 
-    public function KategoriSil($id)
+
+    public function AltKategoriSil($id)
     {
-        $kategori_id = Kategoriler::findOrFail($id);
-        $resim = $kategori_id->resim;
+        $altkategori_id = Altkategoriler::findOrFail($id);
+        $resim = $altkategori_id->resim;
         unlink($resim);
 
-        Kategoriler::findOrFail($id)->delete();
+        Altkategoriler::findOrFail($id)->delete();
 
         // toaster Bildirim
 

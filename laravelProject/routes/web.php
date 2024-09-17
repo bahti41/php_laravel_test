@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Admin\AltkategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,27 @@ Route::controller(KategoriController::class)->group(function () {
     Route::post('/kategori/ekle/form', 'KategoriEkleForm')->name('kategori.ekle.form');
     Route::get('/kategori/duzenle/{id}', 'KategoriDuzenle')->name('kategori.duzenle');
     Route::post('/kategori/guncelle/form', 'KategoriGuncelleForm')->name('kategori.guncelle.form');
+    Route::get('/kategori/sil/{id}', 'KategoriSil')->name('kategori.sil');
 });
+
+
+// Alt Kategory Route
+Route::controller(AltkategoriController::class)->group(function () {
+    Route::get('/altkategori/liste', 'AltKategoriListe')->name('altkategori.liste');
+    Route::get('/altkategori/ekle', 'AltKategoriEkle')->name('altkategori.ekle');
+    Route::post('/altkategori/ekle/form', 'AltKategoriEkleForm')->name('altkategori.ekle.form');
+    Route::get('/altkategori/duzenle/{id}', 'AltKategoriDuzenle')->name('altkategori.duzenle');
+    Route::post('/altkategori/guncelle/form', 'AltKategoriGuncelleForm')->name('altkategori.guncelle.form');
+    Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
+});
+
+
+
+
+
+
+
+
 
 
 // Admin Panel
