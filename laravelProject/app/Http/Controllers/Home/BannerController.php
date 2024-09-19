@@ -16,6 +16,7 @@ class BannerController extends Controller
         return view('admin.anasayfa.banner_duzenle', compact('homebanner'));
     }
 
+
     public function BannerGuncelle(Request $request) //
     {
         $banner_id = $request->id;  // Gelen id $banner_id atama yaptık

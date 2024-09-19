@@ -196,20 +196,36 @@ class AltkategoriController extends Controller
     {
         $altkategori_id = Altkategoriler::findOrFail($id);
         $resim = $altkategori_id->resim;
-        unlink($resim);
+        if ($resim) {
+            unlink($resim);
 
-        Altkategoriler::findOrFail($id)->delete();
+            Altkategoriler::findOrFail($id)->delete();
 
-        // toaster Bildirim
+            // toaster Bildirim
 
-        $mesaj = array(
-            'bildirim' => 'Silme Başarılı...',
-            'alert-type' => 'success'
-        );
+            $mesaj = array(
+                'bildirim' => 'Silme Başarılı...',
+                'alert-type' => 'success'
+            );
 
 
-        // toaster Bildirim
+            // toaster Bildirim
 
-        return Redirect()->back()->with($mesaj);
+            return Redirect()->back()->with($mesaj);
+        } else {
+            Altkategoriler::findOrFail($id)->delete();
+
+            // toaster Bildirim
+
+            $mesaj = array(
+                'bildirim' => 'Silme Başarılı...',
+                'alert-type' => 'success'
+            );
+
+
+            // toaster Bildirim
+
+            return Redirect()->back()->with($mesaj);
+        }
     }
 }

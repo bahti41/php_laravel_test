@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\AltkategoriController;
+use App\Http\Controllers\Admin\UrunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,15 @@ Route::controller(AltkategoriController::class)->group(function () {
     Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
 });
 
-
+// Ürünlrt Route
+Route::controller(UrunController::class)->group(function () {
+    Route::get('/urun/liste', 'UrunListe')->name('urun.liste');
+    Route::get('/altkategori/ekle', 'AltKategoriEkle')->name('altkategori.ekle');
+    Route::post('/altkategori/ekle/form', 'AltKategoriEkleForm')->name('altkategori.ekle.form');
+    Route::get('/altkategori/duzenle/{id}', 'AltKategoriDuzenle')->name('altkategori.duzenle');
+    Route::post('/altkategori/guncelle/form', 'AltKategoriGuncelleForm')->name('altkategori.guncelle.form');
+    Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
+});
 
 
 

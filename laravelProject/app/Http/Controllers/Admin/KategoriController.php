@@ -24,6 +24,7 @@ class KategoriController extends Controller
         return view('admin.kategoriler.kategori_ekle');
     }
 
+
     public function KategoriEkleForm(Request $request)
     {
 
@@ -97,11 +98,13 @@ class KategoriController extends Controller
         }
     }
 
+
     public function KategoriDuzenle($id)
     {
         $KategoriDuzenle = Kategoriler::findOrFail($id);
         return view('admin.kategoriler.kategoriler_duzenle', compact('KategoriDuzenle'));
     }
+
 
     public function KategoriGuncelleForm(Request $request)
     {
@@ -183,24 +186,34 @@ class KategoriController extends Controller
         }
     }
 
+
     public function KategoriSil($id)
     {
+
         $kategori_id = Kategoriler::findOrFail($id);
         $resim = $kategori_id->resim;
-        unlink($resim);
+        if ($resim) {
+            unlink($resim);
 
-        Kategoriler::findOrFail($id)->delete();
+            Kategoriler::findOrFail($id)->delete();
 
-        // toaster Bildirim
+            // toaster Bildirim
 
-        $mesaj = array(
-            'bildirim' => 'Silme Başarılı...',
-            'alert-type' => 'success'
-        );
+            $mesaj = array(
+                'bildirim' => 'Silme Başarılı...',
+                'alert-type' => 'success'
+            );
+            return Redirect()->back()->with($mesaj);
+        } else {
+            Kategoriler::findOrFail($id)->delete();
 
+            // toaster Bildirim
 
-        // toaster Bildirim
-
-        return Redirect()->back()->with($mesaj);
+            $mesaj = array(
+                'bildirim' => 'Silme Başarılı...',
+                'alert-type' => 'success'
+            );
+            return Redirect()->back()->with($mesaj);
+        }
     }
 }
