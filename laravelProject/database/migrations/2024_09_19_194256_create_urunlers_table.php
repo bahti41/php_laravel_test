@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('metin')->nullable();
             $table->string('resim')->nullable();
             $table->integer('sirano')->default(1);
-            $table->integer('durum')->default(0);
+            $table->boolean('durum')->default(0);
             $table->timestamps();
         });
     }

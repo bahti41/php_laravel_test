@@ -31,6 +31,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <!-- bildiri -->
 
+    <!-- Tag -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+    <!-- Tag -->
+
+
 </head>
 
 <body data-topbar="dark">
@@ -117,8 +122,25 @@
     <!-- bildiri -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+    <!--Silme Sweet -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('backend/assets/js/sweet.js') }}"></script>
+    <!-- Silme Sweet -->
+
     <!-- Bildirim js ile --->
     <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+
+    <!-- Tag Alanı -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+
+    <!-- Form editör Text Editör -->
+    <!--tinymce js-->
+    <script src="{{asset('backend/assets/libs/tinymce/tinymce.min.js')}}"></script>
+
+    <!-- init js -->
+    <script src="{{asset('backend/assets/js/pages/form-editor.init.js')}}"></script>
+    <!-- Form editör Text Editör -->
+
 
     <script>
         if (session('bildirim'))
@@ -145,11 +167,28 @@
     </script>
     <!-- bildiri -->
 
-    <!--Silme Sweet -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="{{ asset('backend/assets/js/sweet.js') }}"></script>
-    <!-- Silme Sweet -->
-
+    <!-- Aktif Pasif Durum Alanı -->
+    <script>
+        $(function() {
+            $('.urunler').change(function() {
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var urun_id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/urun/durum',
+                    data: {
+                        'durum': durum,
+                        'urun_id': urun_id
+                    },
+                    success: function(data) {
+                        console.log(data.success)
+                    }
+                });
+            });
+        });
+    </script>
+    <!--  Durum Alanı -->
 
 </body>
 
