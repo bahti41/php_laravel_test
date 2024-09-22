@@ -49,17 +49,20 @@ Route::controller(AltkategoriController::class)->group(function () {
     Route::get('/altkategori/duzenle/{id}', 'AltKategoriDuzenle')->name('altkategori.duzenle');
     Route::post('/altkategori/guncelle/form', 'AltKategoriGuncelleForm')->name('altkategori.guncelle.form');
     Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
+    Route::get('/altkategoriler/ajax/{kategori_id}', 'AltAjax');
 });
 
 
-// Ürünlrt Route
+// Ürünler Route
 Route::controller(UrunController::class)->group(function () {
     Route::get('/urun/liste', 'UrunListe')->name('urun.liste');
     Route::get('/urun/durum', 'UrunDurum');
     Route::get('/urun/ekle', 'UrunEkle')->name('urun.ekle');
-    Route::get('/altkategori/duzenle/{id}', 'AltKategoriDuzenle')->name('altkategori.duzenle');
-    Route::post('/altkategori/guncelle/form', 'AltKategoriGuncelleForm')->name('altkategori.guncelle.form');
-    Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
+    Route::post('/urun/ekle/form', 'UrunEkleForm')->name('urun.ekle.form');
+    Route::get('/urun/duzenle/{id}', 'UrunDuzenle')->name('urun.duzenle');
+    Route::post('/urun/guncelle/form', 'UrunGuncelleForm')->name('urun.guncelle.form');
+
+    Route::get('/urun/sil/{id}', 'UrunSil')->name('urun.sil');
 });
 
 

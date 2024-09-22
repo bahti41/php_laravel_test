@@ -28,6 +28,7 @@
                                 <tr>
                                     <th>Sıra</th>
                                     <th>Başlık</th>
+                                    <th>Kategori Adı</th>
                                     <th>Alt Kategori Adı</th>
                                     <th>Resim</th>
                                     <th>Durum</th>
@@ -43,15 +44,16 @@
                                     @foreach($urunliste as $urunler)
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $urunler->baslik }}</td>
-                                    <td>Alt Kategori</td>
+                                    <td>{{$urunler['kategori']['kategori_adi']}}</td>
+                                    <td>{{$urunler['Altkategori']['altkategori_adi']}}</td>
                                     <td><img src="{{(!empty($urunler->resim))? url($urunler->resim): url('upload/görseli_hazrilaniyor.png')}}" style="height: 50px; width:50px;" alt=""></td>
                                     <td>
                                         <input type="checkbox" class="urunler" data-id="{{ $urunler->id }}" id="{{ $urunler->id }}" switch="success" {{$urunler->durum ? 'checked' : ''}}>
                                         <label for="{{ $urunler->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </td>
                                     <td>
-                                        <a href="{{route('kategori.duzenle',$urunler->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
-                                        <a href="{{route('kategori.sil',$urunler->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{route('urun.duzenle',$urunler->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('urun.sil',$urunler->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

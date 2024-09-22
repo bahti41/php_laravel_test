@@ -20,10 +20,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Ürün Ekle</h4>
+                        <h4 class="card-title">Ürün Düzenle</h4>
 
-                        <form method="post" action="{{ route('urun.ekle.form') }}" enctype="multipart/form-data" id="myForm">
+                        <form method="post" action="{{ route('urun.guncelle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
+
+                            <input type="hidden" name="id" value="{{ $urunler->id}}">
+                            <input type="hidden" name="onceki_resim" value="{{ $urunler->resim}}">
 
 
 
@@ -40,7 +43,7 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Başlık</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="baslik" type="text" placeholder="Başlık...">
+                                                <input class="form-control" name="baslik" type="text" placeholder="Başlık..." value="{{$urunler->baslik}}">
                                                 @error('baslik')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -53,17 +56,17 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Tag</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="tag" type="text" data-role="tagsinput" value="Etikete, denme,">
+                                                <input class="form-control" name="tag" type="text" data-role="tagsinput" value="{{$urunler->tag}}">
                                             </div>
                                         </div>
                                         <!-- Tag -->
 
 
                                         <!-- Metin -->
-                                        <div class="row mb-3">
+                                        <div class=" row mb-3">
                                             <label for="example-text-input" class="col-form-label">Metin</label>
                                             <div class="col-sm-12 form-group">
-                                                <textarea name="metin" id="elm1" type="text"></textarea>
+                                                <textarea name="metin" id="elm1" type="text">{{$urunler->metin}}</textarea>
                                             </div>
                                         </div>
                                         <!-- Metin -->
@@ -77,7 +80,7 @@
 
                                     <!-- col 4 Başladı -->
 
-                                    <div class="col-md-4">
+                                    <div class=" col-md-4">
 
 
                                         <!-- Select Kategori -->
@@ -88,7 +91,7 @@
                                                     <option selected="">Kategori Sec</option>
 
                                                     @foreach($kategoriler as $kategori)
-                                                    <option value="{{$kategori->id}}"> {{$kategori->kategori_adi}}</option>
+                                                    <option value="{{$kategori->id}}" {{ $kategori->id == $urunler->kategori_id ? 'selected' : '' }}>{{$kategori->kategori_adi}}</option>
                                                     @endforeach
 
                                                 </select>
@@ -103,6 +106,11 @@
                                             <div class="col-sm-12 form-group">
                                                 <select class="form-select" aria-label="Default select example " name="altkategori_id">
                                                     <option value=""></option>
+
+                                                    @foreach($altkategoriler as $altkategori)
+                                                    <option value="{{$altkategori->id}}" {{ $altkategori->id == $urunler->altkategori_id ? 'selected' : '' }}>{{$altkategori->altkategori_adi}}</option>
+                                                    @endforeach
+
                                                 </select>
                                             </div>
                                         </div>
@@ -113,7 +121,7 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Sıra No</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="sirano" type="number" placeholder=" Sıra No..." value="1">
+                                                <input class="form-control" name="sirano" type="number" placeholder=" Sıra No..." value="{{$urunler->sirano}}">
                                             </div>
                                         </div>
                                         <!-- Sıra No -->
@@ -130,7 +138,7 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input"></label>
                                             <div class="col-sm-12">
-                                                <img class="rounded avatar-lg" src="{{ url('upload/görseli_hazrilaniyor.png')}}" alt="" id="resimGoster">
+                                                <img class="rounded avatar-lg" src="{{(!empty($urunler->resim))? url($urunler->resim): url('upload/görseli_hazrilaniyor.png')}}" alt="" id="resimGoster">
                                             </div>
                                         </div>
                                         <!-- Resim -->
@@ -140,7 +148,7 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Anahtar</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="anahtar" type="text" placeholder="Kategori Anahtar...">
+                                                <input class="form-control" name="anahtar" type="text" placeholder="Kategori Anahtar..." value="{{$urunler->anahtar}}">
                                             </div>
                                         </div>
                                         <!-- Anahtar -->
@@ -150,7 +158,7 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Acıklama</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="aciklama" type="text" placeholder="Kategori Acıklama...">
+                                                <input class="form-control" name="aciklama" type="text" placeholder="Kategori Acıklama..." value="{{$urunler->aciklama}}">
                                             </div>
                                         </div>
                                         <!-- Acıklama -->
@@ -159,7 +167,7 @@
                                     <!-- col 4 Bitti -->
 
 
-                                    <input type="submit" class="btn btn-info waves-effect wave-light" value="Ürün Ekle">
+                                    <input type="submit" class="btn btn-info waves-effect wave-light" value="Ürün Güncelle">
                                 </div>
                                 <!-- Row Bitiş -->
 
@@ -200,16 +208,15 @@
     $(document).ready(function() {
         $('#myForm').validate({
             rules: {
-
-                resim: {
+                sirano: {
                     required: true,
                 },
             }, // end rules
 
             messages: {
 
-                resim: {
-                    required: 'Resim giriniz...',
+                sirano: {
+                    required: 'Sıra Numarası giriniz...',
                 },
             }, // end message
 
@@ -244,7 +251,6 @@
                     success: function(data) {
                         $('select[name="altkategori_id"]').html('');
                         var alt = $('select[name="altkategori_id"]').empty();
-
                         $.each(data, function(key, value) {
                             $('select[name="altkategori_id"]').append('<option value="' + value.id + '">' + value.altkategori_adi + '</option>');
                         });

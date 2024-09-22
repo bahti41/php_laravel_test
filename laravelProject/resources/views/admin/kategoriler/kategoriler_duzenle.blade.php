@@ -13,8 +13,8 @@
                         <form method="post" action="{{ route('kategori.guncelle.form') }}" enctype="multipart/form-data">
                             @csrf
 
-                            <input type="hidden" name="id" value="{{ $KategoriDuzenle->id}}">
-                            <input type="hidden" name="onceki_resim" value="{{ $KategoriDuzenle->resim}}">
+                            <input type="hidden" name="id" value="{{ $kategoriduzenle->id}}">
+                            <input type="hidden" name="onceki_resim" value="{{ $kategoriduzenle->resim}}">
 
                             <h4 class="card-title">Kategori Düzenle</h4>
 
@@ -22,7 +22,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Adı</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="kategori_adi" type="text" placeholder="Kategori Adı..." id="example-text-input" value="{{ $KategoriDuzenle->kategori_adi}}">
+                                    <input class="form-control" name="kategori_adi" type="text" placeholder="Kategori Adı..." id="example-text-input" value="{{ $kategoriduzenle->kategori_adi}}">
                                     @error('kategori_adi')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -35,7 +35,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Anahtar</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="anahtar" type="text" placeholder="Kategori Anahtar..." id="example-text-input" value="{{ $KategoriDuzenle->anahtar}}">
+                                    <input class="form-control" name="anahtar" type="text" placeholder="Kategori Anahtar..." id="example-text-input" value="{{ $kategoriduzenle->anahtar}}">
                                     @error('anahtar')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -48,7 +48,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Acıklama</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="aciklama" type="text" placeholder="Kategori Acıklama..." id="example-text-input" value="{{ $KategoriDuzenle->aciklama}}">
+                                    <input class="form-control" name="aciklama" type="text" placeholder="Kategori Acıklama..." id="example-text-input" value="{{ $kategoriduzenle->aciklama}}">
                                     @error('aciklama')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -69,7 +69,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2"></label>
                                 <div class="col-sm-10">
-                                    <img class="rounded avatar-lg" src="{{(!empty($KategoriDuzenle->resim))? url($KategoriDuzenle->resim): url('upload/görseli_hazrilaniyor.png')}}" alt="" id="resimGoster">
+                                    <img class="rounded avatar-lg" src="{{(!empty($kategoriduzenle->resim))? url($kategoriduzenle->resim): url('upload/görseli_hazrilaniyor.png')}}" alt="" id="resimGoster">
                                 </div>
                             </div>
 

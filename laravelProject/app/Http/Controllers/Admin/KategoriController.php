@@ -19,7 +19,7 @@ class KategoriController extends Controller
         return view('admin.kategoriler.kategoriler_hepsi', compact('kategorihepsi'));
     }
 
-    public function KategoriEkle() // Sayfa Yolu
+    public function KategoriEkle()
     {
         return view('admin.kategoriler.kategori_ekle');
     }
@@ -101,8 +101,8 @@ class KategoriController extends Controller
 
     public function KategoriDuzenle($id)
     {
-        $KategoriDuzenle = Kategoriler::findOrFail($id);
-        return view('admin.kategoriler.kategoriler_duzenle', compact('KategoriDuzenle'));
+        $kategoriduzenle = Kategoriler::findOrFail($id);
+        return view('admin.kategoriler.kategoriler_duzenle', compact('kategoriduzenle'));
     }
 
 

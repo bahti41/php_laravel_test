@@ -228,4 +228,11 @@ class AltkategoriController extends Controller
             return Redirect()->back()->with($mesaj);
         }
     }
+
+    // Ajax ile Ürün Eklede Kategori Ve Alt Kategori İşaretmelek İcin
+    public function AltAjax($kategori_id)
+    {
+        $altgetir = Altkategoriler::where('kategori_id', $kategori_id)->orderBy('altkategori_adi', 'ASC')->get();
+        return json_encode($altgetir);
+    }
 }

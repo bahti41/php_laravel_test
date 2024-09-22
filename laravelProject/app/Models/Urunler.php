@@ -9,4 +9,19 @@ class Urunler extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function Altkategori()
+    {
+        return $this->belongsTo(Altkategoriler::class, 'altkategori_id', 'id');
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategoriler::class, 'kategori_id', 'id');
+    }
+
+    public function kategorilerweb()
+    {
+        return $this->belongsTo(Kategoriler::class, 'kategori_id', 'id');
+    }
 }
