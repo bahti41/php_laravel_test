@@ -6,6 +6,8 @@ use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\AltkategoriController;
 use App\Http\Controllers\Admin\UrunController;
+use App\Http\Controllers\Home\FrontController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -66,12 +68,6 @@ Route::controller(UrunController::class)->group(function () {
 });
 
 
-
-
-
-
-
-
 // Admin Panel
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -86,3 +82,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+
+// Front Route(Ürün Detay)
+Route::get('/urun/{id}/{url}', [FrontController::class, 'UrunDetay']);

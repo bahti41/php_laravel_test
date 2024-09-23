@@ -20,8 +20,8 @@ class Urunler extends Model
         return $this->belongsTo(Kategoriler::class, 'kategori_id', 'id');
     }
 
-    public function kategorilerweb()
-    {
-        return $this->belongsTo(Kategoriler::class, 'kategori_id', 'id');
-    }
+    // public function kategorilerweb()  BU KODU FRONTEND TE CALIŞTIRICAKTIM VAZ GECTİM
+    // {
+    //     return $this->belongsTo(Kategoriler::class, 'kategori_id', 'id');
+    // }
 }
