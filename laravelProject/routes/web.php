@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\AltkategoriController;
 use App\Http\Controllers\Admin\UrunController;
 use App\Http\Controllers\Home\FrontController;
-
+use App\Http\Controllers\Admin\BlogkategoriController;
+use App\Http\Controllers\Admin\BlogicerikController;
+use App\Models\Blogkategoriler;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +65,33 @@ Route::controller(UrunController::class)->group(function () {
     Route::post('/urun/ekle/form', 'UrunEkleForm')->name('urun.ekle.form');
     Route::get('/urun/duzenle/{id}', 'UrunDuzenle')->name('urun.duzenle');
     Route::post('/urun/guncelle/form', 'UrunGuncelleForm')->name('urun.guncelle.form');
-
     Route::get('/urun/sil/{id}', 'UrunSil')->name('urun.sil');
 });
+
+
+// Blog Kategory Route
+Route::controller(BlogkategoriController::class)->group(function () {
+    Route::get('/blog/kategori/liste', 'BlogListe')->name('blog.liste');
+    Route::get('/blog/kategori/durum', 'BlogKategoriDurum');
+    Route::get('/blog/kategori/ekle', 'BlogkategoriEkle')->name('blog.kategori.ekle');
+    Route::post('/blog/kategori/form', 'BlogKayegoriForm')->name('blog.kategori.form');
+    Route::get('/blogkategori/duzenle/{id}', 'BlogKategoriDuzenle')->name('blog.kategori.duzenle');
+    Route::post('/blogkategori/guncelle', 'BlogKategoriGuncelle')->name('blog.kategori.guncelle');
+    Route::get('/blogkategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
+});
+
+
+// Blog İcerik Route
+Route::controller(BlogicerikController::class)->group(function () {
+    Route::get('/blog/icerik/liste', 'IcerikListe')->name('icerik.liste');
+    Route::get('/blog/kategori/durum', 'BlogKategoriDurum');
+    Route::get('/blog/icerik/ekle', 'BlogicerilEkle')->name('blog.icerik.ekle');
+    Route::post('/blog/icerik/ekle/from', 'BlogIcerikEkleFrom')->name('blog.icerik.ekle.form');
+    Route::get('/blogicerik/duzenle/{id}', 'BlogicerikDuzenle')->name('blog.icerik.duzenle');
+    Route::post('/blogicerik/guncelle', 'BlogIcerikGuncelle')->name('blog.icerik.guncelle.form');
+    Route::get('/blogkategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
+});
+
 
 
 // Admin Panel
@@ -84,5 +110,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-// Front Route(Ürün Detay)
+// Front Route
 Route::get('/urun/{id}/{url}', [FrontController::class, 'UrunDetay']);
+Route::get('/kategori/{id}/{url}', [FrontController::class, 'KategoriDetay']);
+Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
