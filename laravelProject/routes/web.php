@@ -84,12 +84,12 @@ Route::controller(BlogkategoriController::class)->group(function () {
 // Blog İcerik Route
 Route::controller(BlogicerikController::class)->group(function () {
     Route::get('/blog/icerik/liste', 'IcerikListe')->name('icerik.liste');
-    Route::get('/blog/kategori/durum', 'BlogKategoriDurum');
+    Route::get('/blog/icerik/durum', 'BlogIcerikDurum');
     Route::get('/blog/icerik/ekle', 'BlogicerilEkle')->name('blog.icerik.ekle');
     Route::post('/blog/icerik/ekle/from', 'BlogIcerikEkleFrom')->name('blog.icerik.ekle.form');
     Route::get('/blogicerik/duzenle/{id}', 'BlogicerikDuzenle')->name('blog.icerik.duzenle');
     Route::post('/blogicerik/guncelle', 'BlogIcerikGuncelle')->name('blog.icerik.guncelle.form');
-    Route::get('/blogkategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
+    Route::get('/blogicerik/sil/{id}', 'BlogIcerikSil')->name('blog.icerik.sil');
 });
 
 
@@ -114,3 +114,4 @@ require __DIR__ . '/auth.php';
 Route::get('/urun/{id}/{url}', [FrontController::class, 'UrunDetay']);
 Route::get('/kategori/{id}/{url}', [FrontController::class, 'KategoriDetay']);
 Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
+Route::get('/post/{id}/{url}', [FrontController::class, 'IcerikDetay']);

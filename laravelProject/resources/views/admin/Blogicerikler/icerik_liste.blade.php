@@ -43,7 +43,7 @@
                                     @foreach($icerikliste as $icerik)
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $icerik->baslik }}</td>
-                                    <td>Kategori Adi</td>
+                                    <td>{{ $icerik['kategori']['kategori_adi']}}</td>
                                     <td><img src="{{(!empty($icerik->resim))? url($icerik->resim): url('upload/görseli_hazrilaniyor.png')}}" style="height: 50px; width:50px;" alt=""></td>
                                     <td>
                                         <input type="checkbox" class="metinler" data-id="{{ $icerik->id }}" id="{{ $icerik->id }}" switch="success" {{$icerik->durum ? 'checked' : ''}}>
@@ -51,7 +51,7 @@
                                     </td>
                                     <td>
                                         <a href="{{route('blog.icerik.duzenle',$icerik->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
-                                        <a href="{{route('urun.sil',$icerik->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{route('blog.icerik.sil',$icerik->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

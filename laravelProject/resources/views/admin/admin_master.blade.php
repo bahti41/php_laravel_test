@@ -222,7 +222,7 @@
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: '/blog/kategori/durum',
+                    url: '/blog/icerik/durum',
                     data: {
                         'durum': durum,
                         'urun_id': urun_id

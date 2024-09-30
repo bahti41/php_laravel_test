@@ -19,6 +19,16 @@ class BlogicerikController extends Controller
     }
 
 
+    public function BlogIcerikDurum(Request $request)
+    {
+        $urun = Blogicerik::find($request->urun_id);
+        $urun->durum = $request->durum;
+        $urun->save();
+
+        return response()->json(['success' => 'Başarılı...']);
+    }
+
+
     public function BlogicerilEkle()
     {
         $kategoriler = Blogkategoriler::latest()->get();
@@ -162,6 +172,37 @@ class BlogicerikController extends Controller
             // toaster Bildirim
 
             return Redirect()->route('icerik.liste')->with($mesaj);
+        }
+    }
+
+
+    public function BlogIcerikSil($id)
+    {
+
+        $urun_id = Blogicerik::findOrFail($id);
+        $resim = $urun_id->resim;
+        if ($resim) {
+            unlink($resim);
+
+            Blogicerik::findOrFail($id)->delete();
+
+            // toaster Bildirim
+
+            $mesaj = array(
+                'bildirim' => 'Silme Başarılı...',
+                'alert-type' => 'success'
+            );
+            return Redirect()->back()->with($mesaj);
+        } else {
+            Blogicerik::findOrFail($id)->delete();
+
+            // toaster Bildirim
+
+            $mesaj = array(
+                'bildirim' => 'Silme Başarılı...',
+                'alert-type' => 'success'
+            );
+            return Redirect()->back()->with($mesaj);
         }
     }
 }

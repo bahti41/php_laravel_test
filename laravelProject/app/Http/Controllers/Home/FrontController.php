@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Urunler;
 use App\Models\Kategoriler;
 use App\Models\Altkategoriler;
+use App\Models\Blogicerik;
+use App\Models\Blogkategoriler;
+
+
 
 class FrontController extends Controller
 {
@@ -35,5 +39,17 @@ class FrontController extends Controller
         $altkategori = Altkategoriler::where('id', $id)->first();
 
         return view('frontend.urunler.altkategori_detay', compact('urunler', 'altkategoriler', 'altkategori'));
+    }
+
+
+    public function IcerikDetay($id)
+    {
+        $icerikhepsi = Blogicerik::where('durum', 1)->orderBy('sirano', 'ASC')->limit(5)->get();
+        $icerik = Blogicerik::findOrFail($id);
+        $kategoriler = Blogkategoriler::where('durum', 1)->orderBy('sirano', 'ASC')->get();
+        $etiketler = $icerik->tag;
+        $etiket = explode(',', $etiketler);
+
+        return view('frontend.blog.icerik_detay', compact('icerikhepsi', 'icerik', 'kategoriler', 'etiket'));
     }
 }
