@@ -12,7 +12,7 @@ $icerikler = App\Models\Blogicerik::where('durum',1)->orderBy('sirano','ASC')->l
                     <div class="blog__post__thumb">
                         <a href="{{ url('post/'.$metinler->id.'/'.$metinler->url) }}"><img src="{{asset($metinler->resim)}}" alt=""></a>
                         <div class="blog__post__tags">
-                            <a href="blog.html">{{($metinler['kategori']['kategori_adi'])}}</a>
+                            <a>{{ optional($metinler->kategori)->kategori_adi }}</a>
                         </div>
                     </div>
                     <div class="blog__post__content">

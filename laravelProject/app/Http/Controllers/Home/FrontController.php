@@ -52,4 +52,15 @@ class FrontController extends Controller
 
         return view('frontend.blog.icerik_detay', compact('icerikhepsi', 'icerik', 'kategoriler', 'etiket'));
     }
+
+
+    public function IceriKategoriDetay($id)
+    {
+        $blogpost = Blogicerik::where('durum', 1)->where('kategori_id', $id)->orderBy('sirano', 'ASC')->limit(5)->get();
+        $icerikhepsi = Blogicerik::where('durum', 1)->orderBy('sirano', 'ASC')->get();
+        $kategoriler = Blogkategoriler::where('durum', 1)->orderBy('sirano', 'ASC')->get();
+        $kategoriadi = Blogkategoriler::findOrFail($id);
+
+        return view('frontend.blog.kategori_icerik_detay', compact('blogpost', 'icerikhepsi', 'kategoriler', 'kategoriadi'));
+    }
 }
