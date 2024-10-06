@@ -11,7 +11,7 @@ class Blogicerik extends Model
 
     protected $guarded = [];
 
-    public function kategori()
+    public function kategoriler()
     {
         return $this->belongsTo(Blogkategoriler::class, 'kategori_id', 'id');
     }
