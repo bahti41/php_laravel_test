@@ -10,54 +10,59 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form method="post" action="{{ route('banner.guncelle') }}" enctype="multipart/form-data">
+                        <h4 class="card-title">Hakkımızda Düzenle</h4>
+
+
+                        <form method="post" action="{{ route('hakkimizda.guncelle') }}" enctype="multipart/form-data">
                             @csrf
 
 
-                            <input type="hidden" name="id" value="{{$homebanner->id}}">
-                            <input type="hidden" name="onceki_resim" value="{{$homebanner->resim}}">
+                            <input type="hidden" name="id" value="{{$hakkimizda->id}}">
+                            <input type="hidden" name="onceki_resim" value="{{$hakkimizda->resim}}">
 
 
-                            <h4 class="card-title">Banner Düzenle</h4>
 
                             <!-- Başlık -->
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Başlık</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="baslik" type="text" placeholder="Başlık Giriniz..." id="example-text-input" value="{{$homebanner->baslik}}">
+                                    <input class="form-control" name="baslik" type="text" placeholder="Başlık Giriniz..." id="example-text-input" value="{{$hakkimizda->baslik}}">
                                 </div>
                             </div>
                             <!-- Başlık -->
 
-                            <!-- Alt_Başlık -->
+                            <!-- kısa_Başlık -->
                             <div class="row mb-3">
 
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Alt Başlık</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Kısa Başlık</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="alt_baslik" type="text" placeholder="Alt Başlık Giriniz..." id="example-text-input" value="{{$homebanner->alt_baslik}}">
+                                    <input class="form-control" name="kisa_baslik" type="text" placeholder="Kısa Başlık Giriniz..." id="example-text-input" value="{{$hakkimizda->kisa_baslik}}">
                                 </div>
                             </div>
-                            <!-- Alt_Başlık -->
+                            <!-- kısa_Başlık -->
 
-                            <!-- URL -->
+
+                            <!-- kısa_acıklama -->
                             <div class="row mb-3">
 
-                                <label for="example-text-input" class="col-sm-2 col-form-label">URL</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">kısa Acıklama</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="url" type="url" placeholder="Url Giriniz..." id="example-text-input" value="{{$homebanner->url}}">
+                                    <input class="form-control" name="kisa_aciklama" type="text" placeholder="Kısa Acıklama Giriniz..." id="example-text-input" value="{{$hakkimizda->kisa_aciklama}}">
                                 </div>
                             </div>
-                            <!-- URL -->
+                            <!-- kısa_acıklama -->
 
-                            <!-- Video URL -->
+
+                            <!--acıklama -->
                             <div class="row mb-3">
 
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Video URL</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Acıklama</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="video_url" type="url" placeholder="Video Url Giriniz..." id="example-text-input" value="{{$homebanner->video_url}}">
+                                    <input class="form-control" name="aciklama" type="text" placeholder="Acıklama Giriniz..." id="example-text-input" value="{{$hakkimizda->aciklama}}">
                                 </div>
                             </div>
-                            <!-- Video URL -->
+                            <!--acıklama -->
+
 
 
                             <!-- Resim -->
@@ -72,7 +77,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2"></label>
                                 <div class="col-sm-10">
-                                    <img class="rounded avatar-lg" src="{{ (!empty($homebanner->resim)) ? url($homebanner->resim): url('upload/görseli_hazrilaniyor.png')}}" alt="" id="resimGoster">
+                                    <img class="rounded avatar-lg" src="{{ (!empty($hakkimizda->resim)) ? url($hakkimizda->resim): url('upload/görseli_hazrilaniyor.png')}}" alt="" id="resimGoster">
                                 </div>
                             </div>
 

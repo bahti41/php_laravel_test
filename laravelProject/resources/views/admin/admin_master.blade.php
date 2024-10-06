@@ -116,7 +116,7 @@
     <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script>
 
     <!-- Required datatable js -->
-    <script src="{{asset('backendassets/libs/datatables.net/js/jquery.dataTables.min.js/')}}"></script>
+    <script src="{{asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js/')}}"></script>
     <script src="{{asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 
     <!-- bildiri -->
@@ -143,9 +143,9 @@
 
 
     <script>
-        if (session('bildirim'))
+        @if(session('bildirim'))
 
-            var type = "{{ session('alert-type', 'info') }}";
+        var type = "{{ session('alert-type', 'info') }}";
         switch (type) {
             case 'info':
                 toastr.info("{{ session('bildirim') }}");
@@ -163,7 +163,7 @@
                 toastr.error("{{ session('bildirim') }}");
                 break;
         }
-        endif
+        @endif
     </script>
     <!-- bildiri -->
 

@@ -4,22 +4,22 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Banner;
+use App\Models\Hakkimizda;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Carbon;
 
-
-class BannerController extends Controller
+class HakkimizdaController extends Controller
 {
-    public function HomeBanner()
+    public function Hakkımızda()
     {
-        $homebanner = Banner::find(1);
-        return view('admin.anasayfa.banner_duzenle', compact('homebanner'));
+        $hakkimizda = Hakkimizda::find(1);
+        return view('admin.anasayfa.hakkimizda_duzenle', compact('hakkimizda'));
     }
 
 
-    public function BannerGuncelle(Request $request) //
+    public function HakkimizdaGuncelle(Request $request) //
     {
-        $banner_id = $request->id;  // Gelen id $banner_id atama yaptık
+        $hakkimizda_id = $request->id;  // Gelen id $banner_id atama yaptık
         $eski_resim = $request->onceki_resim;
 
 
@@ -29,21 +29,22 @@ class BannerController extends Controller
             $resimadi = hexdec(uniqid()) . '.' . $resim->getClientOriginalExtension();  // Resime Verilen adın benzersiz olmasonı saglar
 
 
-            Image::make($resim)->resize(636, 852)->save('upload/banner/' . $resimadi);
+            Image::make($resim)->resize(523, 605)->save('upload/hakkimizda/' . $resimadi);
 
-            $resim_kaydet = 'upload/banner/' . $resimadi;
+            $resim_kaydet = 'upload/hakkimizda/' . $resimadi;
+
             // Eski Resim Sil
             if (file_exists($eski_resim)) {
                 unlink($eski_resim);
             }
             // Eski Resim Sil
 
-            Banner::findOrFail($banner_id)->update(
+            Hakkimizda::findOrFail($hakkimizda_id)->update(
                 [
                     'baslik' => $request->baslik,
-                    'alt_baslik' => $request->alt_baslik,
-                    'url' => $request->url,
-                    'video_url' => $request->video_url,
+                    'kisa_baslik' => $request->kisa_baslik,
+                    'kisa_aciklama' => $request->kisa_aciklama,
+                    'aciklama' => $request->aciklama,
                     'resim' => $resim_kaydet,
                 ]
             );
@@ -62,12 +63,12 @@ class BannerController extends Controller
             return Redirect()->back()->with($mesaj);
         } // }  end if
         else {
-            Banner::findOrFail($banner_id)->update(
+            Hakkimizda::findOrFail($hakkimizda_id)->update(
                 [
                     'baslik' => $request->baslik,
-                    'alt_baslik' => $request->alt_baslik,
-                    'url' => $request->url,
-                    'video_url' => $request->video_url,
+                    'kisa_baslik' => $request->kisa_baslik,
+                    'kisa_aciklama' => $request->kisa_aciklama,
+                    'aciklama' => $request->aciklama,
                 ]
             );
 

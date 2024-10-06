@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 06 Eki 2024, 09:15:03
+-- Üretim Zamanı: 06 Eki 2024, 12:31:09
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -77,7 +77,7 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `baslik`, `alt_baslik`, `url`, `video_url`, `resim`, `created_at`, `updated_at`) VALUES
-(1, 'Başlık Alanaı', 'Alt Başlık Alanı', 'http://localhost:8000/', 'http://localhost:8000/', 'upload/banner/1812101308067914.jfif', NULL, '2024-10-05 15:55:04');
+(1, 'Başlık Alanaı', 'Alt Başlık Alanı', 'http://localhost:8000/', 'http://localhost:8000/', 'upload/banner/1812160116780045.jpeg', NULL, '2024-10-06 07:29:20');
 
 -- --------------------------------------------------------
 
@@ -159,6 +159,30 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `hakkimizdas`
+--
+
+CREATE TABLE `hakkimizdas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `baslik` varchar(255) DEFAULT NULL,
+  `kisa_baslik` varchar(255) DEFAULT NULL,
+  `kisa_aciklama` text DEFAULT NULL,
+  `aciklama` text DEFAULT NULL,
+  `resim` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `hakkimizdas`
+--
+
+INSERT INTO `hakkimizdas` (`id`, `baslik`, `kisa_baslik`, `kisa_aciklama`, `aciklama`, `resim`, `created_at`, `updated_at`) VALUES
+(1, 'Hakkımızda', 'Hakkımızda Kısa Başlık Alanı', 'Hakkımızda kısa Acıklama Alanı', 'Hakkımızda Acıklama Alanı', 'upload/hakkimizda/1812160074313143.jpeg', NULL, '2024-10-06 07:28:40');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `kategorilers`
 --
 
@@ -209,7 +233,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2024_09_17_183723_create_altkategorilers_table', 1),
 (8, '2024_09_19_194256_create_urunlers_table', 1),
 (9, '2024_09_29_113111_create_blogkategorilers_table', 1),
-(10, '2024_09_29_145823_create_blogiceriks_table', 1);
+(10, '2024_09_29_145823_create_blogiceriks_table', 1),
+(11, '2024_10_06_092946_create_hakkimizdas_table', 2);
 
 -- --------------------------------------------------------
 
@@ -342,6 +367,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Tablo için indeksler `hakkimizdas`
+--
+ALTER TABLE `hakkimizdas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `kategorilers`
 --
 ALTER TABLE `kategorilers`
@@ -415,6 +446,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `hakkimizdas`
+--
+ALTER TABLE `hakkimizdas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `kategorilers`
 --
 ALTER TABLE `kategorilers`
@@ -424,7 +461,7 @@ ALTER TABLE `kategorilers`
 -- Tablo için AUTO_INCREMENT değeri `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`

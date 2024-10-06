@@ -19,12 +19,13 @@
                     <ul class="metismenu list-unstyled" id="side-menu">
                         <li class="menu-title">Menu</li>
 
-                        <li>
+                        <!-- <li>
                             <a href="index.html" class="waves-effect">
                                 <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
                                 <span>Dashboard</span>
                             </a>
-                        </li>
+                        </li> -->
+
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ri-mail-send-line"></i>
@@ -32,6 +33,17 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{route('banner')}}">Banner Düzenle</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-mail-send-line"></i>
+                                <span>Hakkımızda</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('hakkimizda')}}">Hakkımızda Düzenle</a></li>
                             </ul>
                         </li>
 

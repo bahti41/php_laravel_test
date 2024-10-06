@@ -9,8 +9,7 @@ use App\Http\Controllers\Admin\UrunController;
 use App\Http\Controllers\Home\FrontController;
 use App\Http\Controllers\Admin\BlogkategoriController;
 use App\Http\Controllers\Admin\BlogicerikController;
-use App\Models\Blogkategoriler;
-
+use App\Http\Controllers\Home\HakkimizdaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +30,12 @@ Route::get('/', function () {
 Route::controller(BannerController::class)->group(function () {
     Route::get('/banner/duzenle', 'HomeBanner')->name('banner');
     Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
+});
+
+// Hakkımızda Route
+Route::controller(HakkimizdaController::class)->group(function () {
+    Route::get('/hakkimizda/duzenle', 'Hakkımızda')->name('hakkimizda');
+    Route::post('/hakkimizda/guncelle', 'HakkimizdaGuncelle')->name('hakkimizda.guncelle');
 });
 
 
