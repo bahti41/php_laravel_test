@@ -116,3 +116,4 @@ Route::get('/kategori/{id}/{url}', [FrontController::class, 'KategoriDetay']);
 Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
 Route::get('/post/{id}/{url}', [FrontController::class, 'IcerikDetay']);
 Route::get('/postblog/{id}/{url}', [FrontController::class, 'IceriKategoriDetay']);
+Route::get('/blog', [FrontController::class, 'BlogHepsi']);

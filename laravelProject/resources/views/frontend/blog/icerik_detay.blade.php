@@ -13,7 +13,9 @@
                      <h2 class="title">{{$icerik->baslik}}</h2>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb">
-                             <li class="breadcrumb-item"><a href="index.html">{{$icerik['kategori']['kategori_adi']}}</a></li>
+                             <!-- [kategori] modelden gelen veri  -->
+                             <li class="breadcrumb-item"><a href="{{url('postblog/'.$icerik['kategoriler']['id'].'/'.$icerik['kategoriler']['url'])}}">{{$icerik['kategoriler']['kategori_adi']}}</a></li>
+                             <!-- [kategori] modelden gelen veri  -->
                              <li class="breadcrumb-item active" aria-current="page">{{$icerik->baslik}}</li>
                          </ol>
                      </nav>

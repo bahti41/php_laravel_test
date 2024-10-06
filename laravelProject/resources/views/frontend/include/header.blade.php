@@ -45,8 +45,18 @@
                                         @endforeach
 
 
+                                        <li class="menu-item-has-children"><a href="{{url('/blog')}}">Blog</a>
+                                            <ul class="sub-menu">
+                                                @php
 
-                                        <li class="menu-item-has-children"><a href="#">Blog</a>
+                                                $blogkategori = App\Models\Blogkategoriler::orderBy('kategori_adi','DESC')->limit(3)->get();
+
+                                                @endphp
+                                                @foreach($blogkategori as $kategori)
+                                                <li><a href="{{ url('postblog/'.$kategori->id.'/'.$kategori->url) }}">{{$kategori->kategori_adi}}</a></li>
+                                                @endforeach
+
+                                            </ul>
                                         </li>
                                         <li><a href="contact.html">İletişim</a></li>
                                     </ul>
