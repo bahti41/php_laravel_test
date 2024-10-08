@@ -20,6 +20,7 @@
                                 <div class="navbar__wrap main__menu d-none d-xl-flex">
                                     <ul class="navigation">
                                         <li class="active"><a href="{{url('/')}}">AnaSayfa</a></li>
+                                        <li><a href="{{route('anasayfa.hak')}}">Hakkımızda</a></li>
 
 
                                         @php

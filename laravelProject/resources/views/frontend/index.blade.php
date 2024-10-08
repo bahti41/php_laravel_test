@@ -7,7 +7,7 @@
  <!-- banner-area-end -->
 
  <!-- about-area -->
-
+ @include('frontend.anasayfa.anasayfa_hak')
  <!-- about-area-end -->
 
  <!-- services-area -->

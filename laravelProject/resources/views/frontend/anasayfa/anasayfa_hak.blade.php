@@ -1,5 +1,5 @@
 @php
-$homebanner = App\Models\Banner::find(1);
+$hakkimizda = App\Models\Hakkimizda::find(1);
 @endphp
 
 <section id="aboutSection" class="about">
@@ -40,19 +40,19 @@ $homebanner = App\Models\Banner::find(1);
             <div class="col-lg-6">
                 <div class="about__content">
                     <div class="section__title">
-                        <span class="sub-title">01 - About me</span>
-                        <h2 class="title">I have transform your ideas into remarkable digital products</h2>
+                        <span class="sub-title">01 - Hakkımızda</span>
+                        <h2 class="title">{{$hakkimizda->baslik}}</h2>
                     </div>
                     <div class="about__exp">
                         <div class="about__exp__icon">
                             <img src="{{asset('frontend/assets/img/icons/about_icon.png')}}" alt="">
                         </div>
                         <div class="about__exp__content">
-                            <p>20+ Years Experience In this game, Means <br> Product Designing</p>
+                            <p>{{$hakkimizda->kisa_baslik}}</p>
                         </div>
                     </div>
-                    <p class="desc">I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it. I always try my best to make good user interface with the best user experience. I have been working as a UX Designer</p>
-                    <a href="about.html" class="btn">Download my resume</a>
+                    <p class="desc">{{$hakkimizda->kisa_aciklama}}</p>
+                    <a href="{{route('anasayfa.hak')}}" class="btn">Devamı...</a>
                 </div>
             </div>
         </div>
