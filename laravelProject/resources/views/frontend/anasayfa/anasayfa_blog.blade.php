@@ -12,7 +12,7 @@ $icerikler = App\Models\Blogicerik::where('durum',1)->orderBy('sirano','ASC')->l
                     <div class="blog__post__thumb">
                         <a href="{{ url('post/'.$metinler->id.'/'.$metinler->url) }}"><img src="{{asset($metinler->resim)}}" alt=""></a>
                         <div class="blog__post__tags">
-                            <a>{{ optional($metinler->kategori)->kategori_adi }}</a>
+                            <a href="{{url('postblog/'.$metinler['kategoriler']['id'].'/'.$metinler['kategoriler']['url'])}}">{{$metinler['kategoriler']['kategori_adi']}}</a>
                         </div>
                     </div>
                     <div class="blog__post__content">
@@ -26,7 +26,7 @@ $icerikler = App\Models\Blogicerik::where('durum',1)->orderBy('sirano','ASC')->l
             @endforeach
         </div>
         <div class="blog__button text-center">
-            <a href="blog.html" class="btn">Tümünü Gör...</a>
+            <a href="{{url('/blog')}}" class="btn">Tümünü Gör...</a>
         </div>
     </div>
 </section>

@@ -9,6 +9,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <h4 class="card-title">Banner Düzenle</h4>
 
                         <form method="post" action="{{ route('banner.guncelle') }}" enctype="multipart/form-data">
                             @csrf
@@ -18,7 +19,6 @@
                             <input type="hidden" name="onceki_resim" value="{{$homebanner->resim}}">
 
 
-                            <h4 class="card-title">Banner Düzenle</h4>
 
                             <!-- Başlık -->
                             <div class="row mb-3">

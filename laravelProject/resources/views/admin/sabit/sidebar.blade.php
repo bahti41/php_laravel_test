@@ -44,6 +44,8 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{route('hakkimizda')}}">Hakkımızda Düzenle</a></li>
+                                <li><a href="{{route('coklu.liste')}}">Coklu Resimler</a></li>
+                                <li><a href="{{route('coklu.resim')}}">Coklu Resim Ekle</a></li>
                             </ul>
                         </li>
 

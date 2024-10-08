@@ -9,13 +9,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <h4 class="card-title">Kategori Ekle</h4>
 
                         <form method="post" action="{{ route('kategori.ekle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
 
 
 
-                            <h4 class="card-title">Kategori Ekle</h4>
 
                             <!-- Kategori_Adi -->
                             <div class="row mb-3">

@@ -47,7 +47,7 @@
 
                                 <label for="example-text-input" class="col-sm-2 col-form-label">kısa Acıklama</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="kisa_aciklama" type="text" placeholder="Kısa Acıklama Giriniz..." id="example-text-input" value="{{$hakkimizda->kisa_aciklama}}">
+                                    <textarea class="form-control" name="kisa_aciklama" type="text" placeholder="Kısa Acıklama Giriniz..." id="example-text-input" rows="4">{{$hakkimizda->kisa_aciklama}}</textarea>
                                 </div>
                             </div>
                             <!-- kısa_acıklama -->
@@ -58,7 +58,7 @@
 
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Acıklama</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="aciklama" type="text" placeholder="Acıklama Giriniz..." id="example-text-input" value="{{$hakkimizda->aciklama}}">
+                                    <textarea class="form-control" id="elm1" name="aciklama" type="text" placeholder="Acıklama Giriniz..." id="example-text-input">{{$hakkimizda->aciklama}}</textarea>
                                 </div>
                             </div>
                             <!--acıklama -->

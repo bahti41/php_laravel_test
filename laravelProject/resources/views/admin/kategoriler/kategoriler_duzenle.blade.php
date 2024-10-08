@@ -9,6 +9,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <h4 class="card-title">Kategori Düzenle</h4>
 
                         <form method="post" action="{{ route('kategori.guncelle.form') }}" enctype="multipart/form-data">
                             @csrf
@@ -16,7 +17,6 @@
                             <input type="hidden" name="id" value="{{ $kategoriduzenle->id}}">
                             <input type="hidden" name="onceki_resim" value="{{ $kategoriduzenle->resim}}">
 
-                            <h4 class="card-title">Kategori Düzenle</h4>
 
                             <!-- Kategori_Adi -->
                             <div class="row mb-3">
