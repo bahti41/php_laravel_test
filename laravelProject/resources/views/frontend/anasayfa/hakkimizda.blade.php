@@ -23,13 +23,17 @@
             </div>
             <div class="breadcrumb__wrap__icon">
                 <ul>
-                    <li><img src="assets/img/icons/breadcrumb_icon01.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon02.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon03.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon04.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon05.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon06.png" alt=""></li>
+                    @php
+                    $coklu = App\Models\Cokluresim::all();
+                    @endphp
+
+                    @foreach($coklu as $resim)
+                    <li>
+                        <img class="light" src="{{asset($resim->resim)}}" alt="XD">
+                    </li>
+                    @endforeach
                 </ul>
+
             </div>
         </section>
         <!-- breadcrumb-area-end -->

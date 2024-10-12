@@ -32,6 +32,7 @@ Route::controller(BannerController::class)->group(function () {
     Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
 });
 
+
 // Hakkımızda Route
 Route::controller(HakkimizdaController::class)->group(function () {
     Route::get('/hakkimizda/duzenle', 'Hakkimizda')->name('hakkimizda');
@@ -40,6 +41,9 @@ Route::controller(HakkimizdaController::class)->group(function () {
     Route::get('/coklu/resim', 'CokluResim')->name('coklu.resim');
     Route::post('/coklu/form', 'CokluForm')->name('coklu.resim.from');
     Route::get('/coklu/liste', 'CokluListe')->name('coklu.liste');
+    Route::get('/coklu/duzenle/{id}', 'CokluDuzenle')->name('coklu.duzenle');
+    Route::post('/coklu/guncelle', 'CokluGuncelle')->name('coklu.guncelle');
+    Route::get('/coklu/sil/{id}', 'CokluSil')->name('coklu.sil');
 });
 
 
