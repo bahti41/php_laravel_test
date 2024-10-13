@@ -10,6 +10,11 @@ use App\Http\Controllers\Home\FrontController;
 use App\Http\Controllers\Admin\BlogkategoriController;
 use App\Http\Controllers\Admin\BlogicerikController;
 use App\Http\Controllers\Home\HakkimizdaController;
+use App\Http\Controllers\Admin\MesajController;
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -131,3 +136,11 @@ Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
 Route::get('/post/{id}/{url}', [FrontController::class, 'IcerikDetay']);
 Route::get('/postblog/{id}/{url}', [FrontController::class, 'IceriKategoriDetay']);
 Route::get('/blog', [FrontController::class, 'BlogHepsi']);
+
+
+
+// Teklif Formu Route
+Route::controller(MesajController::class)->group(function () {
+    Route::get('/iletisim', 'Iletisim')->name('iletisim');
+    Route::post('/tekif/form', 'TeklifForm')->name('teklif.form');
+});

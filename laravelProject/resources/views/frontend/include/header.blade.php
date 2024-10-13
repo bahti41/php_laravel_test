@@ -59,11 +59,11 @@
 
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">İletişim</a></li>
+                                        <li><a href="{{route('iletisim')}}">İletişim</a></li>
                                     </ul>
                                 </div>
                                 <div class="header__btn d-none d-md-block">
-                                    <a href="contact.html" class="btn">İletişim</a>
+                                    <a href="{{route('iletisim')}}" class="btn">İletişim</a>
                                 </div>
                             </nav>
                         </div>

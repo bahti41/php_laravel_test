@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('mesajs', function (Blueprint $table) {
             $table->id();
+            $table->string('adi')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telefon')->nullable();
+            $table->string('konu')->nullable();
+            $table->text('mesaj')->nullable();
             $table->timestamps();
         });
     }
