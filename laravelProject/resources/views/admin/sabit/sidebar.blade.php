@@ -124,6 +124,21 @@
                         </li>
 
 
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-layout-3-line"></i>
+                                <span>Sürec İcerikler</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="true">
+
+                                <li>
+                                <li><a href="{{route('surec.liste')}}">Liste</a></li>
+                                <li><a href="{{route('blog.icerik.ekle')}}">İcerik Ekle</a></li>
+                            </ul>
+                        </li>
+
+
+
 
 
                     </ul>

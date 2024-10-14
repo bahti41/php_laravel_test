@@ -15,11 +15,32 @@
                      </div>
                      <div class="col-lg-6">
                          <div class="homeContact__form">
-                             <form action="#">
-                                 <input type="text" placeholder="Enter name*">
-                                 <input type="email" placeholder="Enter mail*">
-                                 <input type="number" placeholder="Enter number*">
-                                 <textarea name="message" placeholder="Enter Massage*"></textarea>
+                             <form method="post" action="{{route('teklif.form')}}" class="contact_form form-group" id="myForm">
+                                 @csrf
+
+                                 <input type="text" name="adi" placeholder="Ad Soyad">
+                                 @error('adi')
+                                 <span class="text-danger">{{$message}}</span>
+                                 @enderror
+
+                                 <input type="email" name="email" placeholder="Email Adresiniz">
+                                 @error('email')
+                                 <span class="text-danger">{{$message}}</span>
+                                 @enderror
+
+                                 <input type="text" name="telefon" placeholder="Teleofon">
+                                 @error('telefon')
+                                 <span class="text-danger">{{$message}}</span>
+                                 @enderror
+                                 <input type="text" name="konu" placeholder="Konu">
+                                 @error('konu')
+                                 <span class="text-danger">{{$message}}</span>
+                                 @enderror
+
+                                 <textarea name="mesaj" id="message" placeholder="Mesajınız"></textarea>
+                                 @error('mesaj')
+                                 <span class="text-danger">{{$message}}</span>
+                                 @enderror
                                  <button type="submit">Send Message</button>
                              </form>
                          </div>

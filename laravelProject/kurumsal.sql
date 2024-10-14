@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 13 Eki 2024, 17:08:54
+-- Üretim Zamanı: 14 Eki 2024, 21:07:43
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -250,6 +250,14 @@ CREATE TABLE `mesajs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Tablo döküm verisi `mesajs`
+--
+
+INSERT INTO `mesajs` (`id`, `adi`, `email`, `telefon`, `konu`, `mesaj`, `created_at`, `updated_at`) VALUES
+(5, 'denme', NULL, '12345678910', 'test footer', 'deneme 123', '2024-10-14 15:22:23', '2024-10-14 15:22:23'),
+(6, 'denme', NULL, '12345678910', 'deneme konusu', 'scascas', '2024-10-14 15:23:09', '2024-10-14 15:23:09');
+
 -- --------------------------------------------------------
 
 --
@@ -279,7 +287,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2024_09_29_145823_create_blogiceriks_table', 1),
 (11, '2024_10_06_092946_create_hakkimizdas_table', 2),
 (12, '2024_10_08_191316_create_cokluresims_table', 3),
-(13, '2024_10_12_132807_create_mesajs_table', 4);
+(13, '2024_10_12_132807_create_mesajs_table', 4),
+(14, '2024_10_14_182531_create_surecs_table', 5);
 
 -- --------------------------------------------------------
 
@@ -308,6 +317,21 @@ CREATE TABLE `personal_access_tokens` (
   `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `surecs`
+--
+
+CREATE TABLE `surecs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `surec` varchar(255) DEFAULT NULL,
+  `baslik` varchar(255) DEFAULT NULL,
+  `aciklama` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -456,6 +480,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Tablo için indeksler `surecs`
+--
+ALTER TABLE `surecs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `urunlers`
 --
 ALTER TABLE `urunlers`
@@ -524,18 +554,24 @@ ALTER TABLE `kategorilers`
 -- Tablo için AUTO_INCREMENT değeri `mesajs`
 --
 ALTER TABLE `mesajs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `surecs`
+--
+ALTER TABLE `surecs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --

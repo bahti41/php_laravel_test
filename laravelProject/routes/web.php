@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\BlogkategoriController;
 use App\Http\Controllers\Admin\BlogicerikController;
 use App\Http\Controllers\Home\HakkimizdaController;
 use App\Http\Controllers\Admin\MesajController;
+use App\Http\Controllers\Admin\SurecController;
+
 
 
 
@@ -110,6 +112,18 @@ Route::controller(BlogicerikController::class)->group(function () {
     Route::post('/blogicerik/guncelle', 'BlogIcerikGuncelle')->name('blog.icerik.guncelle.form');
     Route::get('/blogicerik/sil/{id}', 'BlogIcerikSil')->name('blog.icerik.sil');
 });
+
+
+
+// Surec İcerik Route
+Route::controller(SurecController::class)->group(function () {
+    Route::get('/surec/liste', 'SurecListe')->name('surec.liste');
+});
+
+
+
+
+
 
 
 
