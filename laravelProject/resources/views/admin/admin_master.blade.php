@@ -119,8 +119,7 @@
     <script src="{{asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js/')}}"></script>
     <script src="{{asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 
-    <!-- bildiri -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
     <!--Silme Sweet -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -129,11 +128,12 @@
 
     <!-- Bildirim js ile --->
     <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+    <!-- Bildirim js ile --->
 
     <!-- Tag Alanı -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-
     <!-- Form editör Text Editör -->
+
     <!--tinymce js-->
     <script src="{{asset('backend/assets/libs/tinymce/tinymce.min.js')}}"></script>
 
@@ -141,7 +141,8 @@
     <script src="{{asset('backend/assets/js/pages/form-editor.init.js')}}"></script>
     <!-- Form editör Text Editör -->
 
-
+    <!-- bildiri -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         @if(session('bildirim'))
 

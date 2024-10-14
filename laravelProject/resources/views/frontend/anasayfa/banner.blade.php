@@ -14,7 +14,10 @@ $homebanner = App\Models\Banner::find(1);
                 <div class="banner__content">
                     <h2 class="title wow fadeInUp" data-wow-delay=".2s">{{$homebanner->baslik}}</h2>
                     <p class="wow fadeInUp" data-wow-delay=".4s">{{$homebanner->alt_baslik}}</p>
+                    @if($homebanner->url !=NULL)
                     <a href="{{$homebanner->url}}" class="btn banner__btn wow fadeInUp" data-wow-delay=".6s">Daha Fazla...</a>
+                    @else
+                    @endif
                 </div>
             </div>
         </div>

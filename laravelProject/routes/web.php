@@ -10,6 +10,13 @@ use App\Http\Controllers\Home\FrontController;
 use App\Http\Controllers\Admin\BlogkategoriController;
 use App\Http\Controllers\Admin\BlogicerikController;
 use App\Http\Controllers\Home\HakkimizdaController;
+use App\Http\Controllers\Admin\MesajController;
+use App\Http\Controllers\Admin\SurecController;
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +39,7 @@ Route::controller(BannerController::class)->group(function () {
     Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
 });
 
+
 // Hakkımızda Route
 Route::controller(HakkimizdaController::class)->group(function () {
     Route::get('/hakkimizda/duzenle', 'Hakkimizda')->name('hakkimizda');
@@ -40,6 +48,9 @@ Route::controller(HakkimizdaController::class)->group(function () {
     Route::get('/coklu/resim', 'CokluResim')->name('coklu.resim');
     Route::post('/coklu/form', 'CokluForm')->name('coklu.resim.from');
     Route::get('/coklu/liste', 'CokluListe')->name('coklu.liste');
+    Route::get('/coklu/duzenle/{id}', 'CokluDuzenle')->name('coklu.duzenle');
+    Route::post('/coklu/guncelle', 'CokluGuncelle')->name('coklu.guncelle');
+    Route::get('/coklu/sil/{id}', 'CokluSil')->name('coklu.sil');
 });
 
 
@@ -104,6 +115,18 @@ Route::controller(BlogicerikController::class)->group(function () {
 
 
 
+// Surec İcerik Route
+Route::controller(SurecController::class)->group(function () {
+    Route::get('/surec/liste', 'SurecListe')->name('surec.liste');
+});
+
+
+
+
+
+
+
+
 // Admin Panel
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -127,3 +150,11 @@ Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
 Route::get('/post/{id}/{url}', [FrontController::class, 'IcerikDetay']);
 Route::get('/postblog/{id}/{url}', [FrontController::class, 'IceriKategoriDetay']);
 Route::get('/blog', [FrontController::class, 'BlogHepsi']);
+
+
+
+// Teklif Formu Route
+Route::controller(MesajController::class)->group(function () {
+    Route::get('/iletisim', 'Iletisim')->name('iletisim');
+    Route::post('/tekif/form', 'TeklifForm')->name('teklif.form');
+});

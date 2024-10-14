@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 06 Eki 2024, 12:31:09
+-- Üretim Zamanı: 14 Eki 2024, 21:07:43
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -77,7 +77,7 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `baslik`, `alt_baslik`, `url`, `video_url`, `resim`, `created_at`, `updated_at`) VALUES
-(1, 'Başlık Alanaı', 'Alt Başlık Alanı', 'http://localhost:8000/', 'http://localhost:8000/', 'upload/banner/1812160116780045.jpeg', NULL, '2024-10-06 07:29:20');
+(1, 'Başlık Alanaı', 'Alt Başlık Alanı', NULL, 'http://localhost:8000/', 'upload/banner/1812808057432091.png', NULL, '2024-10-13 11:08:05');
 
 -- --------------------------------------------------------
 
@@ -143,6 +143,32 @@ INSERT INTO `blogkategorilers` (`id`, `kategori_adi`, `url`, `sirano`, `durum`, 
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `cokluresims`
+--
+
+CREATE TABLE `cokluresims` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `resim` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `cokluresims`
+--
+
+INSERT INTO `cokluresims` (`id`, `resim`, `created_at`, `updated_at`) VALUES
+(14, 'upload/coklu/1812378090064151.jpeg', '2024-10-08 17:13:56', NULL),
+(17, 'upload/coklu/1812713311875425.jpeg', '2024-10-12 10:02:08', NULL),
+(18, 'upload/coklu/1812713311915077.jpeg', '2024-10-12 10:02:08', NULL),
+(19, 'upload/coklu/1812808139863030.jpg', '2024-10-12 10:02:08', '2024-10-13 11:09:23'),
+(26, 'upload/coklu/1812808113375612.jpg', '2024-10-13 11:08:58', NULL),
+(27, 'upload/coklu/1812808113464822.png', '2024-10-13 11:08:58', NULL),
+(28, 'upload/coklu/1812808113532307.png', '2024-10-13 11:08:58', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `failed_jobs`
 --
 
@@ -178,7 +204,7 @@ CREATE TABLE `hakkimizdas` (
 --
 
 INSERT INTO `hakkimizdas` (`id`, `baslik`, `kisa_baslik`, `kisa_aciklama`, `aciklama`, `resim`, `created_at`, `updated_at`) VALUES
-(1, 'Hakkımızda', 'Hakkımızda Kısa Başlık Alanı', 'Hakkımızda kısa Acıklama Alanı', 'Hakkımızda Acıklama Alanı', 'upload/hakkimizda/1812160074313143.jpeg', NULL, '2024-10-06 07:28:40');
+(1, 'Hakkımızda 1', 'Hakkımızda Kısa Başlık Alanı 1', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"', '<h3>M.&Ouml;. 45 tarihinde &Ccedil;i&ccedil;ero tarafından yazılan \"de Finibus Bonorum et Malorum\"un 1.10.32 sayılı b&ouml;l&uuml;m&uuml;</h3>\r\n<p>\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"</p>\r\n<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>\r\n<h3>M.&Ouml;. 45 tarihinde &Ccedil;i&ccedil;ero tarafından yazılan \"de Finibus Bonorum et Malorum\"un 1.10.33 sayılı b&ouml;l&uuml;m&uuml;</h3>\r\n<p>\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"</p>', 'upload/hakkimizda/1812160074313143.jpeg', NULL, '2024-10-06 14:14:20');
 
 -- --------------------------------------------------------
 
@@ -210,6 +236,31 @@ INSERT INTO `kategorilers` (`id`, `kategori_adi`, `kategori_url`, `anahtar`, `ac
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `mesajs`
+--
+
+CREATE TABLE `mesajs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `adi` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `telefon` varchar(255) DEFAULT NULL,
+  `konu` varchar(255) DEFAULT NULL,
+  `mesaj` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `mesajs`
+--
+
+INSERT INTO `mesajs` (`id`, `adi`, `email`, `telefon`, `konu`, `mesaj`, `created_at`, `updated_at`) VALUES
+(5, 'denme', NULL, '12345678910', 'test footer', 'deneme 123', '2024-10-14 15:22:23', '2024-10-14 15:22:23'),
+(6, 'denme', NULL, '12345678910', 'deneme konusu', 'scascas', '2024-10-14 15:23:09', '2024-10-14 15:23:09');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `migrations`
 --
 
@@ -234,7 +285,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2024_09_19_194256_create_urunlers_table', 1),
 (9, '2024_09_29_113111_create_blogkategorilers_table', 1),
 (10, '2024_09_29_145823_create_blogiceriks_table', 1),
-(11, '2024_10_06_092946_create_hakkimizdas_table', 2);
+(11, '2024_10_06_092946_create_hakkimizdas_table', 2),
+(12, '2024_10_08_191316_create_cokluresims_table', 3),
+(13, '2024_10_12_132807_create_mesajs_table', 4),
+(14, '2024_10_14_182531_create_surecs_table', 5);
 
 -- --------------------------------------------------------
 
@@ -263,6 +317,21 @@ CREATE TABLE `personal_access_tokens` (
   `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `surecs`
+--
+
+CREATE TABLE `surecs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `surec` varchar(255) DEFAULT NULL,
+  `baslik` varchar(255) DEFAULT NULL,
+  `aciklama` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -360,6 +429,12 @@ ALTER TABLE `blogkategorilers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Tablo için indeksler `cokluresims`
+--
+ALTER TABLE `cokluresims`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -376,6 +451,12 @@ ALTER TABLE `hakkimizdas`
 -- Tablo için indeksler `kategorilers`
 --
 ALTER TABLE `kategorilers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `mesajs`
+--
+ALTER TABLE `mesajs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -397,6 +478,12 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Tablo için indeksler `surecs`
+--
+ALTER TABLE `surecs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Tablo için indeksler `urunlers`
@@ -440,6 +527,12 @@ ALTER TABLE `blogkategorilers`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `cokluresims`
+--
+ALTER TABLE `cokluresims`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -458,15 +551,27 @@ ALTER TABLE `kategorilers`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `mesajs`
+--
+ALTER TABLE `mesajs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `surecs`
+--
+ALTER TABLE `surecs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --

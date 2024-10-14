@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 mb-4">Coklu Resimler</h4>
+                    <h4 class="mb-sm-0">Sürecler</h4>
                 </div>
             </div>
         </div>
@@ -21,13 +21,15 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Coklu Liste</h4>
+                        <h4 class="card-title">Sürec Liste</h4>
 
                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Sıra</th>
-                                    <th>Resim</th>
+                                    <th>Süreç</th>
+                                    <th>Başlık</th>
+                                    <th>Durum</th>
                                     <th>İşlem</th>
                                 </tr>
                             </thead>
@@ -35,17 +37,19 @@
 
                             <tbody>
 
-                                @php
-                                ($s=1)
-                                @endphp
 
                                 <tr>
-                                    @foreach($cokluresimler as $resimler)
-                                    <td>{{ $s++ }}</td>
-                                    <td><img src="{{asset($resimler->resim)}}" style="height: 50px; width:50px;" alt=""></td>
+                                    @foreach($surechepsi as $surec)
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $surec->surec }}</td>
+                                    <td>{{ $surec->baslik }}</td>
                                     <td>
-                                        <a href="{{route('coklu.duzenle',$resimler->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
-                                        <a href="{{route('coklu.sil',$resimler->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        <input type="checkbox" class="icerikler" data-id="{{ $surec->id }}" id="{{ $surec->id }}" switch="success" {{$surec->durum ? 'checked' : ''}}>
+                                        <label for="{{ $surec->id }}" data-on-label="Yes" data-off-label="No"></label>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('blog.kategori.duzenle',$surec->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('blog.kategori.sil',$surec->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 
@@ -53,6 +57,7 @@
 
                             </tbody>
                         </table>
+
 
                     </div>
                 </div>
