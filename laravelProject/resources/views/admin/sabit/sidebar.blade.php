@@ -133,7 +133,7 @@
 
                                 <li>
                                 <li><a href="{{route('surec.liste')}}">Liste</a></li>
-                                <li><a href="{{route('blog.icerik.ekle')}}">İcerik Ekle</a></li>
+                                <li><a href="{{route('surec.ekle')}}">İcerik Ekle</a></li>
                             </ul>
                         </li>
 
