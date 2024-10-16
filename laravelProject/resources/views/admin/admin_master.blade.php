@@ -214,6 +214,32 @@
         });
     </script>
 
+
+
+    <!-- SUREC -->
+    <script>
+        $(function() {
+            $('.surec').change(function() {
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/surec/icerik/durum',
+                    data: {
+                        'durum': durum,
+                        'id': id
+                    },
+                    success: function(data) {
+                        console.log(data.success)
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
     <!-- BLOG İCERİK -->
     <script>
         $(function() {

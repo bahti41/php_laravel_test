@@ -44,12 +44,12 @@
                                     <td>{{ $surec->surec }}</td>
                                     <td>{{ $surec->baslik }}</td>
                                     <td>
-                                        <input type="checkbox" class="icerikler" data-id="{{ $surec->id }}" id="{{ $surec->id }}" switch="success" {{$surec->durum ? 'checked' : ''}}>
+                                        <input type="checkbox" class="surec" data-id="{{ $surec->id }}" id="{{ $surec->id }}" switch="success" {{$surec->durum ? 'checked' : ''}}>
                                         <label for="{{ $surec->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </td>
                                     <td>
-                                        <a href="{{route('blog.kategori.duzenle',$surec->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
-                                        <a href="{{route('blog.kategori.sil',$surec->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{route('surec.duzenle',$surec->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('surec.sil',$surec->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

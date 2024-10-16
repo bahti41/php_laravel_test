@@ -118,6 +118,12 @@ Route::controller(BlogicerikController::class)->group(function () {
 // Surec İcerik Route
 Route::controller(SurecController::class)->group(function () {
     Route::get('/surec/liste', 'SurecListe')->name('surec.liste');
+    Route::get('/surec/icerik/durum', 'SurecDurum');
+    Route::get('/surec/ekle', 'SurecEkle')->name('surec.ekle');
+    Route::post('/surec/ekle/form', 'SurecEkleForm')->name('surec.ekle.form');
+    Route::get('/surec/duzenle/{id}', 'SurecDuzenle')->name('surec.duzenle');
+    Route::post('/surec/guncelle/guncelle', 'SurecGuncelleForm')->name('surec.guncelle.form');
+    Route::get('/surec/sil/{id}', 'SurecSil')->name('surec.sil');
 });
 
 
