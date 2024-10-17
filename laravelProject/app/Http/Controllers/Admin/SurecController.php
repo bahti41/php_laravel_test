@@ -55,7 +55,7 @@ class SurecController extends Controller
                 'aciklama' => $request->aciklama,
                 'durum' => 1,
                 'sirano' => $request->sirano,
-                'created_at' => Carbon::now(),
+                'created_at' => Carbon::now('Europe/Istanbul'),
             ]
         );
 
@@ -100,6 +100,7 @@ class SurecController extends Controller
                 'baslik' => $request->baslik,
                 'aciklama' => $request->aciklama,
                 'sirano' => $request->sirano,
+                'updated_at' => Carbon::now('Europe/Istanbul'),
             ]
         );
 

@@ -20,13 +20,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Sürec Düzenle</h4>
+                        <h4 class="card-title">Yorum Düzenle</h4>
 
-                        <form method="post" action="{{ route('surec.guncelle.form') }}" enctype="multipart/form-data" id="myForm">
+                        <form method="post" action="{{ route('yorum.guncelle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
 
-                            <input type="hidden" name="id" value="{{ $surecler->id}}">
-                            <!-- <input type="hidden" name="onceki_resim" value="{{ $surecler->resim}}"> -->
+                            <input type="hidden" name="id" value="{{ $yorumduzenle->id}}">
+                            <!-- <input type="hidden" name="onceki_resim" value="{{ $yorumduzenle->resim}}"> -->
 
 
 
@@ -43,8 +43,8 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Sürec</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="surec" type="text" placeholder="surec..." value="{{$surecler->surec}}">
-                                                @error('baslik')
+                                                <input class="form-control" name="adi" type="text" placeholder="surec..." value="{{$yorumduzenle->adi}}">
+                                                @error('adi')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                             </div>
@@ -52,21 +52,11 @@
                                         <!-- Başlık -->
 
 
-                                        <!-- Baslik -->
-                                        <div class="row mb-3">
-                                            <label for="example-text-input" class="col-form-label">Baslik</label>
-                                            <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="baslik" type="text" placeholder="Başlık..." value="{{$surecler->baslik}}">
-                                            </div>
-                                        </div>
-                                        <!-- Baslik -->
-
-
                                         <!-- Sıra No -->
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Sıra No</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="sirano" type="number" placeholder=" Sıra No..." value="{{$surecler->sirano}}">
+                                                <input class="form-control" name="sirano" type="number" placeholder=" Sıra No..." value="{{$yorumduzenle->sirano}}">
                                             </div>
                                         </div>
                                         <!-- Sıra No -->
@@ -74,9 +64,12 @@
 
                                         <!-- Acıklama -->
                                         <div class=" row mb-3">
-                                            <label for="example-text-input" class="col-form-label">Acıklama</label>
+                                            <label for="example-text-input" class="col-form-label">Metin</label>
                                             <div class="col-sm-12 form-group">
-                                                <textarea name="aciklama" id="elm1" type="text">{{$surecler->aciklama}}</textarea>
+                                                <textarea class="form-control" name="metin" id="example-text-input">{{$yorumduzenle->metin}}</textarea>
+                                                @error('metin')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <!-- Acıklama -->
@@ -94,7 +87,7 @@
                                     <!-- col 4 Bitti -->
 
 
-                                    <input type="submit" class="btn btn-info waves-effect wave-light" value="Sürec İcerik Güncelle">
+                                    <input type="submit" class="btn btn-info waves-effect wave-light" value="Yorum Güncelle">
                                 </div>
                                 <!-- Row Bitiş -->
 
@@ -135,21 +128,21 @@
     $(document).ready(function() {
         $('#myForm').validate({
             rules: {
-                kategori_id: {
+                adi: {
                     required: true,
                 },
-                sirano: {
+                metin: {
                     required: true,
                 },
             }, // end rules
 
             messages: {
 
-                kategori_id: {
-                    required: 'Kategori giriniz...',
+                adi: {
+                    required: 'Adi giriniz...',
                 },
-                sirano: {
-                    required: 'Sıra Numarası giriniz...',
+                metin: {
+                    required: 'Metin giriniz...',
                 },
             }, // end message
 

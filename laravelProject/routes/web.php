@@ -12,9 +12,7 @@ use App\Http\Controllers\Admin\BlogicerikController;
 use App\Http\Controllers\Home\HakkimizdaController;
 use App\Http\Controllers\Admin\MesajController;
 use App\Http\Controllers\Admin\SurecController;
-
-
-
+use App\Http\Controllers\Home\YorumController;
 
 
 /*
@@ -163,4 +161,17 @@ Route::get('/blog', [FrontController::class, 'BlogHepsi']);
 Route::controller(MesajController::class)->group(function () {
     Route::get('/iletisim', 'Iletisim')->name('iletisim');
     Route::post('/tekif/form', 'TeklifForm')->name('teklif.form');
+});
+
+
+
+// Yorum Formu Route
+Route::controller(YorumController::class)->group(function () {
+    Route::get('/Yorumlar', 'Yorumlar')->name('yorum.liste');
+    Route::get('/yorum/durum', 'YorumDurum');
+    Route::get('/yorum/ekle', 'YorumEkle')->name('yorum.ekle');
+    Route::post('/yorum/ekle/form', 'YorumEkleForm')->name('yorum.ekle.form');
+    Route::get('/yorum/duzenle/{id}', 'YorumDuzenle')->name('yorum.duzenle');
+    Route::post('/yorum/guncelle/form', 'YorumGuncelleForm')->name('yorum.guncelle.form');
+    Route::get('/yorum/sil/{id}', 'YorumSil')->name('yorum.sil');
 });
