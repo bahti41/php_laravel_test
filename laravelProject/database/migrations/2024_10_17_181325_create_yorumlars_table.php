@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('surecs', function (Blueprint $table) {
+        Schema::create('yorumlars', function (Blueprint $table) {
             $table->id();
-            $table->string('surec')->nullable();
-            $table->string('baslik')->nullable();
-            $table->string('aciklama')->nullable();
-            $table->integer('sirano')->default(1);
+            $table->string('adi')->nullable();
+            $table->text('metin')->nullable();
+            $table->integer('sirano')->default(1)->nullable();
             $table->boolean('durum')->default(0);
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surecs');
+        Schema::dropIfExists('yorumlars');
     }
 };

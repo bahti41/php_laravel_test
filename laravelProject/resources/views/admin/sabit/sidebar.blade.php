@@ -138,6 +138,21 @@
                         </li>
 
 
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-layout-3-line"></i>
+                                <span>Yorumlar</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="true">
+
+                                <li>
+                                <li><a href="{{route('yorum.liste')}}">Liste</a></li>
+                                <li><a href="{{route('yorum.ekle')}}">Yorum Ekle</a></li>
+                            </ul>
+                        </li>
+
+
+
 
 
 
