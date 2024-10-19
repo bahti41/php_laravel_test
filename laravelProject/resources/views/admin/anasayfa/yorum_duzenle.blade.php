@@ -62,7 +62,7 @@
                                         <!-- Sıra No -->
 
 
-                                        <!-- Acıklama -->
+                                        <!-- Metin -->
                                         <div class=" row mb-3">
                                             <label for="example-text-input" class="col-form-label">Metin</label>
                                             <div class="col-sm-12 form-group">
@@ -72,7 +72,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <!-- Acıklama -->
+                                        <!-- Metin -->
 
 
                                     </div>
