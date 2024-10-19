@@ -13,6 +13,9 @@ use App\Http\Controllers\Home\HakkimizdaController;
 use App\Http\Controllers\Admin\MesajController;
 use App\Http\Controllers\Admin\SurecController;
 use App\Http\Controllers\Home\YorumController;
+use App\Http\Controllers\Home\FooterController;
+
+
 
 
 /*
@@ -38,6 +41,13 @@ Route::controller(BannerController::class)->group(function () {
 });
 
 
+// Footer Route
+Route::controller(FooterController::class)->group(function () {
+    Route::get('/footer/duzenle', 'FooterDuzenle')->name('footer.duzenle');
+    Route::post('/footer/guncelle', 'FooterGuncelle')->name('footer.guncelle');
+});
+
+
 // Hakkımızda Route
 Route::controller(HakkimizdaController::class)->group(function () {
     Route::get('/hakkimizda/duzenle', 'Hakkimizda')->name('hakkimizda');
@@ -50,6 +60,9 @@ Route::controller(HakkimizdaController::class)->group(function () {
     Route::post('/coklu/guncelle', 'CokluGuncelle')->name('coklu.guncelle');
     Route::get('/coklu/sil/{id}', 'CokluSil')->name('coklu.sil');
 });
+
+
+
 
 
 
