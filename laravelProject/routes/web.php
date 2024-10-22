@@ -14,6 +14,9 @@ use App\Http\Controllers\Admin\MesajController;
 use App\Http\Controllers\Admin\SurecController;
 use App\Http\Controllers\Home\YorumController;
 use App\Http\Controllers\Home\FooterController;
+use App\Http\Controllers\Home\SeoController;
+
+
 
 
 
@@ -33,6 +36,12 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
+
+// Seo Route
+Route::controller(SeoController::class)->group(function () {
+    Route::get('/seo/duzenle', 'SeoDuzenle')->name('seo.duzenle');
+    Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
+});
 
 // Banner Route
 Route::controller(BannerController::class)->group(function () {
