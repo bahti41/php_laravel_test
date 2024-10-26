@@ -40,7 +40,7 @@ Route::get('/', function () {
 // Seo Route
 Route::controller(SeoController::class)->group(function () {
     Route::get('/seo/duzenle', 'SeoDuzenle')->name('seo.duzenle');
-    Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
+    Route::post('/seo/guncelle', 'SeoGuncelle')->name('seo.guncelle');
 });
 
 // Banner Route

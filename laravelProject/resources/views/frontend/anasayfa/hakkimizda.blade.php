@@ -1,5 +1,13 @@
     @extends('frontend.main_master')
 
+    @php
+    $seo = App\Models\Seo::find(1);
+    @endphp
+
+    @section('title') {{$hakkimizda->baslik}} | {{$seo->site_adi}} @endsection
+    @section('author') {{$seo->author}} @endsection
+    @section('aciklama') {{$seo->aciklama}} @endsection
+    @section('anahtar') {{$seo->anahtar}} @endsection
 
     @section('main')
     <main>

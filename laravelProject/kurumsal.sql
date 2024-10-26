@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 14 Eki 2024, 21:07:43
+-- Üretim Zamanı: 26 Eki 2024, 15:22:05
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -160,11 +160,11 @@ CREATE TABLE `cokluresims` (
 INSERT INTO `cokluresims` (`id`, `resim`, `created_at`, `updated_at`) VALUES
 (14, 'upload/coklu/1812378090064151.jpeg', '2024-10-08 17:13:56', NULL),
 (17, 'upload/coklu/1812713311875425.jpeg', '2024-10-12 10:02:08', NULL),
-(18, 'upload/coklu/1812713311915077.jpeg', '2024-10-12 10:02:08', NULL),
+(18, 'upload/coklu/1813192633655500.png', '2024-10-12 10:02:08', '2024-10-17 17:00:45'),
 (19, 'upload/coklu/1812808139863030.jpg', '2024-10-12 10:02:08', '2024-10-13 11:09:23'),
 (26, 'upload/coklu/1812808113375612.jpg', '2024-10-13 11:08:58', NULL),
 (27, 'upload/coklu/1812808113464822.png', '2024-10-13 11:08:58', NULL),
-(28, 'upload/coklu/1812808113532307.png', '2024-10-13 11:08:58', NULL);
+(28, 'upload/coklu/1813192624200611.jpg', '2024-10-13 11:08:58', '2024-10-17 17:00:36');
 
 -- --------------------------------------------------------
 
@@ -181,6 +181,41 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `footers`
+--
+
+CREATE TABLE `footers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `baslikbir` varchar(255) DEFAULT NULL,
+  `baslikiki` varchar(255) DEFAULT NULL,
+  `baslikuc` varchar(255) DEFAULT NULL,
+  `telefon` varchar(255) DEFAULT NULL,
+  `metin` text DEFAULT NULL,
+  `sehir` varchar(255) DEFAULT NULL,
+  `adres` varchar(255) DEFAULT NULL,
+  `mail` varchar(255) DEFAULT NULL,
+  `sosyal_baslik` varchar(255) DEFAULT NULL,
+  `aciklama` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `tiwitter` varchar(255) DEFAULT NULL,
+  `linkedin` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `copy_right` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `footers`
+--
+
+INSERT INTO `footers` (`id`, `baslikbir`, `baslikiki`, `baslikuc`, `telefon`, `metin`, `sehir`, `adres`, `mail`, `sosyal_baslik`, `aciklama`, `facebook`, `tiwitter`, `linkedin`, `instagram`, `copy_right`, `created_at`, `updated_at`) VALUES
+(1, 'Sol Başlık', 'Orta Başlık', 'Sağ Başlık', '0535291283', 'Buraya Metin Yazısı Gelecek', 'Kocaeli', 'Kocaeli Karamürsel 4 temmuz 206.cad aydın evler c blok', 'ottoyazılım@gmail.com', 'Sosyal Başlık', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://x.com/i/flow/login', 'https://www.linkedin.com/', 'https://www.instagram.com/', 'Copyright @Bu Projenin Tamamı Bahtiyar Sönnez Tarafından Yapılıp Seo Yönetimi Yapılmaktadır...', NULL, '2024-10-19 20:02:27'),
+(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -288,7 +323,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2024_10_06_092946_create_hakkimizdas_table', 2),
 (12, '2024_10_08_191316_create_cokluresims_table', 3),
 (13, '2024_10_12_132807_create_mesajs_table', 4),
-(14, '2024_10_14_182531_create_surecs_table', 5);
+(14, '2024_10_14_182531_create_surecs_table', 5),
+(15, '2024_10_17_181325_create_yorumlars_table', 6),
+(16, '2024_10_19_142553_create_footers_table', 7),
+(17, '2024_10_22_185125_create_seos_table', 8);
 
 -- --------------------------------------------------------
 
@@ -324,6 +362,31 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `seos`
+--
+
+CREATE TABLE `seos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `site_adi` varchar(255) DEFAULT NULL,
+  `aciklama` varchar(255) DEFAULT NULL,
+  `keywords` varchar(255) DEFAULT NULL,
+  `author` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `seos`
+--
+
+INSERT INTO `seos` (`id`, `title`, `site_adi`, `aciklama`, `keywords`, `author`, `logo`, `created_at`, `updated_at`) VALUES
+(1, 'Web Geliştirici Yazılım Egitimi', 'Otto Yazılım', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap  Artık hizmetinizde', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap', 'Bahtiyar Sönmez', 'upload/seo/1813977358432970.jpg', '2024-10-26 12:14:07', '2024-10-26 09:14:07');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `surecs`
 --
 
@@ -332,9 +395,21 @@ CREATE TABLE `surecs` (
   `surec` varchar(255) DEFAULT NULL,
   `baslik` varchar(255) DEFAULT NULL,
   `aciklama` varchar(255) DEFAULT NULL,
+  `durum` tinyint(1) NOT NULL DEFAULT 0,
+  `sirano` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `surecs`
+--
+
+INSERT INTO `surecs` (`id`, `surec`, `baslik`, `aciklama`, `durum`, `sirano`, `created_at`, `updated_at`) VALUES
+(2, 'Adım 1', 'Keşfetmek', '<p>Buraya isteye baglı bilgi aktarımı gelecek...</p>', 1, 3, '2024-10-16 15:29:37', '2024-10-17 17:48:10'),
+(3, 'Adım 2', 'Tanımlamak', '<p>Buraya isteye baglı bilgi aktarımı gelecek...</p>', 1, 4, '2024-10-17 17:48:44', NULL),
+(4, 'Adım 3', 'Gelişmek', '<p>Buraya isteye baglı bilgi aktarımı gelecek...</p>', 1, 2, '2024-10-17 17:49:13', NULL),
+(5, 'Adım 4', 'Teslim Etmek', '<p>Buraya isteye baglı bilgi aktarımı gelecek...</p>', 1, 1, '2024-10-17 17:49:41', '2024-10-17 15:09:14');
 
 -- --------------------------------------------------------
 
@@ -400,6 +475,31 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `resim`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Bahtiyar Sönmez', 'bahtiyarsonmez41@gmail.com', '202410060644bahti.jpg', '2024-10-05 15:43:36', '$2y$10$x2WyB9WSft1kfWWz7xfbLe80oBJkZnusbzb9LEYAzANuOsH5FKXfu', NULL, '2024-10-05 15:40:49', '2024-10-06 03:44:58');
 
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `yorumlars`
+--
+
+CREATE TABLE `yorumlars` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `adi` varchar(255) DEFAULT NULL,
+  `metin` text DEFAULT NULL,
+  `sirano` int(11) DEFAULT 1,
+  `durum` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `yorumlars`
+--
+
+INSERT INTO `yorumlars` (`id`, `adi`, `metin`, `sirano`, `durum`, `created_at`, `updated_at`) VALUES
+(1, 'Gamze Gülciçek', 'Bu firmayla çalışmak gerçekten harika bir deneyimdi. SEO ve web sitesi hizmetlerinde oldukça profesyonel ve kaliteli bir yaklaşım sergiliyorlar. İşe başladıkları andan itibaren her adımı titizlikle yürüttüler ve sonuçlar gerçekten etkileyici. Web sitemin görünürlüğü hızla arttı ve aldığım geri dönüşler gözle görülür şekilde yükseldi. Eğer SEO ve web tasarım alanında güvenilir bir ortak arıyorsanız, kesinlikle tavsiye ederim.', 2, 1, '2024-10-17 19:06:24', '2024-10-19 11:09:11'),
+(4, 'Bahtiyar Sönmez', 'Bu firmayla çalışmak gerçekten harika bir deneyimdi. SEO ve web sitesi hizmetlerinde oldukça profesyonel ve kaliteli bir yaklaşım sergiliyorlar. İşe başladıkları andan itibaren her adımı titizlikle yürüttüler ve sonuçlar gerçekten etkileyici. Web sitemin görünürlüğü hızla arttı ve aldığım geri dönüşler gözle görülür şekilde yükseldi. Eğer SEO ve web tasarım alanında güvenilir bir ortak arıyorsanız, kesinlikle tavsiye ederim.', 1, 1, '2024-10-17 19:32:19', '2024-10-17 20:08:13'),
+(5, 'Talut Sönmez', 'Bu firmayla çalışmak gerçekten harika bir deneyimdi. SEO ve web sitesi hizmetlerinde oldukça profesyonel ve kaliteli bir yaklaşım sergiliyorlar. İşe başladıkları andan itibaren her adımı titizlikle yürüttüler ve sonuçlar gerçekten etkileyici. Web sitemin görünürlüğü hızla arttı ve aldığım geri dönüşler gözle görülür şekilde yükseldi. Eğer SEO ve web tasarım alanında güvenilir bir ortak arıyorsanız, kesinlikle tavsiye ederim.', 3, 1, '2024-10-19 14:07:52', NULL);
+
 --
 -- Dökümü yapılmış tablolar için indeksler
 --
@@ -442,6 +542,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Tablo için indeksler `footers`
+--
+ALTER TABLE `footers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `hakkimizdas`
 --
 ALTER TABLE `hakkimizdas`
@@ -480,6 +586,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Tablo için indeksler `seos`
+--
+ALTER TABLE `seos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `surecs`
 --
 ALTER TABLE `surecs`
@@ -497,6 +609,12 @@ ALTER TABLE `urunlers`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Tablo için indeksler `yorumlars`
+--
+ALTER TABLE `yorumlars`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
@@ -539,6 +657,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `footers`
+--
+ALTER TABLE `footers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `hakkimizdas`
 --
 ALTER TABLE `hakkimizdas`
@@ -560,7 +684,7 @@ ALTER TABLE `mesajs`
 -- Tablo için AUTO_INCREMENT değeri `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
@@ -569,10 +693,16 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `seos`
+--
+ALTER TABLE `seos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `surecs`
 --
 ALTER TABLE `surecs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `urunlers`
@@ -585,6 +715,12 @@ ALTER TABLE `urunlers`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `yorumlars`
+--
+ALTER TABLE `yorumlars`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

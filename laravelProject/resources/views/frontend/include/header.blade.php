@@ -4,6 +4,9 @@
     use App\Models\Altkategoriler;
 
     @endphp -->
+    @php
+    $seo = App\Models\Seo::find(1);
+    @endphp
 
     <header>
         <div id="sticky-header" class="menu__area transparent-header">
@@ -14,7 +17,8 @@
                         <div class="menu__wrap">
                             <nav class="menu__nav">
                                 <div class="logo">
-                                    <a href="{{url('/')}}" class="logo__black"><img src="{{asset('frontend/assets/img/logo/logo_black.png')}}" alt=""></a>
+                                    <a href="{{url('/')}}" class="logo__black"><img src="{{asset($seo->logo)}}" alt=""></a>
+
                                     <a href="{{url('/')}}" class="logo__white"><img src="{{asset('frontend/assets/img/logo/logo_white.png')}}" alt=""></a>
                                 </div>
                                 <div class="navbar__wrap main__menu d-none d-xl-flex">
