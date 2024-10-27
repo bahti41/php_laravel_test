@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 26 Eki 2024, 15:22:05
+-- Üretim Zamanı: 27 Eki 2024, 15:50:26
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -326,7 +326,32 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2024_10_14_182531_create_surecs_table', 5),
 (15, '2024_10_17_181325_create_yorumlars_table', 6),
 (16, '2024_10_19_142553_create_footers_table', 7),
-(17, '2024_10_22_185125_create_seos_table', 8);
+(17, '2024_10_22_185125_create_seos_table', 8),
+(18, '2024_10_27_115819_create_permission_tables', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -339,6 +364,39 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `grup_adi` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `grup_adi`, `created_at`, `updated_at`) VALUES
+(1, 'Banner.menu', 'web', 'banner', '2024-10-27 11:35:37', '2024-10-27 11:35:37'),
+(3, 'Banner.düzenle', 'web', 'banner', '2024-10-27 11:38:42', '2024-10-27 11:38:42'),
+(4, 'Hakkımızda.menu', 'web', 'hakkimizda', '2024-10-27 11:39:03', '2024-10-27 11:39:03'),
+(5, 'Hakkımızda.duzenle', 'web', 'hakkimizda', '2024-10-27 11:39:38', '2024-10-27 11:39:38'),
+(6, 'Hakkımızda.Coklu.liste', 'web', 'hakkimizda', '2024-10-27 11:44:32', '2024-10-27 11:44:32'),
+(7, 'Hakkımızda.Coklu.Ekle', 'web', 'hakkimizda', '2024-10-27 11:44:54', '2024-10-27 11:44:54'),
+(8, 'Hakkımızda.Coklu.Düzenle', 'web', 'hakkimizda', '2024-10-27 11:46:09', '2024-10-27 11:46:09'),
+(9, 'Hakkımızda.Coklu.Sil', 'web', 'hakkimizda', '2024-10-27 11:47:13', '2024-10-27 11:47:13'),
+(10, 'Kategori.menu', 'web', 'kategoriler', '2024-10-27 11:47:37', '2024-10-27 11:47:37'),
+(11, 'Kategori.Liste', 'web', 'kategoriler', '2024-10-27 11:47:51', '2024-10-27 11:47:51'),
+(12, 'Kategori.Düzenle', 'web', 'kategoriler', '2024-10-27 11:48:19', '2024-10-27 11:48:19'),
+(13, 'Kategori.Sil', 'web', 'kategoriler', '2024-10-27 11:48:36', '2024-10-27 11:48:36');
 
 -- --------------------------------------------------------
 
@@ -362,6 +420,31 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `seos`
 --
 
@@ -373,6 +456,7 @@ CREATE TABLE `seos` (
   `keywords` varchar(255) DEFAULT NULL,
   `author` varchar(255) DEFAULT NULL,
   `logo` varchar(255) DEFAULT NULL,
+  `harita` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -381,8 +465,8 @@ CREATE TABLE `seos` (
 -- Tablo döküm verisi `seos`
 --
 
-INSERT INTO `seos` (`id`, `title`, `site_adi`, `aciklama`, `keywords`, `author`, `logo`, `created_at`, `updated_at`) VALUES
-(1, 'Web Geliştirici Yazılım Egitimi', 'Otto Yazılım', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap  Artık hizmetinizde', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap', 'Bahtiyar Sönmez', 'upload/seo/1813977358432970.jpg', '2024-10-26 12:14:07', '2024-10-26 09:14:07');
+INSERT INTO `seos` (`id`, `title`, `site_adi`, `aciklama`, `keywords`, `author`, `logo`, `harita`, `created_at`, `updated_at`) VALUES
+(1, 'Web Geliştirici Yazılım Egitimi', 'Otto Yazılım', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap  Artık hizmetinizde', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap', 'Bahtiyar Sönmez', 'upload/seo/1813992997733666.jpeg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24203.877003430705!2d29.57131344876323!3d40.68532321247881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb1826765283a1%3A0xe3dafa5220f1ea52!2sKaram%C3%BCrsel%2C%20Kocaeli!5e0!3m2!1str!2str!4v1729956850424!5m2!1str!2str\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', '2024-10-26 16:02:12', '2024-10-26 13:02:12');
 
 -- --------------------------------------------------------
 
@@ -572,10 +656,31 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Tablo için indeksler `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Tablo için indeksler `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
 -- Tablo için indeksler `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD PRIMARY KEY (`email`);
+
+--
+-- Tablo için indeksler `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
 -- Tablo için indeksler `personal_access_tokens`
@@ -584,6 +689,20 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Tablo için indeksler `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Tablo için indeksler `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
 -- Tablo için indeksler `seos`
@@ -684,12 +803,24 @@ ALTER TABLE `mesajs`
 -- Tablo için AUTO_INCREMENT değeri `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `roles`
+--
+ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -721,6 +852,29 @@ ALTER TABLE `users`
 --
 ALTER TABLE `yorumlars`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Dökümü yapılmış tablolar için kısıtlamalar
+--
+
+--
+-- Tablo kısıtlamaları `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Tablo kısıtlamaları `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Tablo kısıtlamaları `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\SurecController;
 use App\Http\Controllers\Home\YorumController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\SeoController;
+use App\Http\Controllers\Admin\RolController;
+
+
 
 
 
@@ -189,11 +192,19 @@ Route::controller(MesajController::class)->group(function () {
 
 // Yorum Formu Route
 Route::controller(YorumController::class)->group(function () {
-    Route::get('/Yorumlar', 'Yorumlar')->name('yorum.liste');
+    Route::get('/yorumlar', 'Yorumlar')->name('yorum.liste');
     Route::get('/yorum/durum', 'YorumDurum');
     Route::get('/yorum/ekle', 'YorumEkle')->name('yorum.ekle');
     Route::post('/yorum/ekle/form', 'YorumEkleForm')->name('yorum.ekle.form');
     Route::get('/yorum/duzenle/{id}', 'YorumDuzenle')->name('yorum.duzenle');
     Route::post('/yorum/guncelle/form', 'YorumGuncelleForm')->name('yorum.guncelle.form');
     Route::get('/yorum/sil/{id}', 'YorumSil')->name('yorum.sil');
+});
+
+
+// Rol ve İzinler Route
+Route::controller(RolController::class)->group(function () {
+    Route::get('/izin/liste', 'IzinListe')->name('izin.liste');
+    Route::get('/izin/ekle', 'IzinEkle')->name('izin.ekle');
+    Route::post('/izin/ekle/form', 'IzinEkleForm')->name('izin.ekle.form');
 });

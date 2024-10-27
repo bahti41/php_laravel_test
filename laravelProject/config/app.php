@@ -187,6 +187,9 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
 
+        // laravel permission kütüphanesi yönetici roller
+        Spatie\Permission\PermissionServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
