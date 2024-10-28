@@ -188,7 +188,8 @@
 
                                 <li>
                                 <li><a href="{{route('izin.liste')}}">İzinler</a></li>
-                                <li><a href="{{route('yorum.ekle')}}">Yorum Ekle</a></li>
+                                <li><a href="{{route('rol.liste')}}">Roller</a></li>
+                                <li><a href="{{route('rol.izin.verme')}}">Role İzin Ver</a></li>
                             </ul>
                         </li>
 

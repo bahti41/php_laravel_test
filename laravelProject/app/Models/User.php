@@ -6,8 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use DB;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -43,4 +45,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public static function IzinGruplari()
+    {
+        $izin_gruplari = DB::table('permissions')->select('grup_adi')->groupBy('grup_adi')->get();
+        return  $izin_gruplari;
+    }
+
+
+
+    public static function YetkiGruplari($grup_adi)
+    {
+        $yetki = DB::table('permissions')->select('id', 'name')->where('grup_adi', $grup_adi)->get();
+        return  $yetki;
+    }
 }

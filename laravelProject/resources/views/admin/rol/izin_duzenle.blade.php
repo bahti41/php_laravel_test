@@ -9,23 +9,25 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">İzin Ekle</h4>
+                        <h4 class="card-title">İzin Düzenle</h4>
 
-                        <form method="post" action="{{ route('izin.ekle.form') }}" id="myForm">
+                        <form method="post" action="{{ route('izin.guncelle.form') }}" id="myForm">
                             @csrf
 
+                            <input type="hidden" name="id" value="{{ $izinler->id}}">
 
 
-
-                            <!-- İzin  Adı -->
+                            <!-- İzin Adı -->
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label"> İzin Adı </label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">İzin Adı</label>
                                 <div class="col-sm-10 form-group">
-                                    <input class="form-control" name="name" type="text" placeholder="İzin Adı...">
+                                    <input class="form-control" name="name" type="text" placeholder="İzin Adı..." id="example-text-input" value="{{ $izinler->name}}">
 
                                 </div>
                             </div>
-                            <!--  İzin  Adı -->
+                            <!-- İzin Adı -->
+
+
 
 
                             <!-- Grop Adi -->
@@ -33,18 +35,17 @@
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Grup Adı</label>
                                 <div class="col-sm-10 form-group">
                                     <select class="form-select" aria-label="default select example" name="grup_adi">
-                                        <option selected="">Lütfen bir grup Seçiniz</option>
-                                        <option value="banner">Banner</option>
-                                        <option value="hakkimizda">Hakkımızda</option>
-                                        <option value="kategoriler">Kategoriler</option>
-                                        <option value="altkategoriler">Alt Kategoriler</option>
-                                        <option value="urunler">Ürünler</option>
-                                        <option value="bloglar">Bloglar</option>
-                                        <option value="yazilar">Blog İceerikler</option>
-                                        <option value="surecler">Süreçler</option>
-                                        <option value="yorumlar">Yorumlar</option>
-                                        <option value="footer">Footer</option>
-                                        <option value="seo">SEO Ayarları</option>
+                                        <option value="banner" {{$izinler->grup_adi == 'banner' ? 'selected' : ''}}>Banner</option>
+                                        <option value="hakkimizda" {{$izinler->grup_adi == 'hakkimizda' ? 'selected' : ''}}>Hakkımızda</option>
+                                        <option value="kategoriler" {{$izinler->grup_adi == 'kategoriler' ? 'selected' : ''}}>Kategoriler</option>
+                                        <option value="altkategoriler" {{$izinler->grup_adi == 'altkategoriler' ? 'selected' : ''}}>Alt Kategoriler</option>
+                                        <option value="urunler" {{$izinler->grup_adi == 'urunler' ? 'selected' : ''}}>Ürünler</option>
+                                        <option value="bloglar" {{$izinler->grup_adi == 'bloglar' ? 'selected' : ''}}>Bloglar</option>
+                                        <option value="yazilar" {{$izinler->grup_adi == 'yazilar' ? 'selected' : ''}}>Blog İceerikler</option>
+                                        <option value="surecler" {{$izinler->grup_adi == 'surecler' ? 'selected' : ''}}>Süreçler</option>
+                                        <option value="yorumlar" {{$izinler->grup_adi == 'yorumlar' ? 'selected' : ''}}>Yorumlar</option>
+                                        <option value="footer" {{$izinler->grup_adi == 'footer' ? 'selected' : ''}}>Footer</option>
+                                        <option value="seo" {{$izinler->grup_adi == 'seo' ? 'selected' : ''}}>SEO Ayarları</option>
                                     </select>
 
                                 </div>
@@ -52,9 +53,7 @@
                             <!-- Grop Adi -->
 
 
-
-
-                            <input type="submit" class="btn btn-info waves-effect wave-light" value="izin Ekle">
+                            <input type="submit" class="btn btn-info waves-effect wave-light" value="İzin Güncelle">
                         </form>
 
 
@@ -65,9 +64,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 <!-- boş olamaz no refresh -->
 <script type="text/javascript">
@@ -110,5 +106,4 @@
     });
 </script>
 <!-- boş olamaz no refresh -->
-
 @endsection
