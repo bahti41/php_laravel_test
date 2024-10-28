@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\SurecController;
 use App\Http\Controllers\Home\YorumController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\SeoController;
+use App\Http\Controllers\Admin\RolController;
+
+
 
 
 
@@ -40,7 +43,7 @@ Route::get('/', function () {
 // Seo Route
 Route::controller(SeoController::class)->group(function () {
     Route::get('/seo/duzenle', 'SeoDuzenle')->name('seo.duzenle');
-    Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
+    Route::post('/seo/guncelle', 'SeoGuncelle')->name('seo.guncelle');
 });
 
 // Banner Route
@@ -189,11 +192,45 @@ Route::controller(MesajController::class)->group(function () {
 
 // Yorum Formu Route
 Route::controller(YorumController::class)->group(function () {
-    Route::get('/Yorumlar', 'Yorumlar')->name('yorum.liste');
+    Route::get('/yorumlar', 'Yorumlar')->name('yorum.liste');
     Route::get('/yorum/durum', 'YorumDurum');
     Route::get('/yorum/ekle', 'YorumEkle')->name('yorum.ekle');
     Route::post('/yorum/ekle/form', 'YorumEkleForm')->name('yorum.ekle.form');
     Route::get('/yorum/duzenle/{id}', 'YorumDuzenle')->name('yorum.duzenle');
     Route::post('/yorum/guncelle/form', 'YorumGuncelleForm')->name('yorum.guncelle.form');
     Route::get('/yorum/sil/{id}', 'YorumSil')->name('yorum.sil');
+});
+
+
+// İzinler Route
+Route::controller(RolController::class)->group(function () {
+    Route::get('/izin/liste', 'IzinListe')->name('izin.liste');
+    Route::get('/izin/ekle', 'IzinEkle')->name('izin.ekle');
+    Route::post('/izin/ekle/form', 'IzinEkleForm')->name('izin.ekle.form');
+    Route::get('/izin/duzenle/{id}', 'IzinDuzenle')->name('izin.duzenle');
+    Route::post('/izin/guncelle/form', 'IzinGuncelleForm')->name('izin.guncelle.form');
+    Route::get('/izin/sil/{id}', 'IzinSil')->name('izin.sil');
+});
+
+
+// Rol Route
+Route::controller(RolController::class)->group(function () {
+    Route::get('/rol/liste', 'RolListe')->name('rol.liste');
+    Route::get('/rol/ekle', 'RolEkle')->name('rol.ekle');
+    Route::post('/rol/ekle/form', 'RolEkleForm')->name('rol.ekle.form');
+    Route::get('/rol/duzenle/{id}', 'RolDuzenle')->name('rol.duzenle');
+    Route::post('/rol/guncelle/form', 'RolGuncelleForm')->name('rol.guncelle.form');
+    Route::get('/rol/sil/{id}', 'RolSil')->name('rol.sil');
+});
+
+
+
+// Role İzin Verme Route
+Route::controller(RolController::class)->group(function () {
+    Route::get('/rol/izin/liste', 'RolIzinVerme')->name('rol.izin.verme');
+    Route::get('/rol/ekle', 'RolEkle')->name('rol.ekle');
+    Route::post('/rol/ekle/form', 'RolEkleForm')->name('rol.ekle.form');
+    Route::get('/rol/duzenle/{id}', 'RolDuzenle')->name('rol.duzenle');
+    Route::post('/rol/guncelle/form', 'RolGuncelleForm')->name('rol.guncelle.form');
+    Route::get('/rol/sil/{id}', 'RolSil')->name('rol.sil');
 });
