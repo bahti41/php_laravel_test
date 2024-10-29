@@ -225,12 +225,11 @@ Route::controller(RolController::class)->group(function () {
 
 
 
-// Role İzin Verme Route
+// Role Yetki Verme Route
 Route::controller(RolController::class)->group(function () {
     Route::get('/rol/izin/liste', 'RolIzinVerme')->name('rol.izin.verme');
-    Route::get('/rol/ekle', 'RolEkle')->name('rol.ekle');
-    Route::post('/rol/ekle/form', 'RolEkleForm')->name('rol.ekle.form');
-    Route::get('/rol/duzenle/{id}', 'RolDuzenle')->name('rol.duzenle');
-    Route::post('/rol/guncelle/form', 'RolGuncelleForm')->name('rol.guncelle.form');
-    Route::get('/rol/sil/{id}', 'RolSil')->name('rol.sil');
+    Route::post('/yetki/ver/form', 'YetkiVerForm')->name('yetki.ver.form');
+    Route::get('/rol/yetki/liste', 'RolYetkiListe')->name('rol.yetki.verme');
+    Route::get('/rol/yetki/duzenle/{id}', 'RolYetkiDuzenle')->name('rol.yetki.duzenle');
+    Route::post('/rol/yetki/guncelle/form/{id}', 'RolYetkiGuncelleForm')->name('rol.yetki.güncelle.form');
 });

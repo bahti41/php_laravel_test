@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 27 Eki 2024, 15:50:26
+-- Üretim Zamanı: 28 Eki 2024, 19:04:24
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -386,7 +386,7 @@ CREATE TABLE `permissions` (
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `grup_adi`, `created_at`, `updated_at`) VALUES
 (1, 'Banner.menu', 'web', 'banner', '2024-10-27 11:35:37', '2024-10-27 11:35:37'),
-(3, 'Banner.düzenle', 'web', 'banner', '2024-10-27 11:38:42', '2024-10-27 11:38:42'),
+(3, 'Banner.düzenle', 'web', 'banner', '2024-10-27 11:38:42', '2024-10-28 09:15:38'),
 (4, 'Hakkımızda.menu', 'web', 'hakkimizda', '2024-10-27 11:39:03', '2024-10-27 11:39:03'),
 (5, 'Hakkımızda.duzenle', 'web', 'hakkimizda', '2024-10-27 11:39:38', '2024-10-27 11:39:38'),
 (6, 'Hakkımızda.Coklu.liste', 'web', 'hakkimizda', '2024-10-27 11:44:32', '2024-10-27 11:44:32'),
@@ -396,7 +396,7 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `grup_adi`, `created_at`,
 (10, 'Kategori.menu', 'web', 'kategoriler', '2024-10-27 11:47:37', '2024-10-27 11:47:37'),
 (11, 'Kategori.Liste', 'web', 'kategoriler', '2024-10-27 11:47:51', '2024-10-27 11:47:51'),
 (12, 'Kategori.Düzenle', 'web', 'kategoriler', '2024-10-27 11:48:19', '2024-10-27 11:48:19'),
-(13, 'Kategori.Sil', 'web', 'kategoriler', '2024-10-27 11:48:36', '2024-10-27 11:48:36');
+(17, 'Kategori.Sil', 'web', 'kategoriler', '2024-10-28 09:26:24', '2024-10-28 09:26:24');
 
 -- --------------------------------------------------------
 
@@ -430,6 +430,16 @@ CREATE TABLE `roles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(3, 'Admin', 'web', '2024-10-28 10:14:28', '2024-10-28 13:14:28'),
+(4, 'SuperAdmin', 'web', '2024-10-28 10:51:44', '2024-10-28 13:51:44'),
+(5, 'CEO', 'web', '2024-10-28 10:51:52', '2024-10-28 13:51:52'),
+(6, 'Editör', 'web', '2024-10-28 10:51:59', '2024-10-28 13:51:59');
 
 -- --------------------------------------------------------
 
@@ -809,7 +819,7 @@ ALTER TABLE `migrations`
 -- Tablo için AUTO_INCREMENT değeri `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
@@ -821,7 +831,7 @@ ALTER TABLE `personal_access_tokens`
 -- Tablo için AUTO_INCREMENT değeri `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `seos`
