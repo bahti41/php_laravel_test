@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Carbon;
+use DB;
 
 
 class RolController extends Controller
@@ -210,7 +211,9 @@ class RolController extends Controller
     }
 
 
-    // ***************** Role İzin Verme ******************
+
+    // ***************** Role İzin Yetki Verme ******************
+
 
 
 
@@ -221,5 +224,70 @@ class RolController extends Controller
         $izin_gruplari = User::IzinGruplari();
 
         return view('admin.rol.rol_izin_ver', compact('roller', 'izinler', 'izin_gruplari'));
+    }
+
+
+    public function YetkiVerForm(Request $request)
+    {
+        $data = array();
+        $yetkiler = $request->yetki;
+
+        foreach ($yetkiler as $key => $item) {
+            $data['role_id'] = $request->rol_id;
+            $data['permission_id'] = $item;
+
+            DB::table('role_has_permissions')->insert($data);
+        }
+
+        // toaster Bildirim
+
+        $mesaj = array(
+            'bildirim' => 'Yetki Verme Başarılı...',
+            'alert-type' => 'success'
+        );
+        return Redirect()->route('rol.liste')->with($mesaj);
+    }
+
+
+    public function RolYetkiListe()
+    {
+        $rol = Role::all();
+        return view('admin.rol.rol_yetki_ver', compact('rol'));
+    }
+
+
+
+    public function RolYetkiDuzenle($id)
+    {
+        $rol = Role::findOrFail($id);
+        $yetkiler = Permission::all();
+        $izin_gruplari = User::IzinGruplari();
+
+        return view('admin.rol.rol_yetki_duzenle', compact('rol', 'yetkiler', 'izin_gruplari'));
+    }
+
+
+
+    public function RolYetkiGuncelleForm(Request $request, $id)
+    {
+        $rol = Role::findOrFail($id);
+        $secili_yetkiler = $request->yetki;
+
+        if (!empty($secili_yetkiler)) {
+            $rol->syncPermissions($secili_yetkiler);
+        } // Senkronize etmek güncelleme yapma syncPermissions (Laravel-permission sitesinden)
+
+
+        // toaster Bildirim
+
+        $mesaj = array(
+            'bildirim' => 'Rol Güncelleme Başarılı...',
+            'alert-type' => 'success'
+        );
+
+
+        // toaster Bildirim
+
+        return Redirect()->route('rol.yetki.verme')->with($mesaj);
     }
 }

@@ -60,4 +60,17 @@ class User extends Authenticatable implements MustVerifyEmail
         $yetki = DB::table('permissions')->select('id', 'name')->where('grup_adi', $grup_adi)->get();
         return  $yetki;
     }
+
+
+    public static function RolYetkileri($rol, $yetkigrup)
+    {
+        $yetkiIzinleri = true;
+        foreach ($yetkigrup as $yetkiler) {
+            if (!$rol->hasPermissionTo($yetkiler->name)) {
+                $yetkiIzinleri = false;
+                return $yetkiIzinleri;
+            }
+            return $yetkiIzinleri;
+        }
+    }
 }

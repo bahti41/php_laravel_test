@@ -9,9 +9,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Role Yetki Ver</h4>
+                        <h4 class="card-title">Role Yetki Düznle</h4>
 
-                        <form method="post" action="{{ route('yetki.ver.form') }}" id="myForm">
+                        <form method="post" action="{{ route('rol.yetki.güncelle.form', $rol->id) }}" id="myForm">
                             @csrf
 
 
@@ -20,13 +20,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Rol Adı</label>
                                 <div class="col-sm-10 form-group">
-                                    <select class="form-select" aria-label="default select example" name="rol_id">
-                                        <option selected="">Lütfen Bir Rol Seçiniz</option>
-                                        @foreach($roller as $rol)
-                                        <option value="{{$rol->id}}">{{$rol->name}}</option>
-                                        @endforeach
-                                    </select>
-
+                                    <input type="text" name="name" value="{{$rol->name}}">
                                 </div>
                             </div>
                             <!-- Rol Adi -->
@@ -49,10 +43,14 @@
                             <!-- Grup İşlemleri -->
                             @foreach($izin_gruplari as $grup)
                             <div class="row mb-3">
-
                                 <div class="col-3">
+
+                                    @php
+                                    $yetkigrup = App\Models\User::YetkiGruplari($grup->grup_adi);
+                                    @endphp
+
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="formCheck1">
+                                        <input class="form-check-input" type="checkbox" id="formCheck1" {{App\Models\User::RolYetkileri($rol,$yetkigrup) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="formCheck1">
                                             <h5> {{$grup->grup_adi}} </h5>
                                         </label>
@@ -63,14 +61,9 @@
 
 
                                 <div class="col-9 mb-4">
-
-                                    @php
-                                    $izinler = App\Models\User::YetkiGruplari($grup->grup_adi);
-                                    @endphp
-
-                                    @foreach($izinler as $izin)
+                                    @foreach($yetkigrup as $izin)
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" name="yetki[]" type="checkbox" id="formCheck1{{$izin->id}}" value="{{$izin->id}}">
+                                        <input class="form-check-input" name="yetki[]" {{$rol->hasPermissionTo($izin->name) ? 'checked' : '' }} type="checkbox" id="formCheck1{{$izin->id}}" value="{{$izin->id}}">
                                         <label class="form-check-label" for="formCheck1{{$izin->id}}">
                                             {{$izin->name}}
                                         </label>
@@ -84,7 +77,7 @@
 
 
 
-                            <input type="submit" class="btn btn-info waves-effect wave-light" value="Role Yetki Ver">
+                            <input type="submit" class="btn btn-info waves-effect wave-light" value="Role Yetki Düzünle">
                         </form>
 
 
