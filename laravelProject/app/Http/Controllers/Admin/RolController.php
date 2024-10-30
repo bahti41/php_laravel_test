@@ -51,7 +51,7 @@ class RolController extends Controller
 
         // toaster Bildirim
 
-        return Redirect()->route('izin.liste')->with($mesaj);
+        return redirect()->route('izin.liste')->with($mesaj);
     }
 
 
@@ -88,7 +88,7 @@ class RolController extends Controller
 
         // toaster Bildirim
 
-        return Redirect()->route('izin.liste')->with($mesaj);
+        return redirect()->route('izin.liste')->with($mesaj);
     }
 
 
@@ -106,7 +106,7 @@ class RolController extends Controller
             'bildirim' => 'Silme Başarılı...',
             'alert-type' => 'success'
         );
-        return Redirect()->back()->with($mesaj);
+        return redirect()->back()->with($mesaj);
     }
 
 
@@ -190,7 +190,7 @@ class RolController extends Controller
 
         // toaster Bildirim
 
-        return Redirect()->route('rol.liste')->with($mesaj);
+        return redirect()->route('rol.liste')->with($mesaj);
     }
 
 
@@ -207,7 +207,7 @@ class RolController extends Controller
             'bildirim' => 'Silme Başarılı...',
             'alert-type' => 'success'
         );
-        return Redirect()->back()->with($mesaj);
+        return redirect()->back()->with($mesaj);
     }
 
 
@@ -245,7 +245,7 @@ class RolController extends Controller
             'bildirim' => 'Yetki Verme Başarılı...',
             'alert-type' => 'success'
         );
-        return Redirect()->route('rol.liste')->with($mesaj);
+        return redirect()->route('rol.liste')->with($mesaj);
     }
 
 
@@ -273,8 +273,13 @@ class RolController extends Controller
         $rol = Role::findOrFail($id);
         $secili_yetkiler = $request->yetki;
 
-        if (!empty($secili_yetkiler)) {
-            $rol->syncPermissions($secili_yetkiler);
+        $gecerli_yetkiler = Permission::whereIn('id', $secili_yetkiler)
+            ->where('guard_name', 'web')
+            ->pluck('name')
+            ->toArray();
+
+        if (!empty($gecerli_yetkiler)) {
+            $rol->syncPermissions($gecerli_yetkiler);
         } // Senkronize etmek güncelleme yapma syncPermissions (Laravel-permission sitesinden)
 
 
@@ -288,6 +293,27 @@ class RolController extends Controller
 
         // toaster Bildirim
 
-        return Redirect()->route('rol.yetki.verme')->with($mesaj);
+        return redirect()->route('rol.yetki.verme')->with($mesaj);
+    }
+
+
+
+    public function AdminRolSil($id)
+    {
+
+        $rol = Role::findOrFail($id);
+
+
+        if (!is_null($rol)) {
+            $rol->delete();
+        }
+
+        // toaster Bildirim
+
+        $mesaj = array(
+            'bildirim' => 'Silme Başarılı...',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($mesaj);
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 28 Eki 2024, 19:04:24
+-- Üretim Zamanı: 30 Eki 2024, 19:50:57
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -396,7 +396,35 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `grup_adi`, `created_at`,
 (10, 'Kategori.menu', 'web', 'kategoriler', '2024-10-27 11:47:37', '2024-10-27 11:47:37'),
 (11, 'Kategori.Liste', 'web', 'kategoriler', '2024-10-27 11:47:51', '2024-10-27 11:47:51'),
 (12, 'Kategori.Düzenle', 'web', 'kategoriler', '2024-10-27 11:48:19', '2024-10-27 11:48:19'),
-(17, 'Kategori.Sil', 'web', 'kategoriler', '2024-10-28 09:26:24', '2024-10-28 09:26:24');
+(17, 'Kategori.Sil', 'web', 'kategoriler', '2024-10-28 09:26:24', '2024-10-28 09:26:24'),
+(19, 'Altkategoriler.Menü', 'web', 'altkategoriler', '2024-10-29 05:48:03', '2024-10-29 08:48:02'),
+(20, 'Altkategoriler.Ekle', 'web', 'altkategoriler', '2024-10-29 05:48:16', '2024-10-29 08:48:16'),
+(21, 'Altkategoriler.Duzunle', 'web', 'altkategoriler', '2024-10-29 05:48:39', '2024-10-29 08:48:39'),
+(22, 'Altkategoriler.Sil', 'web', 'altkategoriler', '2024-10-29 05:48:53', '2024-10-29 08:48:53'),
+(23, 'Blog.Menü', 'web', 'bloglar', '2024-10-29 05:49:06', '2024-10-29 08:49:06'),
+(25, 'Blog.Duzenle', 'web', 'bloglar', '2024-10-29 05:49:35', '2024-10-29 08:49:35'),
+(26, 'Footer.Menü', 'web', 'footer', '2024-10-29 05:50:17', '2024-10-29 08:50:17'),
+(27, 'Footer.Düzenle', 'web', 'footer', '2024-10-29 05:50:31', '2024-10-29 08:50:31'),
+(28, 'Seo.Menü', 'web', 'seo', '2024-10-29 05:50:59', '2024-10-29 08:50:59'),
+(29, 'Seo.Düzenle', 'web', 'seo', '2024-10-29 05:51:09', '2024-10-29 08:51:09'),
+(30, 'Sürec.Menü', 'web', 'surecler', '2024-10-29 05:51:28', '2024-10-29 08:51:28'),
+(31, 'Sürec.Ekle', 'web', 'surecler', '2024-10-29 05:51:58', '2024-10-29 08:51:58'),
+(32, 'Sürec.Düzenle', 'web', 'surecler', '2024-10-29 05:52:11', '2024-10-29 08:52:11'),
+(33, 'Sürec.Sil', 'web', 'surecler', '2024-10-29 05:52:24', '2024-10-29 08:52:24'),
+(34, 'Ürünler.Menü', 'web', 'urunler', '2024-10-29 05:52:46', '2024-10-29 08:52:46'),
+(35, 'Ürünler.Ekle', 'web', 'urunler', '2024-10-29 05:53:01', '2024-10-29 08:53:01'),
+(36, 'Ürünler.Düzenle', 'web', 'urunler', '2024-10-29 05:53:21', '2024-10-29 08:53:21'),
+(37, 'Ürünler.Sil', 'web', 'urunler', '2024-10-29 05:53:41', '2024-10-29 08:53:41'),
+(38, 'Blogicerik.Menü', 'web', 'yazilar', '2024-10-29 05:54:43', '2024-10-29 08:54:43'),
+(39, 'Blogicerik.Ekle', 'web', 'yazilar', '2024-10-29 05:54:55', '2024-10-29 08:54:55'),
+(40, 'Blogicerik.Düzenle', 'web', 'yazilar', '2024-10-29 05:55:09', '2024-10-29 08:55:09'),
+(41, 'Blogicerik.Sil', 'web', 'yazilar', '2024-10-29 05:55:23', '2024-10-29 08:55:23'),
+(42, 'Yorum.Menü', 'web', 'yorumlar', '2024-10-29 05:55:39', '2024-10-29 08:55:39'),
+(43, 'Yorum.Ekle', 'web', 'yorumlar', '2024-10-29 05:55:51', '2024-10-29 08:55:51'),
+(44, 'Yorum.Düzenle', 'web', 'yorumlar', '2024-10-29 05:56:07', '2024-10-29 08:56:07'),
+(45, 'Yorum.Sil', 'web', 'yorumlar', '2024-10-29 05:56:22', '2024-10-29 08:56:21'),
+(46, 'Blog.Ekle', 'web', 'bloglar', '2024-10-29 06:26:03', '2024-10-29 09:26:03'),
+(47, 'Blog.Sil', 'web', 'bloglar', '2024-10-29 06:26:15', '2024-10-29 09:26:15');
 
 -- --------------------------------------------------------
 
@@ -451,6 +479,55 @@ CREATE TABLE `role_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 4),
+(3, 4),
+(4, 4),
+(5, 4),
+(6, 4),
+(7, 4),
+(8, 4),
+(9, 4),
+(10, 4),
+(11, 4),
+(12, 4),
+(17, 4),
+(19, 3),
+(19, 4),
+(20, 4),
+(21, 4),
+(22, 4),
+(23, 4),
+(23, 5),
+(25, 4),
+(26, 4),
+(26, 6),
+(27, 4),
+(28, 4),
+(29, 4),
+(30, 4),
+(31, 4),
+(32, 4),
+(33, 4),
+(34, 4),
+(35, 4),
+(36, 4),
+(37, 4),
+(38, 4),
+(39, 4),
+(40, 4),
+(41, 4),
+(42, 4),
+(43, 4),
+(44, 4),
+(45, 4),
+(46, 4),
+(47, 4);
 
 -- --------------------------------------------------------
 
@@ -819,7 +896,7 @@ ALTER TABLE `migrations`
 -- Tablo için AUTO_INCREMENT değeri `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
@@ -831,7 +908,7 @@ ALTER TABLE `personal_access_tokens`
 -- Tablo için AUTO_INCREMENT değeri `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `seos`
