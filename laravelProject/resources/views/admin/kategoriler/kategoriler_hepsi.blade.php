@@ -46,8 +46,14 @@
                                     <td>{{ $kategoriler->kategori_adi }}</td>
                                     <td><img src="{{(!empty($kategoriler->resim))? url($kategoriler->resim): url('upload/görseli_hazrilaniyor.png')}}" style="height: 50px; width:50px;" alt=""></td>
                                     <td>
+                                        @if(Auth::user()->can('Kategori.Düzenle'))
                                         <a href="{{route('kategori.duzenle',$kategoriler->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        @endif
+
+                                        @if(Auth::user()->can(' Kategori.Sil'))
                                         <a href="{{route('kategori.sil',$kategoriler->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        @endif
+
                                     </td>
                                 </tr>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Carbon;
@@ -306,6 +307,140 @@ class RolController extends Controller
 
         if (!is_null($rol)) {
             $rol->delete();
+        }
+
+        // toaster Bildirim
+
+        $mesaj = array(
+            'bildirim' => 'Silme Başarılı...',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($mesaj);
+    }
+
+
+
+    // ***************** Kulllanıcı Route ******************
+
+
+
+
+    public function KullaniciListe()
+    {
+        $kullanici_liste = User::where('rol', 'admin')->latest()->get();
+        return view('admin.kullanicilar.Kullanici_liste', compact('kullanici_liste'));
+    }
+
+
+
+    public function KullaniiciEkle()
+    {
+        $roller =  Role::all();
+        return view('admin.kullanicilar.kullanici_ekle', compact('roller'));
+    }
+
+
+
+    public function KullaniciEkleForm(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->rol = 'admin';
+        $user->save();
+
+        // if ($request->rol) {
+        //     $user->assignRole($request->rol);
+        // }
+
+        // Rol ID'sini rol adına dönüştürerek atama yapın
+        if ($request->rol) {
+            $rol = Role::where('id', $request->rol)->where('guard_name', 'web')->first();
+
+            if ($rol) {
+                $user->assignRole($rol->name);
+            } else {
+                return redirect()->back()->withErrors(['rol' => 'Seçilen rol bulunamadı veya geçersiz.']);
+            }
+        }
+
+
+        // toaster Bildirim
+
+        $mesaj = array(
+            'bildirim' => 'Kullanıcı Yükleme Başarılı...',
+            'alert-type' => 'success'
+        );
+
+
+        // toaster Bildirim
+
+        return redirect()->route('kullanici.liste')->with($mesaj);
+    }
+
+
+
+    public function KullaniciDuzenle($id)
+    {
+        $user = User::findOrFail($id);
+        $roller = Role::all();
+
+        return view('admin.kullanicilar.kullanici_duzenle', compact('user', 'roller'));
+    }
+
+
+
+    public function KullaniciGuncelleForm(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->rol = 'admin';
+        $user->save();
+
+        $user->roles()->detach();  // Roles ile rolleri seciyoruz detach ile rolleri tekrardan secilecek
+
+        // if ($request->rol) {
+        //     $user->assignRole($request->name);
+        // }
+
+        // Rol ID'sini rol adına dönüştürerek atama yapın
+        if ($request->rol) {
+            $rol = Role::where('id', $request->rol)->where('guard_name', 'web')->first();
+
+            if ($rol) {
+                $user->assignRole($rol->name);
+            } else {
+                return redirect()->back()->withErrors(['rol' => 'Seçilen rol bulunamadı veya geçersiz.']);
+            }
+        }
+
+
+        // toaster Bildirim
+
+        $mesaj = array(
+            'bildirim' => 'Kullanıcı Güncelleme Başarılı...',
+            'alert-type' => 'success'
+        );
+
+
+        // toaster Bildirim
+
+        return redirect()->route('kullanici.liste')->with($mesaj);
+    }
+
+
+
+
+    public function KullanicilSil($id)
+    {
+
+        $user = User::findOrFail($id);
+
+
+        if (!is_null($user)) {
+            $user->delete();
         }
 
         // toaster Bildirim

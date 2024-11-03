@@ -50,8 +50,14 @@
                                         <label for="{{ $icerik->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </td>
                                     <td>
+                                        @if(Auth::user()->can('Blogicerik.Düzenle'))
                                         <a href="{{route('blog.icerik.duzenle',$icerik->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        @endif
+
+                                        @if(Auth::user()->can('Blogicerik.Sil'))
                                         <a href="{{route('blog.icerik.sil',$icerik->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        @endif
+
                                     </td>
                                 </tr>
 

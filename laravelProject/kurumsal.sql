@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 30 Eki 2024, 19:50:57
+-- Üretim Zamanı: 03 Kas 2024, 18:36:46
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -291,7 +291,8 @@ CREATE TABLE `mesajs` (
 
 INSERT INTO `mesajs` (`id`, `adi`, `email`, `telefon`, `konu`, `mesaj`, `created_at`, `updated_at`) VALUES
 (5, 'denme', NULL, '12345678910', 'test footer', 'deneme 123', '2024-10-14 15:22:23', '2024-10-14 15:22:23'),
-(6, 'denme', NULL, '12345678910', 'deneme konusu', 'scascas', '2024-10-14 15:23:09', '2024-10-14 15:23:09');
+(6, 'denme', NULL, '12345678910', 'deneme konusu', 'scascas', '2024-10-14 15:23:09', '2024-10-14 15:23:09'),
+(7, 'Gamze gulcicek', NULL, '12345678910', 'deneme konusu', 'Bu site ici deneme', '2024-11-01 14:49:22', '2024-11-01 14:49:22');
 
 -- --------------------------------------------------------
 
@@ -352,6 +353,14 @@ CREATE TABLE `model_has_roles` (
   `model_type` varchar(255) NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(3, 'App\\Models\\User', 1),
+(4, 'App\\Models\\User', 4);
 
 -- --------------------------------------------------------
 
@@ -424,7 +433,24 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `grup_adi`, `created_at`,
 (44, 'Yorum.Düzenle', 'web', 'yorumlar', '2024-10-29 05:56:07', '2024-10-29 08:56:07'),
 (45, 'Yorum.Sil', 'web', 'yorumlar', '2024-10-29 05:56:22', '2024-10-29 08:56:21'),
 (46, 'Blog.Ekle', 'web', 'bloglar', '2024-10-29 06:26:03', '2024-10-29 09:26:03'),
-(47, 'Blog.Sil', 'web', 'bloglar', '2024-10-29 06:26:15', '2024-10-29 09:26:15');
+(47, 'Blog.Sil', 'web', 'bloglar', '2024-10-29 06:26:15', '2024-10-29 09:26:15'),
+(48, 'Kategori.ekle', 'web', 'kategoriler', '2024-11-03 13:31:26', '2024-11-03 16:31:25'),
+(49, 'Altkategoriler.Liste', 'web', 'altkategoriler', '2024-11-03 13:32:07', '2024-11-03 16:32:07'),
+(50, 'Ürün.Liste', 'web', 'urunler', '2024-11-03 13:32:37', '2024-11-03 16:32:37'),
+(51, 'Blog.Liste', 'web', 'bloglar', '2024-11-03 13:33:17', '2024-11-03 16:33:17'),
+(52, 'Blogicerik.Liste', 'web', 'yazilar', '2024-11-03 13:34:11', '2024-11-03 16:34:11'),
+(53, 'Sürec.Liste', 'web', 'surecler', '2024-11-03 13:35:45', '2024-11-03 16:35:45'),
+(54, 'Yorum.Liste', 'web', 'yorumlar', '2024-11-03 13:36:23', '2024-11-03 16:36:23'),
+(62, 'Kullanici.Menü', 'web', 'kullanicilar', '2024-11-03 14:21:05', '2024-11-03 17:21:05'),
+(63, 'Kullanici.Liste', 'web', 'kullanicilar', '2024-11-03 14:21:22', '2024-11-03 17:21:22'),
+(64, 'RolIzin.Menü', 'web', 'rolizin', '2024-11-03 14:22:16', '2024-11-03 17:22:16'),
+(65, 'RolIzin.izin', 'web', 'rolizin', '2024-11-03 14:22:34', '2024-11-03 17:22:34'),
+(66, 'RolIzin.rol', 'web', 'rolizin', '2024-11-03 14:22:48', '2024-11-03 17:22:47'),
+(67, 'RolYetki.Ver', 'web', 'yetkiler', '2024-11-03 14:23:09', '2024-11-03 17:23:09'),
+(68, 'RolYetki.Liste', 'web', 'yetkiler', '2024-11-03 14:23:24', '2024-11-03 17:23:24'),
+(69, 'Kullanici.ekle', 'web', 'kullanicilar', '2024-11-03 14:29:24', '2024-11-03 17:29:24'),
+(70, 'Kullanici.düzenle', 'web', 'kullanicilar', '2024-11-03 14:29:39', '2024-11-03 17:29:39'),
+(71, 'Kullanici.sil', 'web', 'kullanicilar', '2024-11-03 14:29:53', '2024-11-03 17:29:53');
 
 -- --------------------------------------------------------
 
@@ -499,8 +525,11 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (17, 4),
 (19, 3),
 (19, 4),
+(20, 3),
 (20, 4),
+(21, 3),
 (21, 4),
+(22, 3),
 (22, 4),
 (23, 4),
 (23, 5),
@@ -527,7 +556,21 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (44, 4),
 (45, 4),
 (46, 4),
-(47, 4);
+(47, 4),
+(48, 4),
+(49, 4),
+(50, 4),
+(51, 4),
+(52, 4),
+(53, 4),
+(54, 4),
+(62, 4),
+(63, 4),
+(64, 4),
+(65, 4),
+(66, 4),
+(67, 4),
+(68, 4);
 
 -- --------------------------------------------------------
 
@@ -632,6 +675,7 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `resim` varchar(255) DEFAULT NULL,
+  `rol` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
@@ -643,8 +687,9 @@ CREATE TABLE `users` (
 -- Tablo döküm verisi `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `resim`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Bahtiyar Sönmez', 'bahtiyarsonmez41@gmail.com', '202410060644bahti.jpg', '2024-10-05 15:43:36', '$2y$10$x2WyB9WSft1kfWWz7xfbLe80oBJkZnusbzb9LEYAzANuOsH5FKXfu', NULL, '2024-10-05 15:40:49', '2024-10-06 03:44:58');
+INSERT INTO `users` (`id`, `name`, `email`, `resim`, `rol`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Bahtiyar Sönmez', 'bahtiyarsonmez41@gmail.com', '202410060644bahti.jpg', 'admin', '2024-10-05 15:43:36', '$2y$10$x2WyB9WSft1kfWWz7xfbLe80oBJkZnusbzb9LEYAzANuOsH5FKXfu', NULL, '2024-10-05 15:40:49', '2024-10-06 03:44:58'),
+(4, 'Gamze Gülciçek', 'gamzegulcicek@gmail.com', '202411030953gamze.jpg', 'admin', '2024-11-03 06:51:44', '$2y$10$gnP3mx0JicBB/jkmsr3Jb.rSzqM/NzqUvY7D9T/CTNahONQhEJ8cK', NULL, '2024-11-03 06:06:54', '2024-11-03 07:35:53');
 
 -- --------------------------------------------------------
 
@@ -884,7 +929,7 @@ ALTER TABLE `kategorilers`
 -- Tablo için AUTO_INCREMENT değeri `mesajs`
 --
 ALTER TABLE `mesajs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `migrations`
@@ -896,7 +941,7 @@ ALTER TABLE `migrations`
 -- Tablo için AUTO_INCREMENT değeri `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
@@ -932,7 +977,7 @@ ALTER TABLE `urunlers`
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `yorumlars`

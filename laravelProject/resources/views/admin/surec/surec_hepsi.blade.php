@@ -48,8 +48,15 @@
                                         <label for="{{ $surec->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </td>
                                     <td>
+
+                                        @if(Auth::user()->can('Sürec.Düzenle'))
                                         <a href="{{route('surec.duzenle',$surec->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        @endif
+
+                                        @if(Auth::user()->can('Sürec.Sil'))
                                         <a href="{{route('surec.sil',$surec->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        @endif
+
                                     </td>
                                 </tr>
 
