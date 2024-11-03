@@ -46,8 +46,14 @@
                                         <label for="{{ $yorum->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </td>
                                     <td>
+                                        @if(Auth::user()->can('Yorum.Düzenle'))
                                         <a href="{{route('yorum.duzenle',$yorum->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        @endif
+
+                                        @if(Auth::user()->can('Yorum.Sil'))
                                         <a href="{{route('yorum.sil',$yorum->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        @endif
+
                                     </td>
                                 </tr>
 

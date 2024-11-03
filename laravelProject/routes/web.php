@@ -221,16 +221,21 @@ Route::controller(RolController::class)->group(function () {
     Route::get('/rol/duzenle/{id}', 'RolDuzenle')->name('rol.duzenle');
     Route::post('/rol/guncelle/form', 'RolGuncelleForm')->name('rol.guncelle.form');
     Route::get('/rol/sil/{id}', 'RolSil')->name('rol.sil');
-});
 
-
-
-// Role Yetki Verme Route
-Route::controller(RolController::class)->group(function () {
+    // Role Yetki Verme Route
     Route::get('/rol/izin/verme', 'RolIzinVerme')->name('rol.izin.verme');
     Route::post('/yetki/ver/form', 'YetkiVerForm')->name('yetki.ver.form');
     Route::get('/rol/yetki/liste', 'RolYetkiListe')->name('rol.yetki.verme');
     Route::get('/rol/yetki/duzenle/{id}', 'RolYetkiDuzenle')->name('rol.yetki.duzenle');
     Route::post('/rol/yetki/guncelle/form/{id}', 'RolYetkiGuncelleForm')->name('rol.yetki.guncelle.form');
     Route::get('/admin/rol/sil/{id}', 'AdminRolSil')->name('admin.rol.sil');
+
+
+    // Kullanıcı Route
+    Route::get('/kullanici/liste', 'KullaniciListe')->name('kullanici.liste');
+    Route::get('/kullanici/ekle', 'KullaniiciEkle')->name('kullanici.ekle');
+    Route::post('/kullanici/ekle/form', 'KullaniciEkleForm')->name('kullanici.ekle.form');
+    Route::get('/kullanici/duzenle/{id}', 'KullaniciDuzenle')->name('kullanici.duzenle');
+    Route::post('/kullanici/guncelle/form/{id}', 'KullaniciGuncelleForm')->name('kullanici.guncelle.form');
+    Route::get('/kullanici/rol/sil/{id}', 'KullanicilSil')->name('kullanici.sil');
 });
