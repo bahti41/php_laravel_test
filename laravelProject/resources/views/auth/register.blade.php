@@ -50,8 +50,22 @@
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input id="name" class="form-control" type="text" name="name" required="" placeholder="KullanıcıAdı">
+                                    <input id="username" class="form-control" type="text" name="username" required="" placeholder="Kullanıcı Adı">
+                                    <x-input-error :messages="$errors->get('username')" class="mt-2" />
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3 row">
+                                <div class="col-12">
+                                    <input id="name" class="form-control" type="text" name="name" required="" placeholder="Adı Soyadı">
                                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3 row">
+                                <div class="col-12">
+                                    <input id="telefon" class="form-control" type="text" name="telefon" required="" placeholder="Telefon Numarası">
+                                    <x-input-error :messages="$errors->get('telefon')" class="mt-2" />
                                 </div>
                             </div>
 

@@ -47,8 +47,8 @@
                             @csrf
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input id="email" class="form-control" type="email" name="email" required="" placeholder="Email">
-                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                    <input id="girisadi" class="form-control" type="text" name="girisadi" required="" placeholder="Email | Kullanıcı Adı | Telefon">
+                                    <x-input-error :messages="$errors->get('girisadi')" class="mt-2" />
                                 </div>
                             </div>
 
