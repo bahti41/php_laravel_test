@@ -22,8 +22,6 @@ use App\Http\Controllers\Admin\RolController;
 
 
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,8 +46,8 @@ Route::controller(SeoController::class)->group(function () {
 
 // Banner Route
 Route::controller(BannerController::class)->group(function () {
-    Route::get('/banner/duzenle', 'HomeBanner')->name('banner');
-    Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
+    Route::get('/banner/duzenle', 'HomeBanner')->name('banner')->middleware('permission:Banner.menu');
+    Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle')->middleware('permission:Banner.düzenle');
 });
 
 
@@ -62,13 +60,13 @@ Route::controller(FooterController::class)->group(function () {
 
 // Hakkımızda Route
 Route::controller(HakkimizdaController::class)->group(function () {
-    Route::get('/hakkimizda/duzenle', 'Hakkimizda')->name('hakkimizda');
+    Route::get('/hakkimizda/duzenle', 'Hakkimizda')->name('hakkimizda')->middleware('permission:Hakkımızda.duzenle');
     Route::post('/hakkimizda/guncelle', 'HakkimizdaGuncelle')->name('hakkimizda.guncelle');
     Route::get('/hakkimizda', 'HakkimizdaFrond')->name('anasayfa.hak');
-    Route::get('/coklu/resim', 'CokluResim')->name('coklu.resim');
+    Route::get('/coklu/resim', 'CokluResim')->name('coklu.resim')->middleware('permission:	Hakkımızda.Coklu.Ekle');
     Route::post('/coklu/form', 'CokluForm')->name('coklu.resim.from');
-    Route::get('/coklu/liste', 'CokluListe')->name('coklu.liste');
-    Route::get('/coklu/duzenle/{id}', 'CokluDuzenle')->name('coklu.duzenle');
+    Route::get('/coklu/liste', 'CokluListe')->name('coklu.liste')->middleware('permission:Hakkımızda.Coklu.liste');
+    Route::get('/coklu/duzenle/{id}', 'CokluDuzenle')->name('coklu.duzenle')->middleware('permission:Hakkımızda.Coklu.Düzenle');
     Route::post('/coklu/guncelle', 'CokluGuncelle')->name('coklu.guncelle');
     Route::get('/coklu/sil/{id}', 'CokluSil')->name('coklu.sil');
 });
@@ -80,10 +78,10 @@ Route::controller(HakkimizdaController::class)->group(function () {
 
 // Kategory Route
 Route::controller(KategoriController::class)->group(function () {
-    Route::get('/kategori/hepsi', 'KategoriHepsi')->name('kategori.hepsi');
-    Route::get('/kategori/ekle', 'KategoriEkle')->name('kategori.ekle');
+    Route::get('/kategori/hepsi', 'KategoriHepsi')->name('kategori.hepsi')->middleware('permission:Kategori.Liste');
+    Route::get('/kategori/ekle', 'KategoriEkle')->name('kategori.ekle')->middleware('permission:Kategori.ekle');
     Route::post('/kategori/ekle/form', 'KategoriEkleForm')->name('kategori.ekle.form');
-    Route::get('/kategori/duzenle/{id}', 'KategoriDuzenle')->name('kategori.duzenle');
+    Route::get('/kategori/duzenle/{id}', 'KategoriDuzenle')->name('kategori.duzenle')->middleware('permission:Kategori.Düzenle');
     Route::post('/kategori/guncelle/form', 'KategoriGuncelleForm')->name('kategori.guncelle.form');
     Route::get('/kategori/sil/{id}', 'KategoriSil')->name('kategori.sil');
 });
@@ -91,10 +89,10 @@ Route::controller(KategoriController::class)->group(function () {
 
 // Alt Kategory Route
 Route::controller(AltkategoriController::class)->group(function () {
-    Route::get('/altkategori/liste', 'AltKategoriListe')->name('altkategori.liste');
-    Route::get('/altkategori/ekle', 'AltKategoriEkle')->name('altkategori.ekle');
+    Route::get('/altkategori/liste', 'AltKategoriListe')->name('altkategori.liste')->middleware('permission:Altkategoriler.Liste');
+    Route::get('/altkategori/ekle', 'AltKategoriEkle')->name('altkategori.ekle')->middleware('permission:Altkategoriler.Ekle');
     Route::post('/altkategori/ekle/form', 'AltKategoriEkleForm')->name('altkategori.ekle.form');
-    Route::get('/altkategori/duzenle/{id}', 'AltKategoriDuzenle')->name('altkategori.duzenle');
+    Route::get('/altkategori/duzenle/{id}', 'AltKategoriDuzenle')->name('altkategori.duzenle')->middleware('permission:Altkategoriler.Duzunle');
     Route::post('/altkategori/guncelle/form', 'AltKategoriGuncelleForm')->name('altkategori.guncelle.form');
     Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
     Route::get('/altkategoriler/ajax/{kategori_id}', 'AltAjax');
@@ -103,11 +101,11 @@ Route::controller(AltkategoriController::class)->group(function () {
 
 // Ürünler Route
 Route::controller(UrunController::class)->group(function () {
-    Route::get('/urun/liste', 'UrunListe')->name('urun.liste');
+    Route::get('/urun/liste', 'UrunListe')->name('urun.liste')->middleware('permission:Ürün.Liste');
     Route::get('/urun/durum', 'UrunDurum');
-    Route::get('/urun/ekle', 'UrunEkle')->name('urun.ekle');
+    Route::get('/urun/ekle', 'UrunEkle')->name('urun.ekle')->middleware('permission:Ürünler.Ekle');
     Route::post('/urun/ekle/form', 'UrunEkleForm')->name('urun.ekle.form');
-    Route::get('/urun/duzenle/{id}', 'UrunDuzenle')->name('urun.duzenle');
+    Route::get('/urun/duzenle/{id}', 'UrunDuzenle')->name('urun.duzenle')->middleware('permission:Ürünler.Düzenle');
     Route::post('/urun/guncelle/form', 'UrunGuncelleForm')->name('urun.guncelle.form');
     Route::get('/urun/sil/{id}', 'UrunSil')->name('urun.sil');
 });
@@ -115,11 +113,11 @@ Route::controller(UrunController::class)->group(function () {
 
 // Blog Kategory Route
 Route::controller(BlogkategoriController::class)->group(function () {
-    Route::get('/blog/kategori/liste', 'BlogListe')->name('blog.liste');
+    Route::get('/blog/kategori/liste', 'BlogListe')->name('blog.liste')->middleware('permission:Blog.Liste');
     Route::get('/blog/kategori/durum', 'BlogKategoriDurum');
-    Route::get('/blog/kategori/ekle', 'BlogkategoriEkle')->name('blog.kategori.ekle');
+    Route::get('/blog/kategori/ekle', 'BlogkategoriEkle')->name('blog.kategori.ekle')->middleware('Blog.Ekle');
     Route::post('/blog/kategori/form', 'BlogKayegoriForm')->name('blog.kategori.form');
-    Route::get('/blogkategori/duzenle/{id}', 'BlogKategoriDuzenle')->name('blog.kategori.duzenle');
+    Route::get('/blogkategori/duzenle/{id}', 'BlogKategoriDuzenle')->name('blog.kategori.duzenle')->middleware('permission:Blog.Duzenle');
     Route::post('/blogkategori/guncelle', 'BlogKategoriGuncelle')->name('blog.kategori.guncelle');
     Route::get('/blogkategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
 });
@@ -127,11 +125,11 @@ Route::controller(BlogkategoriController::class)->group(function () {
 
 // Blog İcerik Route
 Route::controller(BlogicerikController::class)->group(function () {
-    Route::get('/blog/icerik/liste', 'IcerikListe')->name('icerik.liste');
+    Route::get('/blog/icerik/liste', 'IcerikListe')->name('icerik.liste')->middleware('permission:Blogicerik.Liste');
     Route::get('/blog/icerik/durum', 'BlogIcerikDurum');
-    Route::get('/blog/icerik/ekle', 'BlogicerilEkle')->name('blog.icerik.ekle');
+    Route::get('/blog/icerik/ekle', 'BlogicerilEkle')->name('blog.icerik.ekle')->middleware('permission:Blogicerik.Ekle');
     Route::post('/blog/icerik/ekle/from', 'BlogIcerikEkleFrom')->name('blog.icerik.ekle.form');
-    Route::get('/blogicerik/duzenle/{id}', 'BlogicerikDuzenle')->name('blog.icerik.duzenle');
+    Route::get('/blogicerik/duzenle/{id}', 'BlogicerikDuzenle')->name('blog.icerik.duzenle')->middleware('permission:Blogicerik.Düzenle');
     Route::post('/blogicerik/guncelle', 'BlogIcerikGuncelle')->name('blog.icerik.guncelle.form');
     Route::get('/blogicerik/sil/{id}', 'BlogIcerikSil')->name('blog.icerik.sil');
 });
@@ -140,11 +138,11 @@ Route::controller(BlogicerikController::class)->group(function () {
 
 // Surec İcerik Route
 Route::controller(SurecController::class)->group(function () {
-    Route::get('/surec/liste', 'SurecListe')->name('surec.liste');
+    Route::get('/surec/liste', 'SurecListe')->name('surec.liste')->middleware('permission:Sürec.Liste');
     Route::get('/surec/icerik/durum', 'SurecDurum');
-    Route::get('/surec/ekle', 'SurecEkle')->name('surec.ekle');
+    Route::get('/surec/ekle', 'SurecEkle')->name('surec.ekle')->middleware('permission:Sürec.Ekle');
     Route::post('/surec/ekle/form', 'SurecEkleForm')->name('surec.ekle.form');
-    Route::get('/surec/duzenle/{id}', 'SurecDuzenle')->name('surec.duzenle');
+    Route::get('/surec/duzenle/{id}', 'SurecDuzenle')->name('surec.duzenle')->middleware('permission:Sürec.Düzenle');
     Route::post('/surec/guncelle/guncelle', 'SurecGuncelleForm')->name('surec.guncelle.form');
     Route::get('/surec/sil/{id}', 'SurecSil')->name('surec.sil');
 });
@@ -192,11 +190,11 @@ Route::controller(MesajController::class)->group(function () {
 
 // Yorum Formu Route
 Route::controller(YorumController::class)->group(function () {
-    Route::get('/yorumlar', 'Yorumlar')->name('yorum.liste');
+    Route::get('/yorumlar', 'Yorumlar')->name('yorum.liste')->middleware('permission:Yorum.Liste');
     Route::get('/yorum/durum', 'YorumDurum');
-    Route::get('/yorum/ekle', 'YorumEkle')->name('yorum.ekle');
+    Route::get('/yorum/ekle', 'YorumEkle')->name('yorum.ekle')->middleware('permission:Yorum.Ekle');
     Route::post('/yorum/ekle/form', 'YorumEkleForm')->name('yorum.ekle.form');
-    Route::get('/yorum/duzenle/{id}', 'YorumDuzenle')->name('yorum.duzenle');
+    Route::get('/yorum/duzenle/{id}', 'YorumDuzenle')->name('yorum.duzenle')->middleware('permission:Yorum.Düzenle');
     Route::post('/yorum/guncelle/form', 'YorumGuncelleForm')->name('yorum.guncelle.form');
     Route::get('/yorum/sil/{id}', 'YorumSil')->name('yorum.sil');
 });
@@ -204,38 +202,38 @@ Route::controller(YorumController::class)->group(function () {
 
 // İzinler Route
 Route::controller(RolController::class)->group(function () {
-    Route::get('/izin/liste', 'IzinListe')->name('izin.liste');
-    Route::get('/izin/ekle', 'IzinEkle')->name('izin.ekle');
+    Route::get('/izin/liste', 'IzinListe')->name('izin.liste')->middleware('permission:RolIzin.izin');
+    Route::get('/izin/ekle', 'IzinEkle')->name('izin.ekle')->middleware('permission:RolIzin.izin.Ekle');
     Route::post('/izin/ekle/form', 'IzinEkleForm')->name('izin.ekle.form');
-    Route::get('/izin/duzenle/{id}', 'IzinDuzenle')->name('izin.duzenle');
+    Route::get('/izin/duzenle/{id}', 'IzinDuzenle')->name('izin.duzenle')->middleware('permission:RolIzin.izin.Düzenle');
     Route::post('/izin/guncelle/form', 'IzinGuncelleForm')->name('izin.guncelle.form');
-    Route::get('/izin/sil/{id}', 'IzinSil')->name('izin.sil');
+    Route::get('/izin/sil/{id}', 'IzinSil')->name('izin.sil')->middleware('permission:RolIzin.izin.Sil');
 });
 
 
 // Rol Route
 Route::controller(RolController::class)->group(function () {
-    Route::get('/rol/liste', 'RolListe')->name('rol.liste');
-    Route::get('/rol/ekle', 'RolEkle')->name('rol.ekle');
+    Route::get('/rol/liste', 'RolListe')->name('rol.liste')->middleware('permission:RolIzin.rol');
+    Route::get('/rol/ekle', 'RolEkle')->name('rol.ekle')->middleware('permission:RolIzin.rol.Ekle');
     Route::post('/rol/ekle/form', 'RolEkleForm')->name('rol.ekle.form');
-    Route::get('/rol/duzenle/{id}', 'RolDuzenle')->name('rol.duzenle');
+    Route::get('/rol/duzenle/{id}', 'RolDuzenle')->name('rol.duzenle')->middleware('permission:RolIzin.rol.Düzenle');
     Route::post('/rol/guncelle/form', 'RolGuncelleForm')->name('rol.guncelle.form');
-    Route::get('/rol/sil/{id}', 'RolSil')->name('rol.sil');
+    Route::get('/rol/sil/{id}', 'RolSil')->name('rol.sil')->middleware('permission:RolIzin.rol.Sil');
 
     // Role Yetki Verme Route
-    Route::get('/rol/izin/verme', 'RolIzinVerme')->name('rol.izin.verme');
+    Route::get('/rol/izin/verme', 'RolIzinVerme')->name('rol.izin.verme')->middleware('permission:RolYetki.Ver');
     Route::post('/yetki/ver/form', 'YetkiVerForm')->name('yetki.ver.form');
-    Route::get('/rol/yetki/liste', 'RolYetkiListe')->name('rol.yetki.verme');
-    Route::get('/rol/yetki/duzenle/{id}', 'RolYetkiDuzenle')->name('rol.yetki.duzenle');
+    Route::get('/rol/yetki/liste', 'RolYetkiListe')->name('rol.yetki.verme')->middleware('permission:RolYetki.Liste');
+    Route::get('/rol/yetki/duzenle/{id}', 'RolYetkiDuzenle')->name('rol.yetki.duzenle')->middleware('permission:RolYetki.Düzenle');
     Route::post('/rol/yetki/guncelle/form/{id}', 'RolYetkiGuncelleForm')->name('rol.yetki.guncelle.form');
-    Route::get('/admin/rol/sil/{id}', 'AdminRolSil')->name('admin.rol.sil');
+    Route::get('/admin/rol/sil/{id}', 'AdminRolSil')->name('admin.rol.sil')->middleware('permission:RolYetki.Sil');
 
 
     // Kullanıcı Route
-    Route::get('/kullanici/liste', 'KullaniciListe')->name('kullanici.liste');
-    Route::get('/kullanici/ekle', 'KullaniiciEkle')->name('kullanici.ekle');
+    Route::get('/kullanici/liste', 'KullaniciListe')->name('kullanici.liste')->middleware('permission:Kullanici.Liste');
+    Route::get('/kullanici/ekle', 'KullaniiciEkle')->name('kullanici.ekle')->middleware('permission:Kullanici.ekle');
     Route::post('/kullanici/ekle/form', 'KullaniciEkleForm')->name('kullanici.ekle.form');
-    Route::get('/kullanici/duzenle/{id}', 'KullaniciDuzenle')->name('kullanici.duzenle');
+    Route::get('/kullanici/duzenle/{id}', 'KullaniciDuzenle')->name('kullanici.duzenle')->middleware('permission:Kullanici.düzenle');
     Route::post('/kullanici/guncelle/form/{id}', 'KullaniciGuncelleForm')->name('kullanici.guncelle.form');
-    Route::get('/kullanici/rol/sil/{id}', 'KullanicilSil')->name('kullanici.sil');
+    Route::get('/kullanici/rol/sil/{id}', 'KullanicilSil')->name('kullanici.sil')->middleware('permission:Kullanici.sil');
 });

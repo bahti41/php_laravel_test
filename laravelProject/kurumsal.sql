@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 03 Kas 2024, 18:36:46
+-- Üretim Zamanı: 06 Kas 2024, 21:29:48
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -77,7 +77,7 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `baslik`, `alt_baslik`, `url`, `video_url`, `resim`, `created_at`, `updated_at`) VALUES
-(1, 'Başlık Alanaı', 'Alt Başlık Alanı', NULL, 'http://localhost:8000/', 'upload/banner/1812808057432091.png', NULL, '2024-10-13 11:08:05');
+(1, 'Başlık Alanaı', 'Alt Başlık Alanı', NULL, 'http://localhost:8000/', 'upload/banner/1812808057432091.png', NULL, '2024-11-06 14:36:17');
 
 -- --------------------------------------------------------
 
@@ -360,7 +360,8 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (3, 'App\\Models\\User', 1),
-(4, 'App\\Models\\User', 4);
+(4, 'App\\Models\\User', 4),
+(6, 'App\\Models\\User', 7);
 
 -- --------------------------------------------------------
 
@@ -450,7 +451,15 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `grup_adi`, `created_at`,
 (68, 'RolYetki.Liste', 'web', 'yetkiler', '2024-11-03 14:23:24', '2024-11-03 17:23:24'),
 (69, 'Kullanici.ekle', 'web', 'kullanicilar', '2024-11-03 14:29:24', '2024-11-03 17:29:24'),
 (70, 'Kullanici.düzenle', 'web', 'kullanicilar', '2024-11-03 14:29:39', '2024-11-03 17:29:39'),
-(71, 'Kullanici.sil', 'web', 'kullanicilar', '2024-11-03 14:29:53', '2024-11-03 17:29:53');
+(71, 'Kullanici.sil', 'web', 'kullanicilar', '2024-11-03 14:29:53', '2024-11-03 17:29:53'),
+(72, 'RolYetki.Düzenle', 'web', 'yetkiler', '2024-11-06 15:38:04', '2024-11-06 18:38:04'),
+(73, 'RolIzin.rol.Ekle', 'web', 'rolizin', '2024-11-06 15:42:45', '2024-11-06 18:42:45'),
+(74, 'RolIzin.rol.Düzenle', 'web', 'rolizin', '2024-11-06 15:42:59', '2024-11-06 18:42:59'),
+(75, 'RolIzin.izin.Ekle', 'web', 'rolizin', '2024-11-06 15:44:02', '2024-11-06 18:44:02'),
+(76, 'RolIzin.izin.Düzenle', 'web', 'rolizin', '2024-11-06 15:44:14', '2024-11-06 18:44:14'),
+(77, 'RolYetki.Sil', 'web', 'yetkiler', '2024-11-06 16:43:29', '2024-11-06 19:43:29'),
+(78, 'RolIzin.rol.Sil', 'web', 'rolizin', '2024-11-06 16:44:35', '2024-11-06 19:44:35'),
+(79, 'RolIzin.izin.Sil', 'web', 'rolizin', '2024-11-06 16:45:01', '2024-11-06 19:45:01');
 
 -- --------------------------------------------------------
 
@@ -511,58 +520,151 @@ CREATE TABLE `role_has_permissions` (
 --
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 3),
 (1, 4),
+(1, 5),
+(1, 6),
+(3, 3),
 (3, 4),
+(3, 5),
+(4, 3),
 (4, 4),
+(4, 5),
+(4, 6),
+(5, 3),
 (5, 4),
+(5, 5),
+(5, 6),
+(6, 3),
 (6, 4),
+(6, 5),
+(6, 6),
+(7, 3),
 (7, 4),
+(7, 5),
+(7, 6),
+(8, 3),
 (8, 4),
+(8, 5),
+(8, 6),
+(9, 3),
 (9, 4),
+(9, 5),
+(9, 6),
+(10, 3),
 (10, 4),
+(10, 5),
+(11, 3),
 (11, 4),
+(11, 5),
+(12, 3),
 (12, 4),
+(12, 5),
+(17, 3),
 (17, 4),
+(17, 5),
 (19, 3),
 (19, 4),
+(19, 5),
 (20, 3),
 (20, 4),
+(20, 5),
 (21, 3),
 (21, 4),
+(21, 5),
 (22, 3),
 (22, 4),
+(22, 5),
+(23, 3),
 (23, 4),
 (23, 5),
+(25, 3),
 (25, 4),
+(25, 5),
+(26, 3),
 (26, 4),
+(26, 5),
 (26, 6),
+(27, 3),
 (27, 4),
+(27, 5),
+(27, 6),
+(28, 3),
 (28, 4),
+(28, 5),
+(28, 6),
+(29, 3),
 (29, 4),
+(29, 5),
+(30, 3),
 (30, 4),
+(30, 5),
+(31, 3),
 (31, 4),
+(31, 5),
+(32, 3),
 (32, 4),
+(32, 5),
+(33, 3),
 (33, 4),
+(33, 5),
+(34, 3),
 (34, 4),
+(34, 5),
+(35, 3),
 (35, 4),
+(35, 5),
+(36, 3),
 (36, 4),
+(36, 5),
+(37, 3),
 (37, 4),
+(37, 5),
+(38, 3),
 (38, 4),
+(38, 5),
+(39, 3),
 (39, 4),
+(39, 5),
+(40, 3),
 (40, 4),
+(40, 5),
+(41, 3),
 (41, 4),
+(41, 5),
+(42, 3),
 (42, 4),
+(43, 3),
 (43, 4),
+(44, 3),
 (44, 4),
+(45, 3),
 (45, 4),
+(46, 3),
 (46, 4),
+(46, 5),
+(47, 3),
 (47, 4),
+(47, 5),
+(48, 3),
 (48, 4),
+(48, 5),
+(49, 3),
 (49, 4),
+(49, 5),
+(50, 3),
 (50, 4),
+(50, 5),
+(51, 3),
 (51, 4),
+(51, 5),
+(52, 3),
 (52, 4),
+(52, 5),
+(53, 3),
 (53, 4),
+(53, 5),
+(54, 3),
 (54, 4),
 (62, 4),
 (63, 4),
@@ -570,7 +672,15 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (65, 4),
 (66, 4),
 (67, 4),
-(68, 4);
+(68, 4),
+(69, 4),
+(70, 4),
+(71, 4),
+(72, 4),
+(73, 4),
+(74, 4),
+(75, 4),
+(76, 4);
 
 -- --------------------------------------------------------
 
@@ -596,7 +706,7 @@ CREATE TABLE `seos` (
 --
 
 INSERT INTO `seos` (`id`, `title`, `site_adi`, `aciklama`, `keywords`, `author`, `logo`, `harita`, `created_at`, `updated_at`) VALUES
-(1, 'Web Geliştirici Yazılım Egitimi', 'Otto Yazılım', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap  Artık hizmetinizde', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap', 'Bahtiyar Sönmez', 'upload/seo/1813992997733666.jpeg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24203.877003430705!2d29.57131344876323!3d40.68532321247881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb1826765283a1%3A0xe3dafa5220f1ea52!2sKaram%C3%BCrsel%2C%20Kocaeli!5e0!3m2!1str!2str!4v1729956850424!5m2!1str!2str\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', '2024-10-26 16:02:12', '2024-10-26 13:02:12');
+(1, 'Web Geliştirici Yazılım Egitimi', 'Otto Yazılım', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap  Artık hizmetinizde', 'Php, Laravel , C#, DotNet Core, React Js, CSS, Bootstrap', 'Bahtiyar Sönmez', 'upload/seo/1814996177273359.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24203.877003430705!2d29.57131344876323!3d40.68532321247881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb1826765283a1%3A0xe3dafa5220f1ea52!2sKaram%C3%BCrsel%2C%20Kocaeli!5e0!3m2!1str!2str!4v1729956850424!5m2!1str!2str\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', '2024-11-06 17:47:19', '2024-11-06 14:47:19');
 
 -- --------------------------------------------------------
 
@@ -678,6 +788,8 @@ CREATE TABLE `users` (
   `rol` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `telefon` varchar(25) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -687,9 +799,11 @@ CREATE TABLE `users` (
 -- Tablo döküm verisi `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `resim`, `rol`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Bahtiyar Sönmez', 'bahtiyarsonmez41@gmail.com', '202410060644bahti.jpg', 'admin', '2024-10-05 15:43:36', '$2y$10$x2WyB9WSft1kfWWz7xfbLe80oBJkZnusbzb9LEYAzANuOsH5FKXfu', NULL, '2024-10-05 15:40:49', '2024-10-06 03:44:58'),
-(4, 'Gamze Gülciçek', 'gamzegulcicek@gmail.com', '202411030953gamze.jpg', 'admin', '2024-11-03 06:51:44', '$2y$10$gnP3mx0JicBB/jkmsr3Jb.rSzqM/NzqUvY7D9T/CTNahONQhEJ8cK', NULL, '2024-11-03 06:06:54', '2024-11-03 07:35:53');
+INSERT INTO `users` (`id`, `name`, `email`, `resim`, `rol`, `email_verified_at`, `password`, `username`, `telefon`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Bahtiyar', 'bahtiyarsonmez41@gmail.com', '202410060644bahti.jpg', 'admin', '2024-10-05 15:43:36', '$2y$10$x2WyB9WSft1kfWWz7xfbLe80oBJkZnusbzb9LEYAzANuOsH5FKXfu', 'Bahtiyar Sönmez', '1234567890', NULL, '2024-10-05 15:40:49', '2024-10-06 03:44:58'),
+(4, 'Gamze', 'gamzegulcicek@gmail.com', '202411030953gamze.jpg', 'admin', '2024-11-03 06:51:44', '$2y$10$gnP3mx0JicBB/jkmsr3Jb.rSzqM/NzqUvY7D9T/CTNahONQhEJ8cK', 'Gamze Gülciçek', '12345678900', NULL, '2024-11-03 06:06:54', '2024-11-03 07:35:53'),
+(7, 'Bilal', 'bilaltunca@gmail.com', '202411061924bilal-tunca.png', 'admin', '2024-11-06 15:56:05', '$2y$10$IJPP.zSIhUFErwVK3JW1VOPf45rbIc/qyHejX/ueEeNoQ40GGyM1u', 'Bilal Tunca', NULL, NULL, '2024-11-06 15:55:20', '2024-11-06 16:24:37'),
+(8, 'test adım', 'test@gmail.com', NULL, NULL, '2024-11-06 17:02:57', '$2y$10$g6PsynlEwZfGLL/WziCi3.wR5J/EIkE5d2KFPaitPSuzUnXBLIvgG', 'test name', '123456789100', NULL, '2024-11-06 17:02:00', '2024-11-06 17:02:57');
 
 -- --------------------------------------------------------
 
@@ -859,7 +973,9 @@ ALTER TABLE `urunlers`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `telefon` (`telefon`);
 
 --
 -- Tablo için indeksler `yorumlars`
@@ -941,7 +1057,7 @@ ALTER TABLE `migrations`
 -- Tablo için AUTO_INCREMENT değeri `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
@@ -977,7 +1093,7 @@ ALTER TABLE `urunlers`
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `yorumlars`
