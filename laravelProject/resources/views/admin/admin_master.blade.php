@@ -238,7 +238,7 @@
         });
     </script>
 
-    <!-- SUREC -->
+    <!-- YORUMLAR -->
     <script>
         $(function() {
             $('.yorumlar').change(function() {
@@ -248,6 +248,99 @@
                     type: "GET",
                     dataType: "json",
                     url: '/yorum/durum',
+                    data: {
+                        'durum': durum,
+                        'id': id
+                    },
+                    success: function(data) {
+                        console.log(data.success)
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+    <!-- KULLANICILAR -->
+    <script>
+        $(function() {
+            $('.kullaniciler').change(function() {
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/kullanıcı/durum',
+                    data: {
+                        'durum': durum,
+                        'id': id
+                    },
+                    success: function(data) {
+                        console.log(data.success)
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <!-- COKLU RESİMLER -->
+    <script>
+        $(function() {
+            $('.coklu').change(function() {
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/coklu/durum',
+                    data: {
+                        'durum': durum,
+                        'id': id
+                    },
+                    success: function(data) {
+                        console.log(data.success)
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <!-- Kategoriler -->
+    <script>
+        $(function() {
+            $('.kategoriler').change(function() {
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/kategoriler/durum',
+                    data: {
+                        'durum': durum,
+                        'id': id
+                    },
+                    success: function(data) {
+                        console.log(data.success)
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <!-- ALTKATEGORİLER -->
+    <script>
+        $(function() {
+            $('.altkategori').change(function() {
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/altkategori/durum',
                     data: {
                         'durum': durum,
                         'id': id

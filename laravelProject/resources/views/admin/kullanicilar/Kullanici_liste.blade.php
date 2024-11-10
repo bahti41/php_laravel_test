@@ -38,6 +38,7 @@
                                     <th>Resim</th>
                                     <th>Kullanıcı Adı</th>
                                     <th>Kullanıcı Email</th>
+                                    <th>Durum</th>
                                     <th>Kullanıcı Rolü</th>
                                     <th>İşlem</th>
                                 </tr>
@@ -56,6 +57,10 @@
                                     <td><img src="{{(!empty($kullaniciler->resim))? url('upload/admin/'.$kullaniciler->resim): url('upload/görseli_hazrilaniyor.png')}}" style="height: 50px; width:50px;" alt=""></td>
                                     <td>{{ $kullaniciler->name }}</td>
                                     <td>{{ $kullaniciler->email }}</td>
+                                    <td>
+                                        <input type="checkbox" class="kullaniciler" data-id="{{ $kullaniciler->id }}" id="{{ $kullaniciler->id }}" switch="success" {{$kullaniciler->durum ? 'checked' : ''}}>
+                                        <label for="{{ $kullaniciler->id }}" data-on-label="Yes" data-off-label="No"></label>
+                                    </td>
                                     <td>
                                         @foreach($kullaniciler->roles as $rol)
                                         <span class="badge badge-pill bg-primary" style="font-size: 15px;"> {{$rol->name}} </span>

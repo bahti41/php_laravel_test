@@ -25,6 +25,15 @@ class KategoriController extends Controller
     }
 
 
+    public function KategoriDurum(Request $request)
+    {
+        $urun = Kategoriler::find($request->id);
+        $urun->durum = $request->durum;
+        $urun->save();
+
+        return response()->json(['success' => 'Başarılı...']);
+    }
+
     public function KategoriEkleForm(Request $request)
     {
 
@@ -32,10 +41,13 @@ class KategoriController extends Controller
             'kategori_adi' => 'required',
             'anahtar' => 'required',
             'aciklama' => 'required',
+            'sirano' => 'required',
         ], [
             'kategori_adi.required' => 'Kategori Adı Boş Bırakılamz...',
             'anahtar.required' => 'Anahtar Kısmı Boş Bırakılamz...',
-            'aciklama.required' => 'Acıklama Kısmı Boş Bırakılamz...'
+            'aciklama.required' => 'Acıklama Kısmı Boş Bırakılamz...',
+            'sirano.required' => 'Sıra No Kısmı Boş Bırakılamz...',
+
         ]);
 
         if ($request->file('resim'))   // Type File veya resim Olana Uygula
@@ -54,6 +66,8 @@ class KategoriController extends Controller
                     'kategori_url' => str()->slug($request->kategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
+                    'sirano' => $request->sirano,
+                    'durum' => 1,
                     'resim' => $resim_kaydet,
                     'created_at' => Carbon::now(),
                 ]
@@ -79,6 +93,8 @@ class KategoriController extends Controller
                     'kategori_url' => str()->slug($request->kategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
+                    'sirano' => $request->sirano,
+                    'durum' => 1,
                     'created_at' => Carbon::now(),
                 ]
             );
@@ -113,10 +129,12 @@ class KategoriController extends Controller
             'kategori_adi' => 'required',
             'anahtar' => 'required',
             'aciklama' => 'required',
+            'sirano' => 'required',
         ], [
             'kategori_adi.required' => 'Kategori Adı Boş Bırakılamz...',
             'anahtar.required' => 'Anahtar Kısmı Boş Bırakılamz...',
-            'aciklama.required' => 'Acıklama Kısmı Boş Bırakılamz...'
+            'aciklama.required' => 'Acıklama Kısmı Boş Bırakılamz...',
+            'sirano.required' => 'Sıra No Kısmı Boş Bırakılamz...',
         ]);
 
         $kategori_id = $request->id;
@@ -144,6 +162,7 @@ class KategoriController extends Controller
                     'kategori_url' => str()->slug($request->kategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
+                    'sirano' => $request->sirano,
                     'resim' => $resim_kaydet,
                 ]
             );
@@ -168,6 +187,8 @@ class KategoriController extends Controller
                     'kategori_url' => str()->slug($request->kategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
+                    'sirano' => $request->sirano,
+
                 ]
             );
 

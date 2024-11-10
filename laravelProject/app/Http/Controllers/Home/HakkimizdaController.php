@@ -102,6 +102,15 @@ class HakkimizdaController extends Controller
         return view('admin.anasayfa.coklu_resim');
     }
 
+    public function CokluDurum(Request $request)
+    {
+        $urun = CokluResim::find($request->id);
+        $urun->durum = $request->durum;
+        $urun->save();
+
+        return response()->json(['success' => 'Başarılı...']);
+    }
+
     public function CokluForm(Request $request)
     {
 
@@ -124,6 +133,8 @@ class HakkimizdaController extends Controller
 
             CokluResim::insert(
                 [
+                    'sirano' => $request->sirano,
+                    'durum' => 1,
                     'resim' => $resim_kaydet,
                     'created_at' => Carbon::now()
                 ]
@@ -156,51 +167,67 @@ class HakkimizdaController extends Controller
 
     public function CokluGuncelle(Request $request)
     {
-        $request->validate([
-            'resim' => 'required',
-
-        ], [
-            'resim.required' => 'Resim Alanı Boş Bırakılamz...',
-
-        ]);
 
         $id = $request->id;
         $eski_resim = $request->onceki_resim;
 
-        $resim = $request->file('resim'); //Resim Degişkeni Resmi Atama
-        $resimadi = hexdec(uniqid()) . '.' . $resim->getClientOriginalExtension();  // Resime Verilen adın benzersiz olmasonı saglar
+        if ($request->file('resim'))   // Type File veya resim Olana Uygula
+        {
+            $resim = $request->file('resim'); //Resim Degişkeni Resmi Atama
+            $resimadi = hexdec(uniqid()) . '.' . $resim->getClientOriginalExtension();  // Resime Verilen adın benzersiz olmasonı saglar
 
 
-        Image::make($resim)->resize(222, 222)->save('upload/coklu/' . $resimadi);
+            Image::make($resim)->resize(222, 222)->save('upload/coklu/' . $resimadi);
 
-        $resim_kaydet = 'upload/coklu/' . $resimadi;
+            $resim_kaydet = 'upload/coklu/' . $resimadi;
 
-        // Eski Resim Sil
-        if (file_exists($eski_resim)) {
-            unlink($eski_resim);
+            // Eski Resim Sil
+            if (file_exists($eski_resim)) {
+                unlink($eski_resim);
+            }
+            // Eski Resim Sil
+
+            CokluResim::findOrfail($id)->update(
+                [
+                    'sirano' => $request->sirano,
+                    'resim' => $resim_kaydet,
+                ]
+            );
+
+
+            // toaster Bildirim
+
+            $mesaj = array(
+                'bildirim' => 'Coklu Resim Güncelleme Başarılı...',
+                'alert-type' => 'success'
+            );
+
+
+            // toaster Bildirim
+
+            return Redirect()->route('coklu.liste')->with($mesaj);
+        } // }  end if
+        else {
+            CokluResim::findOrfail($id)->update(
+                [
+                    'sirano' => $request->sirano,
+                ]
+            );
+
+
+            // toaster Bildirim
+
+            $mesaj = array(
+                'bildirim' => 'Resimsiz Güncelleme Başarılı...',
+                'alert-type' => 'success'
+            );
+
+
+            // toaster Bildirim
+
+            return Redirect()->route('coklu.liste')->with($mesaj);
         }
-        // Eski Resim Sil
-
-        CokluResim::findOrfail($id)->update(
-            [
-                'resim' => $resim_kaydet,
-            ]
-        );
-
-
-        // toaster Bildirim
-
-        $mesaj = array(
-            'bildirim' => 'Coklu Resim Güncelleme Başarılı...',
-            'alert-type' => 'success'
-        );
-
-
-        // toaster Bildirim
-
-        return Redirect()->route('coklu.liste')->with($mesaj);
     }
-
 
     public function CokluSil($id)
     {

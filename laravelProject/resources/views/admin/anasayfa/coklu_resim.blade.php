@@ -36,6 +36,17 @@
 
                             <!-- Resim -->
 
+                            <!-- Sıra No -->
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2">Sıra No</label>
+                                <div class="col-sm-10 form-group">
+                                    <input class="form-control" name="sirano" type="number" placeholder=" Sıra No..." value="1">
+                                </div>
+                            </div>
+                            <!-- Sıra No -->
+
+
+
                             <input type="submit" class="btn btn-info waves-effect wave-light" value="Çoklu Resim Ekle">
                         </form>
 

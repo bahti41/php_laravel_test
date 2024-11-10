@@ -53,7 +53,7 @@ class LoginRequest extends FormRequest
         //     ]);
         // }
 
-        $user =  User::where('email', $this->girisadi)->orwhere('username', $this->girisadi)->orwhere('telefon', $this->girisadi)->first();
+        $user =  User::where('durum', 1)->where('email', $this->girisadi)->orwhere('username', $this->girisadi)->orwhere('telefon', $this->girisadi)->first();
 
         if (!$user || !Hash::check($this->password, $user->password)) {
             throw ValidationException::withMessages([
