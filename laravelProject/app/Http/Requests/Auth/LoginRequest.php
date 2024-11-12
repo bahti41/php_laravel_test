@@ -55,7 +55,7 @@ class LoginRequest extends FormRequest
 
         $user =  User::where('email', $this->girisadi)->orwhere('username', $this->girisadi)->orwhere('telefon', $this->girisadi)->first();
 
-        if (!$user || !Hash::check($this->password, $user->password)) {
+        if (!$user->durum == 1 || !$user || !Hash::check($this->password, $user->password)) {
             throw ValidationException::withMessages([
                 'girisadi' => trans('auth.failed'),
             ]);

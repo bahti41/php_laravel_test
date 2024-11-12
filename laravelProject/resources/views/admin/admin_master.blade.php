@@ -260,7 +260,27 @@
         });
     </script>
 
-
+    <!-- SUREC -->
+    <script>
+        $(function() {
+            $('.kategori').change(function() {
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/kategori/durum',
+                    data: {
+                        'durum': durum,
+                        'id': id
+                    },
+                    success: function(data) {
+                        console.log(data.success)
+                    }
+                });
+            });
+        });
+    </script>
 
     <!-- BLOG İCERİK -->
     <script>

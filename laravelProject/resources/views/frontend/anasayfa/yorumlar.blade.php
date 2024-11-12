@@ -1,7 +1,7 @@
      @php
 
      $yorumlar = App\Models\Yorumlar::where('durum',1)->orderBy('sirano','ASC')->get();
-     $coklu = App\Models\Cokluresim::all();
+     $coklu = App\Models\Cokluresim::where('durum',1)->orderBy('sirano','ASC')->get();
 
      @endphp
 

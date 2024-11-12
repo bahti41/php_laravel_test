@@ -1,6 +1,6 @@
  @php
 
- $kategoriler = App\Models\Kategoriler::orderBy('id','DESC')->get();
+ $kategoriler = App\Models\Kategoriler::where('durum',1)->orderBy('id','DESC')->get();
  $urunler = App\Models\Urunler::where('durum',1)->orderBy('sirano','ASC')->get();
 
  @endphp

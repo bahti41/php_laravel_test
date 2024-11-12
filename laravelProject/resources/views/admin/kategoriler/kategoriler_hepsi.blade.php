@@ -29,6 +29,7 @@
                                     <th>Sıra</th>
                                     <th>Kategori Adı</th>
                                     <th>Resim</th>
+                                    <th>Durum</th>
                                     <th>İşlem</th>
                                 </tr>
                             </thead>
@@ -45,6 +46,10 @@
                                     <td>{{ $s++ }}</td>
                                     <td>{{ $kategoriler->kategori_adi }}</td>
                                     <td><img src="{{(!empty($kategoriler->resim))? url($kategoriler->resim): url('upload/görseli_hazrilaniyor.png')}}" style="height: 50px; width:50px;" alt=""></td>
+                                    <td>
+                                        <input type="checkbox" class="kategori" data-id="{{ $kategoriler->id }}" id="{{ $kategoriler->id }}" switch="success" {{$kategoriler->durum ? 'checked' : ''}}>
+                                        <label for="{{ $kategoriler->id }}" data-on-label="Yes" data-off-label="No"></label>
+                                    </td>
                                     <td>
                                         @if(Auth::user()->can('Kategori.Düzenle'))
                                         <a href="{{route('kategori.duzenle',$kategoriler->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>

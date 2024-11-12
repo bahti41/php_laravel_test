@@ -38,11 +38,14 @@ Route::get('/', function () {
 });
 
 
+
 // Seo Route
 Route::controller(SeoController::class)->group(function () {
     Route::get('/seo/duzenle', 'SeoDuzenle')->name('seo.duzenle');
     Route::post('/seo/guncelle', 'SeoGuncelle')->name('seo.guncelle');
 });
+
+
 
 // Banner Route
 Route::controller(BannerController::class)->group(function () {
@@ -51,11 +54,13 @@ Route::controller(BannerController::class)->group(function () {
 });
 
 
+
 // Footer Route
 Route::controller(FooterController::class)->group(function () {
     Route::get('/footer/duzenle', 'FooterDuzenle')->name('footer.duzenle');
     Route::post('/footer/guncelle', 'FooterGuncelle')->name('footer.guncelle');
 });
+
 
 
 // Hakkımızda Route
@@ -73,18 +78,17 @@ Route::controller(HakkimizdaController::class)->group(function () {
 
 
 
-
-
-
 // Kategory Route
 Route::controller(KategoriController::class)->group(function () {
     Route::get('/kategori/hepsi', 'KategoriHepsi')->name('kategori.hepsi')->middleware('permission:Kategori.Liste');
+    Route::get('/kategori/durum', 'KategoriDurum');
     Route::get('/kategori/ekle', 'KategoriEkle')->name('kategori.ekle')->middleware('permission:Kategori.ekle');
     Route::post('/kategori/ekle/form', 'KategoriEkleForm')->name('kategori.ekle.form');
     Route::get('/kategori/duzenle/{id}', 'KategoriDuzenle')->name('kategori.duzenle')->middleware('permission:Kategori.Düzenle');
     Route::post('/kategori/guncelle/form', 'KategoriGuncelleForm')->name('kategori.guncelle.form');
     Route::get('/kategori/sil/{id}', 'KategoriSil')->name('kategori.sil');
 });
+
 
 
 // Alt Kategory Route
@@ -99,6 +103,7 @@ Route::controller(AltkategoriController::class)->group(function () {
 });
 
 
+
 // Ürünler Route
 Route::controller(UrunController::class)->group(function () {
     Route::get('/urun/liste', 'UrunListe')->name('urun.liste')->middleware('permission:Ürün.Liste');
@@ -111,6 +116,7 @@ Route::controller(UrunController::class)->group(function () {
 });
 
 
+
 // Blog Kategory Route
 Route::controller(BlogkategoriController::class)->group(function () {
     Route::get('/blog/kategori/liste', 'BlogListe')->name('blog.liste')->middleware('permission:Blog.Liste');
@@ -121,6 +127,7 @@ Route::controller(BlogkategoriController::class)->group(function () {
     Route::post('/blogkategori/guncelle', 'BlogKategoriGuncelle')->name('blog.kategori.guncelle');
     Route::get('/blogkategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
 });
+
 
 
 // Blog İcerik Route

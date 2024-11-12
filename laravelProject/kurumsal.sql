@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 06 Kas 2024, 21:29:48
+-- Üretim Zamanı: 12 Kas 2024, 20:43:33
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -35,6 +35,8 @@ CREATE TABLE `altkategorilers` (
   `anahtar` varchar(255) DEFAULT NULL,
   `aciklama` varchar(255) DEFAULT NULL,
   `resim` varchar(255) DEFAULT NULL,
+  `durum` tinyint(1) DEFAULT NULL,
+  `sirano` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -43,17 +45,17 @@ CREATE TABLE `altkategorilers` (
 -- Tablo döküm verisi `altkategorilers`
 --
 
-INSERT INTO `altkategorilers` (`id`, `kategori_id`, `altkategori_adi`, `altkategori_url`, `anahtar`, `aciklama`, `resim`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Montalama', 'montalama', 'deneme,montaj', 'Montaj işlemlerimiz sizin icin en iyisi', 'upload/altkategoriler/1812142237158538.jpeg', '2024-10-06 02:45:09', NULL),
-(2, 3, 'Güvenlik', 'guvenlik', 'deneme,güvenlik', 'Güvenliginiz icin şeffaf iletişim ve işlemler', 'upload/altkategoriler/1812142301603760.jpeg', '2024-10-06 02:46:10', NULL),
-(3, 3, 'Taşıma Ortamı', 'tasima-ortami', 'denem,taşıma', 'Taşımacıklıkta en hizlı ve güvenilir', 'upload/altkategoriler/1812142532842193.jpeg', '2024-10-06 02:49:51', NULL),
-(4, 5, 'Araba Parcaları', 'araba-parcalari', 'deneme,araba', 'Araba Adına her şey burada', 'upload/altkategoriler/1812142630977648.jpeg', '2024-10-06 02:51:24', NULL),
-(5, 5, 'Bilgisayar', 'bilgisayar', 'deneme,bilgisayar', 'Bilgisayar ile alakalı neye ihtiyacınız', 'upload/altkategoriler/1812142725945683.jpeg', '2024-10-06 02:52:55', NULL),
-(6, 2, 'IT Cözümleri', 'it-cozumleri', 'deneme,development', 'Bilişim ile tanışın', 'upload/altkategoriler/1812144791944411.jpeg', '2024-10-06 02:56:09', '2024-10-06 03:25:45'),
-(7, 5, 'Klima', 'klima', 'deneme,klima', 'Klima sıcakta hayat kurtarır', 'upload/altkategoriler/1812143106348629.png', '2024-10-06 02:58:58', NULL),
-(8, 2, 'Taşımacılık', 'tasimacilik', 'deneme,taşıma', 'Taşıma işiniz olsun', 'upload/altkategoriler/1812143191912703.jpeg', '2024-10-06 03:00:19', NULL),
-(9, 6, 'Siber Güvenlik', 'siber-guvenlik', 'deneme,anahtar', 'Siber güvnlik icin herşey', 'upload/altkategoriler/1812144683740869.jpeg', '2024-10-06 03:24:02', NULL),
-(10, 6, 'Bilişim Development', 'bilisim-development', 'deneme,anahtar', 'deneme acıklama', 'upload/altkategoriler/1812144742124620.jpeg', '2024-10-06 03:24:58', NULL);
+INSERT INTO `altkategorilers` (`id`, `kategori_id`, `altkategori_adi`, `altkategori_url`, `anahtar`, `aciklama`, `resim`, `durum`, `sirano`, `created_at`, `updated_at`) VALUES
+(1, 3, 'Montalama', 'montalama', 'deneme,montaj', 'Montaj işlemlerimiz sizin icin en iyisi', 'upload/altkategoriler/1812142237158538.jpeg', 1, 1, '2024-10-06 02:45:09', '2024-11-10 03:10:36'),
+(2, 3, 'Güvenlik', 'guvenlik', 'deneme,güvenlik', 'Güvenliginiz icin şeffaf iletişim ve işlemler', 'upload/altkategoriler/1812142301603760.jpeg', 1, 3, '2024-10-06 02:46:10', '2024-11-10 03:10:36'),
+(3, 3, 'Taşıma Ortamı', 'tasima-ortami', 'denem,taşıma', 'Taşımacıklıkta en hizlı ve güvenilir', 'upload/altkategoriler/1812142532842193.jpeg', 1, 2, '2024-10-06 02:49:51', '2024-11-10 03:10:34'),
+(4, 5, 'Araba Parcaları', 'araba-parcalari', 'deneme,araba', 'Araba Adına her şey burada', 'upload/altkategoriler/1812142630977648.jpeg', 1, 1, '2024-10-06 02:51:24', '2024-11-10 04:59:48'),
+(5, 5, 'Bilgisayar', 'bilgisayar', 'deneme,bilgisayar', 'Bilgisayar ile alakalı neye ihtiyacınız', 'upload/altkategoriler/1812142725945683.jpeg', 1, 2, '2024-10-06 02:52:55', '2024-11-10 05:00:14'),
+(6, 2, 'IT Cözümleri', 'it-cozumleri', 'deneme,development', 'Bilişim ile tanışın', 'upload/altkategoriler/1812144791944411.jpeg', 1, NULL, '2024-10-06 02:56:09', '2024-11-10 03:10:32'),
+(7, 5, 'Klima', 'klima', 'deneme,klima', 'Klima sıcakta hayat kurtarır', 'upload/altkategoriler/1812143106348629.png', 1, 3, '2024-10-06 02:58:58', '2024-11-10 05:00:26'),
+(8, 2, 'Taşımacılık', 'tasimacilik', 'deneme,taşıma', 'Taşıma işiniz olsun', 'upload/altkategoriler/1812143191912703.jpeg', 1, NULL, '2024-10-06 03:00:19', '2024-11-10 03:10:23'),
+(9, 6, 'Siber Güvenlik', 'siber-guvenlik', 'deneme,anahtar', 'Siber güvnlik icin herşey', 'upload/altkategoriler/1812144683740869.jpeg', 1, 2, '2024-10-06 03:24:02', '2024-11-10 05:01:27'),
+(10, 6, 'Bilişim Development', 'bilisim-development', 'deneme,anahtar', 'deneme acıklama', 'upload/altkategoriler/1812144742124620.jpeg', 1, 1, '2024-10-06 03:24:58', '2024-11-10 05:01:44');
 
 -- --------------------------------------------------------
 
@@ -149,6 +151,8 @@ INSERT INTO `blogkategorilers` (`id`, `kategori_adi`, `url`, `sirano`, `durum`, 
 CREATE TABLE `cokluresims` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `resim` varchar(255) DEFAULT NULL,
+  `durum` tinyint(1) DEFAULT NULL,
+  `sirano` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -157,14 +161,14 @@ CREATE TABLE `cokluresims` (
 -- Tablo döküm verisi `cokluresims`
 --
 
-INSERT INTO `cokluresims` (`id`, `resim`, `created_at`, `updated_at`) VALUES
-(14, 'upload/coklu/1812378090064151.jpeg', '2024-10-08 17:13:56', NULL),
-(17, 'upload/coklu/1812713311875425.jpeg', '2024-10-12 10:02:08', NULL),
-(18, 'upload/coklu/1813192633655500.png', '2024-10-12 10:02:08', '2024-10-17 17:00:45'),
-(19, 'upload/coklu/1812808139863030.jpg', '2024-10-12 10:02:08', '2024-10-13 11:09:23'),
-(26, 'upload/coklu/1812808113375612.jpg', '2024-10-13 11:08:58', NULL),
-(27, 'upload/coklu/1812808113464822.png', '2024-10-13 11:08:58', NULL),
-(28, 'upload/coklu/1813192624200611.jpg', '2024-10-13 11:08:58', '2024-10-17 17:00:36');
+INSERT INTO `cokluresims` (`id`, `resim`, `durum`, `sirano`, `created_at`, `updated_at`) VALUES
+(14, 'upload/coklu/1812378090064151.jpeg', 1, 4, '2024-10-08 17:13:56', '2024-11-10 04:38:49'),
+(17, 'upload/coklu/1812713311875425.jpeg', 1, 5, '2024-10-12 10:02:08', '2024-11-10 04:39:06'),
+(18, 'upload/coklu/1813192633655500.png', 1, 3, '2024-10-12 10:02:08', '2024-11-10 02:42:19'),
+(19, 'upload/coklu/1812808139863030.jpg', 1, 1, '2024-10-12 10:02:08', '2024-11-10 04:38:41'),
+(26, 'upload/coklu/1812808113375612.jpg', 1, 2, '2024-10-13 11:08:58', '2024-11-10 04:38:58'),
+(27, 'upload/coklu/1812808113464822.png', 1, 6, '2024-10-13 11:08:58', '2024-11-10 02:42:20'),
+(28, 'upload/coklu/1813192624200611.jpg', 1, 7, '2024-10-13 11:08:58', '2024-11-10 02:50:37');
 
 -- --------------------------------------------------------
 
@@ -254,6 +258,8 @@ CREATE TABLE `kategorilers` (
   `anahtar` varchar(255) DEFAULT NULL,
   `aciklama` varchar(255) DEFAULT NULL,
   `resim` varchar(255) DEFAULT NULL,
+  `durum` tinyint(1) DEFAULT NULL,
+  `sirano` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -262,11 +268,11 @@ CREATE TABLE `kategorilers` (
 -- Tablo döküm verisi `kategorilers`
 --
 
-INSERT INTO `kategorilers` (`id`, `kategori_adi`, `kategori_url`, `anahtar`, `aciklama`, `resim`, `created_at`, `updated_at`) VALUES
-(2, 'Cözümlerimiz', 'cozumlerimiz', 'deneme,cözüm', 'Cözümlerimiz ile hizmetinizdeyiz', 'upload/kategoriler/1812141867933955.jpeg', '2024-10-06 02:39:17', NULL),
-(3, 'Calışmalarımız', 'calismalarimiz', 'deneme,calışma', 'Calışmalarımız ile hizmetinizdeyiz', 'upload/kategoriler/1812141910898785.jpeg', '2024-10-06 02:39:58', NULL),
-(5, 'Ürünlerimiz', 'urunlerimiz', 'deneme,ürün', 'Ürünlerimiz ile tanışın', 'upload/kategoriler/1812142116414175.jpeg', '2024-10-06 02:43:14', NULL),
-(6, 'Teklonoji', 'teklonoji', 'deneme,teklonoji', 'Teklonoji hizmetinizde', 'upload/kategoriler/1812143678712413.jpeg', '2024-10-06 03:08:04', NULL);
+INSERT INTO `kategorilers` (`id`, `kategori_adi`, `kategori_url`, `anahtar`, `aciklama`, `resim`, `durum`, `sirano`, `created_at`, `updated_at`) VALUES
+(2, 'Cözümlerimiz', 'cozumlerimiz', 'deneme,cözüm', 'Cözümlerimiz ile hizmetinizdeyiz', 'upload/kategoriler/1812141867933955.jpeg', 1, 1, '2024-10-06 02:39:17', '2024-11-10 04:48:05'),
+(3, 'Calışmalarımız', 'calismalarimiz', 'deneme,calışma', 'Calışmalarımız ile hizmetinizdeyiz', 'upload/kategoriler/1812141910898785.jpeg', 1, 2, '2024-10-06 02:39:58', '2024-11-10 04:45:57'),
+(5, 'Ürünlerimiz', 'urunlerimiz', 'deneme,ürün', 'Ürünlerimiz ile tanışın', 'upload/kategoriler/1812142116414175.jpeg', 1, 3, '2024-10-06 02:43:14', '2024-11-10 03:02:31'),
+(6, 'Teklonoji', 'teklonoji', 'deneme,teklonoji', 'Teklonoji hizmetinizde', 'upload/kategoriler/1812143678712413.jpeg', 1, 4, '2024-10-06 03:08:04', '2024-11-12 15:16:27');
 
 -- --------------------------------------------------------
 
@@ -680,7 +686,10 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (73, 4),
 (74, 4),
 (75, 4),
-(76, 4);
+(76, 4),
+(77, 4),
+(78, 4),
+(79, 4);
 
 -- --------------------------------------------------------
 
@@ -772,7 +781,8 @@ INSERT INTO `urunlers` (`id`, `kategori_id`, `altkategori_id`, `baslik`, `url`, 
 (7, 2, 6, 'ürün 7', 'urun-7', 'Etikete, denme', 'deneme,anahtar', 'deneme acıklama', '<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>\r\n<h3>M.&Ouml;. 45 tarihinde &Ccedil;i&ccedil;ero tarafından yazılan \"de Finibus Bonorum et Malorum\"un 1.10.33 sayılı b&ouml;l&uuml;m&uuml;</h3>\r\n<p>\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"</p>\r\n<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"</p>', 'upload/urunler/1812144514993499.jpeg', 7, 1, '2024-10-06 03:21:21', '2024-10-06 03:21:42'),
 (8, 2, 8, 'Ürün 8', 'urun-8', 'Etikete, denme', 'deneme,anahtar', 'deneme acıklama', '<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>\r\n<h3>M.&Ouml;. 45 tarihinde &Ccedil;i&ccedil;ero tarafından yazılan \"de Finibus Bonorum et Malorum\"un 1.10.33 sayılı b&ouml;l&uuml;m&uuml;</h3>\r\n<p>\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"</p>\r\n<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"</p>', 'upload/urunler/1812144601451782.jpeg', 8, 1, '2024-10-06 03:22:44', NULL),
 (9, 6, 10, 'Ürün 9', 'urun-9', 'Etikete, denme', 'deneme,anahtar', 'deneme acıklama', '<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>\r\n<h3>M.&Ouml;. 45 tarihinde &Ccedil;i&ccedil;ero tarafından yazılan \"de Finibus Bonorum et Malorum\"un 1.10.33 sayılı b&ouml;l&uuml;m&uuml;</h3>\r\n<p>\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"</p>\r\n<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"</p>', 'upload/urunler/1812144831542927.jpeg', 9, 1, '2024-10-06 03:26:23', NULL),
-(10, 6, 9, 'Ürün 10', 'urun-10', 'Etikete, denme', 'deneme,anahtar', 'deneme acıklama', '<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>\r\n<h3>M.&Ouml;. 45 tarihinde &Ccedil;i&ccedil;ero tarafından yazılan \"de Finibus Bonorum et Malorum\"un 1.10.33 sayılı b&ouml;l&uuml;m&uuml;</h3>\r\n<p>\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"</p>\r\n<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"</p>', 'upload/urunler/1812144872789959.jpeg', 10, 1, '2024-10-06 03:27:02', NULL);
+(10, 6, 9, 'Ürün 10', 'urun-10', 'Etikete, denme', 'deneme,anahtar', 'deneme acıklama', '<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>\r\n<h3>M.&Ouml;. 45 tarihinde &Ccedil;i&ccedil;ero tarafından yazılan \"de Finibus Bonorum et Malorum\"un 1.10.33 sayılı b&ouml;l&uuml;m&uuml;</h3>\r\n<p>\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"</p>\r\n<h3>1914 tarihli H. Rackham &Ccedil;evirisi</h3>\r\n<p>\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"</p>', 'upload/urunler/1812144872789959.jpeg', 10, 1, '2024-10-06 03:27:02', NULL),
+(11, 6, 10, 'Php ile yaşam sifresi', 'php-ile-yasam-sifresi', 'Etikete, denme', 'deneme,anahtar', 'deneme acıklama', '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"</p>\r\n<h3>Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC</h3>\r\n<p>\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"</p>\r\n<h3>1914 translation by H. Rackham</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>', 'upload/urunler/1815309412980886.jpeg', 3, 1, '2024-11-10 01:46:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -786,6 +796,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `resim` varchar(255) DEFAULT NULL,
   `rol` varchar(255) DEFAULT NULL,
+  `durum` tinyint(1) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
@@ -799,11 +810,11 @@ CREATE TABLE `users` (
 -- Tablo döküm verisi `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `resim`, `rol`, `email_verified_at`, `password`, `username`, `telefon`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Bahtiyar', 'bahtiyarsonmez41@gmail.com', '202410060644bahti.jpg', 'admin', '2024-10-05 15:43:36', '$2y$10$x2WyB9WSft1kfWWz7xfbLe80oBJkZnusbzb9LEYAzANuOsH5FKXfu', 'Bahtiyar Sönmez', '1234567890', NULL, '2024-10-05 15:40:49', '2024-10-06 03:44:58'),
-(4, 'Gamze', 'gamzegulcicek@gmail.com', '202411030953gamze.jpg', 'admin', '2024-11-03 06:51:44', '$2y$10$gnP3mx0JicBB/jkmsr3Jb.rSzqM/NzqUvY7D9T/CTNahONQhEJ8cK', 'Gamze Gülciçek', '12345678900', NULL, '2024-11-03 06:06:54', '2024-11-03 07:35:53'),
-(7, 'Bilal', 'bilaltunca@gmail.com', '202411061924bilal-tunca.png', 'admin', '2024-11-06 15:56:05', '$2y$10$IJPP.zSIhUFErwVK3JW1VOPf45rbIc/qyHejX/ueEeNoQ40GGyM1u', 'Bilal Tunca', NULL, NULL, '2024-11-06 15:55:20', '2024-11-06 16:24:37'),
-(8, 'test adım', 'test@gmail.com', NULL, NULL, '2024-11-06 17:02:57', '$2y$10$g6PsynlEwZfGLL/WziCi3.wR5J/EIkE5d2KFPaitPSuzUnXBLIvgG', 'test name', '123456789100', NULL, '2024-11-06 17:02:00', '2024-11-06 17:02:57');
+INSERT INTO `users` (`id`, `name`, `email`, `resim`, `rol`, `durum`, `email_verified_at`, `password`, `username`, `telefon`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Bahtiyar', 'bahtiyarsonmez41@gmail.com', '202410060644bahti.jpg', 'admin', 1, '2024-10-05 15:43:36', '$2y$10$x2WyB9WSft1kfWWz7xfbLe80oBJkZnusbzb9LEYAzANuOsH5FKXfu', 'Bahtiyar Sönmez', '1234567890', NULL, '2024-10-05 15:40:49', '2024-11-10 02:06:41'),
+(4, 'Gamze', 'gamzegulcicek@gmail.com', '202411030953gamze.jpg', 'admin', 1, '2024-11-03 06:51:44', '$2y$10$gnP3mx0JicBB/jkmsr3Jb.rSzqM/NzqUvY7D9T/CTNahONQhEJ8cK', 'Gamze Gülciçek', '12345678900', NULL, '2024-11-03 06:06:54', '2024-11-10 02:07:44'),
+(7, 'Bilal', 'bilaltunca@gmail.com', '202411061924bilal-tunca.png', 'admin', 1, '2024-11-06 15:56:05', '$2y$10$IJPP.zSIhUFErwVK3JW1VOPf45rbIc/qyHejX/ueEeNoQ40GGyM1u', 'Bilal Tunca', NULL, NULL, '2024-11-06 15:55:20', '2024-11-10 02:09:17'),
+(8, 'test adım', 'test@gmail.com', NULL, NULL, NULL, '2024-11-06 17:02:57', '$2y$10$g6PsynlEwZfGLL/WziCi3.wR5J/EIkE5d2KFPaitPSuzUnXBLIvgG', 'test name', '123456789100', NULL, '2024-11-06 17:02:00', '2024-11-06 17:02:57');
 
 -- --------------------------------------------------------
 
@@ -1015,7 +1026,7 @@ ALTER TABLE `blogkategorilers`
 -- Tablo için AUTO_INCREMENT değeri `cokluresims`
 --
 ALTER TABLE `cokluresims`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `failed_jobs`
@@ -1039,7 +1050,7 @@ ALTER TABLE `hakkimizdas`
 -- Tablo için AUTO_INCREMENT değeri `kategorilers`
 --
 ALTER TABLE `kategorilers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `mesajs`
@@ -1087,7 +1098,7 @@ ALTER TABLE `surecs`
 -- Tablo için AUTO_INCREMENT değeri `urunlers`
 --
 ALTER TABLE `urunlers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `users`

@@ -19,6 +19,15 @@ class KategoriController extends Controller
         return view('admin.kategoriler.kategoriler_hepsi', compact('kategorihepsi'));
     }
 
+    public function KategoriDurum(Request $request)
+    {
+        $urun = Kategoriler::find($request->id);
+        $urun->durum = $request->durum;
+        $urun->save();
+
+        return response()->json(['success' => 'Başarılı...']);
+    }
+
     public function KategoriEkle()
     {
         return view('admin.kategoriler.kategori_ekle');
