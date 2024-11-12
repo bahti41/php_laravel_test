@@ -238,7 +238,7 @@
         });
     </script>
 
-    <!-- YORUMLAR -->
+    <!-- SUREC -->
     <script>
         $(function() {
             $('.yorumlar').change(function() {
@@ -260,18 +260,16 @@
         });
     </script>
 
-
-
-    <!-- KULLANICILAR -->
+    <!-- SUREC -->
     <script>
         $(function() {
-            $('.kullaniciler').change(function() {
+            $('.kategori').change(function() {
                 var durum = $(this).prop('checked') == true ? 1 : 0;
                 var id = $(this).data('id');
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: '/kullanıcı/durum',
+                    url: '/kategori/durum',
                     data: {
                         'durum': durum,
                         'id': id
@@ -283,77 +281,6 @@
             });
         });
     </script>
-
-
-    <!-- COKLU RESİMLER -->
-    <script>
-        $(function() {
-            $('.coklu').change(function() {
-                var durum = $(this).prop('checked') == true ? 1 : 0;
-                var id = $(this).data('id');
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: '/coklu/durum',
-                    data: {
-                        'durum': durum,
-                        'id': id
-                    },
-                    success: function(data) {
-                        console.log(data.success)
-                    }
-                });
-            });
-        });
-    </script>
-
-
-    <!-- Kategoriler -->
-    <script>
-        $(function() {
-            $('.kategoriler').change(function() {
-                var durum = $(this).prop('checked') == true ? 1 : 0;
-                var id = $(this).data('id');
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: '/kategoriler/durum',
-                    data: {
-                        'durum': durum,
-                        'id': id
-                    },
-                    success: function(data) {
-                        console.log(data.success)
-                    }
-                });
-            });
-        });
-    </script>
-
-
-    <!-- ALTKATEGORİLER -->
-    <script>
-        $(function() {
-            $('.altkategori').change(function() {
-                var durum = $(this).prop('checked') == true ? 1 : 0;
-                var id = $(this).data('id');
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: '/altkategori/durum',
-                    data: {
-                        'durum': durum,
-                        'id': id
-                    },
-                    success: function(data) {
-                        console.log(data.success)
-                    }
-                });
-            });
-        });
-    </script>
-
-
 
     <!-- BLOG İCERİK -->
     <script>

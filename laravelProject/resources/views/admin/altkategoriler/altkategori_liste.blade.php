@@ -30,7 +30,6 @@
                                     <th>Kategori Adı</th>
                                     <th>Alt Kategori Adı</th>
                                     <th>Resim</th>
-                                    <th>Durum</th>
                                     <th>İşlem</th>
                                 </tr>
                             </thead>
@@ -48,10 +47,6 @@
                                     <td>{{ $altkategori['iliskikategori']['kategori_adi'] }}</td>
                                     <td>{{ $altkategori->altkategori_adi }}</td>
                                     <td><img src="{{(!empty($altkategori->resim))? url($altkategori->resim): url('upload/görseli_hazrilaniyor.png')}}" style="height: 50px; width:50px;" alt=""></td>
-                                    <td>
-                                        <input type="checkbox" class="altkategori" data-id="{{ $altkategori->id }}" id="{{ $altkategori->id }}" switch="success" {{$altkategori->durum ? 'checked' : ''}}>
-                                        <label for="{{ $altkategori->id }}" data-on-label="Yes" data-off-label="No"></label>
-                                    </td>
                                     <td>
 
                                         @if(Auth::user()->can('Altkategoriler.Duzunle'))

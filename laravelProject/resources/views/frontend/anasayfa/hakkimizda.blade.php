@@ -32,7 +32,7 @@
             <div class="breadcrumb__wrap__icon">
                 <ul>
                     @php
-                    $coklu = App\Models\Cokluresim::where('durum',1)->orderBy('sirano','ASC')->limit(6)->get();
+                    $coklu = App\Models\Cokluresim::all();
                     @endphp
 
                     @foreach($coklu as $resim)

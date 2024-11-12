@@ -74,16 +74,6 @@
                             <!-- Kategori_Acıklama -->
 
 
-                            <!-- Sıra No -->
-                            <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Sıra No</label>
-                                <div class="col-sm-10 form-group">
-                                    <input class="form-control" name="sirano" type="number" placeholder=" Sıra No..." value="{{$altkategoriler->sirano}}">
-                                </div>
-                            </div>
-                            <!-- Sıra No -->
-
-
                             <!-- Resim -->
 
                             <div class="row mb-3">

@@ -25,7 +25,7 @@ class FrontController extends Controller
 
     public function KategoriDetay(Request $request, $id, $url)
     {
-        $urunler = Urunler::where('durum', 1)->where('kategori_id', $id)->orderBy('sirano', 'ASC')->paginate(3);
+        $urunler = Urunler::where('durum', 1)->where('kategori_id', $id)->orderBy('sirano', 'ASC')->get();
         $kategoriler = Kategoriler::orderBy('kategori_adi', 'ASC')->get();
         $kategori = Kategoriler::where('id', $id)->first();
 
@@ -34,7 +34,7 @@ class FrontController extends Controller
 
     public function AltDetay(Request $request, $id, $url)
     {
-        $urunler = Urunler::where('durum', 1)->where('altkategori_id', $id)->orderBy('sirano', 'ASC')->paginate(1);
+        $urunler = Urunler::where('durum', 1)->where('altkategori_id', $id)->orderBy('sirano', 'ASC')->get();
         $altkategoriler = Altkategoriler::orderBy('altkategori_adi', 'ASC')->get();
         $altkategori = Altkategoriler::where('id', $id)->first();
 
@@ -56,7 +56,7 @@ class FrontController extends Controller
 
     public function IceriKategoriDetay($id)
     {
-        $blogpost = Blogicerik::where('durum', 1)->where('kategori_id', $id)->orderBy('sirano', 'ASC')->paginate(1);
+        $blogpost = Blogicerik::where('durum', 1)->where('kategori_id', $id)->orderBy('sirano', 'ASC')->paginate(2);
         $icerikhepsi = Blogicerik::where('durum', 1)->orderBy('sirano', 'ASC')->get();
         $kategoriler = Blogkategoriler::where('durum', 1)->orderBy('sirano', 'ASC')->get();
         $kategoriadi = Blogkategoriler::findOrFail($id);

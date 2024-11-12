@@ -1,6 +1,6 @@
 @php
 
-$kategoriler = App\Models\Kategoriler::orderBy('kategori_adi','DESC')->get();
+$kategoriler = App\Models\Kategoriler::where('durum',1)->orderBy('sirano','ASC')->get();
 
 @endphp
 
@@ -29,16 +29,16 @@ $kategoriler = App\Models\Kategoriler::orderBy('kategori_adi','DESC')->get();
             <div class="col-xl-3">
                 <div class="services__item">
                     <div class="services__thumb">
-                        <a href="services-details.html"><img src="{{asset($kategori->resim)}}" alt=""></a>
+                        <a href="{{url('kategori/'.$kategori->id.'/'.$kategori->kategori_url)}}"><img src="{{asset($kategori->resim)}}" alt=""></a>
                     </div>
                     <div class="services__content">
                         <div class="services__icon">
                             <img class="light" src="{{asset('frontend/assets/img/icons/services_light_icon01.png')}}" alt="">
                             <img class="dark" src="{{asset('frontend/assets/img/icons/services_icon01.png')}}" alt="">
                         </div>
-                        <h3 class="title"><a href="services-details.html">{{$kategori->kategori_adi}}</a></h3>
+                        <h3 class="title"><a href="{{url('kategori/'.$kategori->id.'/'.$kategori->kategori_url)}}">{{$kategori->kategori_adi}}</a></h3>
                         <p>{{$kategori->aciklama}}</p>
-                        <a href="services-details.html" class="btn border-btn">Kategori Gör</a>
+                        <a href="{{url('kategori/'.$kategori->id.'/'.$kategori->kategori_url)}}" class="btn border-btn">Kategori Gör</a>
                     </div>
                 </div>
             </div>

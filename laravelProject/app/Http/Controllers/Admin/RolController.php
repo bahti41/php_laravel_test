@@ -333,16 +333,6 @@ class RolController extends Controller
 
 
 
-    public function KullaniciDurum(Request $request)
-    {
-        $urun = User::find($request->id);
-        $urun->durum = $request->durum;
-        $urun->save();
-
-        return response()->json(['success' => 'Başarılı...']);
-    }
-
-
     public function KullaniiciEkle()
     {
         $roller =  Role::all();

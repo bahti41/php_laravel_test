@@ -23,13 +23,13 @@
                                 </div>
                                 <div class="navbar__wrap main__menu d-none d-xl-flex">
                                     <ul class="navigation">
-                                        <li><a href="{{url('/')}}">AnaSayfa</a></li>
+                                        <li class="active"><a href="{{url('/')}}">AnaSayfa</a></li>
                                         <li><a href="{{route('anasayfa.hak')}}">Hakkımızda</a></li>
 
 
                                         @php
 
-                                        $kategoriler = App\Models\Kategoriler::where('durum',1)->orderBy('sirano','ASC')->limit(3)->get();
+                                        $kategoriler = App\Models\Kategoriler::orderBy('kategori_adi','DESC')->limit(3)->get();
 
                                         @endphp
 
@@ -38,7 +38,7 @@
                                         <li class="menu-item-has-children"><a href="{{url('kategori/'.$kategori->id.'/'.$kategori->kategori_url)}}">{{$kategori->kategori_adi}}</a>
                                             @php
 
-                                            $altkategoriler = App\Models\Altkategoriler::where('durum',1)->where('kategori_id',$kategori->id)->orderBy('sirano','ASC')->get();
+                                            $altkategoriler = App\Models\Altkategoriler::where('kategori_id',$kategori->id)->orderBy('altkategori_adi','ASC')->get();
 
                                             @endphp
                                             <ul class="sub-menu">

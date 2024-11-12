@@ -18,16 +18,6 @@ class AltkategoriController extends Controller
     }
 
 
-    public function AltKategoriDurum(Request $request)
-    {
-        $urun = Altkategoriler::find($request->id);
-        $urun->durum = $request->durum;
-        $urun->save();
-
-        return response()->json(['success' => 'Başarılı...']);
-    }
-
-
     public function AltKategoriEkle()
     {
         $kategorigoster = Kategoriler::orderBy('kategori_adi', 'ASC')->get();
@@ -65,8 +55,6 @@ class AltkategoriController extends Controller
                     'altkategori_url' => str()->slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
-                    'sirano' => $request->sirano,
-                    'durum' => 1,
                     'resim' => $resim_kaydet,
                     'created_at' => Carbon::now(),
                 ]
@@ -93,8 +81,6 @@ class AltkategoriController extends Controller
                     'altkategori_url' => str()->slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
-                    'sirano' => $request->sirano,
-                    'durum' => 1,
                     'created_at' => Carbon::now(),
                 ]
             );
@@ -162,7 +148,6 @@ class AltkategoriController extends Controller
                     'altkategori_url' => str()->slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
-                    'sirano' => $request->sirano,
                     'resim' => $resim_kaydet,
                 ]
             );
@@ -187,7 +172,6 @@ class AltkategoriController extends Controller
                     'altkategori_adi' => $request->altkategori_adi,
                     'altkategori_url' => str()->slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
-                    'sirano' => $request->sirano,
                     'aciklama' => $request->aciklama,
                 ]
             );

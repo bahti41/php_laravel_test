@@ -22,6 +22,20 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <!-- bildiri -->
 
+    <style type="text/css">
+        .kapsayici {
+            position: relative;
+        }
+
+        #goster {
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 12px;
+            font-size: 15px;
+        }
+    </style>
+
 </head>
 
 <body class="auth-body-bg">
@@ -54,7 +68,10 @@
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input id="password" class="form-control" type="password" name="password" required="" placeholder="Şifre">
+                                    <input id="password" type="password" name="password" class="form-control" required="" placeholder="Şifre">
+                                    <i id="goster" class="far fa-eye" onclick="togglePassword()"></i>
+
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                 </div>
                             </div>
 
@@ -125,6 +142,11 @@
                 break;
         }
         @endif
+
+        function togglePassword() {
+            var element = document.getElementById('password');
+            element.type = (element.type == 'password' ? 'text' : 'password');
+        }
     </script>
     <!-- bildiri -->
 

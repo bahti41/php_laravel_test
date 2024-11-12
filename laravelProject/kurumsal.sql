@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 10 Kas 2024, 09:07:31
+-- Üretim Zamanı: 12 Kas 2024, 20:43:33
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -269,10 +269,10 @@ CREATE TABLE `kategorilers` (
 --
 
 INSERT INTO `kategorilers` (`id`, `kategori_adi`, `kategori_url`, `anahtar`, `aciklama`, `resim`, `durum`, `sirano`, `created_at`, `updated_at`) VALUES
-(2, 'Cözümlerimiz', 'cozumlerimiz', 'deneme,cözüm', 'Cözümlerimiz ile hizmetinizdeyiz', 'upload/kategoriler/1812141867933955.jpeg', 0, 1, '2024-10-06 02:39:17', '2024-11-10 04:48:05'),
+(2, 'Cözümlerimiz', 'cozumlerimiz', 'deneme,cözüm', 'Cözümlerimiz ile hizmetinizdeyiz', 'upload/kategoriler/1812141867933955.jpeg', 1, 1, '2024-10-06 02:39:17', '2024-11-10 04:48:05'),
 (3, 'Calışmalarımız', 'calismalarimiz', 'deneme,calışma', 'Calışmalarımız ile hizmetinizdeyiz', 'upload/kategoriler/1812141910898785.jpeg', 1, 2, '2024-10-06 02:39:58', '2024-11-10 04:45:57'),
 (5, 'Ürünlerimiz', 'urunlerimiz', 'deneme,ürün', 'Ürünlerimiz ile tanışın', 'upload/kategoriler/1812142116414175.jpeg', 1, 3, '2024-10-06 02:43:14', '2024-11-10 03:02:31'),
-(6, 'Teklonoji', 'teklonoji', 'deneme,teklonoji', 'Teklonoji hizmetinizde', 'upload/kategoriler/1812143678712413.jpeg', 1, 4, '2024-10-06 03:08:04', '2024-11-10 03:02:31');
+(6, 'Teklonoji', 'teklonoji', 'deneme,teklonoji', 'Teklonoji hizmetinizde', 'upload/kategoriler/1812143678712413.jpeg', 1, 4, '2024-10-06 03:08:04', '2024-11-12 15:16:27');
 
 -- --------------------------------------------------------
 

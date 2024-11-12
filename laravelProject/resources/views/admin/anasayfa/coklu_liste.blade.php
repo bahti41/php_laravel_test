@@ -28,7 +28,6 @@
                                 <tr>
                                     <th>Sıra</th>
                                     <th>Resim</th>
-                                    <th>Durum</th>
                                     <th>İşlem</th>
                                 </tr>
                             </thead>
@@ -44,15 +43,8 @@
                                     @foreach($cokluresimler as $resimler)
                                     <td>{{ $s++ }}</td>
                                     <td><img src="{{asset($resimler->resim)}}" style="height: 50px; width:50px;" alt=""></td>
-                                    <!-- Durum -->
                                     <td>
-                                        <input type="checkbox" class="coklu" data-id="{{ $resimler->id }}" id="{{ $resimler->id }}" switch="success" {{$resimler->durum ? 'checked' : ''}}>
-                                        <label for="{{ $resimler->id }}" data-on-label="Yes" data-off-label="No"></label>
-                                    </td>
-                                    <!-- Durum -->
-
-                                    <td>
-                                        @if(Auth::user()->can('Hakkımızda.Coklu.Düzenle'))
+                                        @if(Auth::user()->can(' Hakkımızda.Coklu.Düzenle'))
                                         <a href="{{route('coklu.duzenle',$resimler->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
                                         @endif
 
