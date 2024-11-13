@@ -6,16 +6,16 @@
 <div class="page-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-xl-5 col-md-12">
                 <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Kullanıcı Düzenle</h4>
+                    <div class="card-body" style=" height: 600px;">
+                        <h4 class="card-title mb-5">Kullanıcı Düzenle</h4>
 
                         <form method="post" action="{{ route('kullanici.guncelle.form', $user->id) }}" id="myForm">
                             @csrf
 
                             <!-- Kulllanıcı Adı -->
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Kullanıcı Adı</label>
                                 <div class="col-sm-10 form-group">
                                     <input class="form-control" name="name" type="text" placeholder="Kullanıcı Adı..." id="example-text-input" value="{{ $user->name}}">
@@ -30,10 +30,39 @@
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Kullanıcı Email</label>
                                 <div class="col-sm-10 form-group">
                                     <input class="form-control" name="email" type="email" placeholder="Email Adı..." id="example-text-input" value="{{ $user->email}}">
-
+                                    @error('email')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- Kulllanıcı Email -->
+
+
+                            <!-- Kulllanıcı İsim -->
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Kullanıcı İsim</label>
+                                <div class="col-sm-10 form-group">
+                                    <input class="form-control" name="username" type="text" placeholder="Email Adı..." id="example-text-input" value="{{ $user->username}}">
+                                    @error('username')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- Kulllanıcı İsim -->
+
+
+
+                            <!-- Kulllanıcı Telefon -->
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Kullanıcı Telefon</label>
+                                <div class="col-sm-10 form-group">
+                                    <input class="form-control" name="telefon" type="text" placeholder="Telefon Gir..." id="example-text-input" value="{{ $user->telefon}}">
+                                    @error('telefon')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- Kulllanıcı Telefon -->
 
 
 

@@ -50,7 +50,7 @@
          <div class="row">
              <div class="col-lg-8">
                  <div class="services__details__thumb">
-                     <img src="{{asset('frontend/assets/img/images/services_details01.jpg')}}" alt="">
+                     <img src="{{asset($urunler->resim)}}" alt="">
                  </div>
                  <div class="services__details__content">
 
