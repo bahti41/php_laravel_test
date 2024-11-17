@@ -6,8 +6,8 @@
 
  @section('title') {{$kategoriadi->kategori_adi}} | {{$seo->site_adi}} @endsection
  @section('author') {{$seo->author}} @endsection
- @section('aciklama') {{$seo->aciklama}} @endsection
- @section('anahtar') {{$seo->anahtar}} @endsection
+ @section('aciklama') {{$kategoriadi->aciklama}} @endsection
+ @section('anahtar') {{$kategoriadi->anahtar}} @endsection
 
  @section('main')
 

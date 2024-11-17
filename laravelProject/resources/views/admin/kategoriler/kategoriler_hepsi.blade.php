@@ -55,7 +55,7 @@
                                         <a href="{{route('kategori.duzenle',$kategoriler->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
                                         @endif
 
-                                        @if(Auth::user()->can(' Kategori.Sil'))
+                                        @if(Auth::user()->can('Kategori.Sil'))
                                         <a href="{{route('kategori.sil',$kategoriler->id)}}" class="btn btn-danger sm m-2" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                         @endif
 

@@ -18,7 +18,7 @@
 
 
                             <!-- Kullanici Adı -->
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Kullanici Adı</label>
                                 <div class="col-sm-10 form-group">
                                     <input class="form-control" name="name" type="text" placeholder="Kullanıcı Adı...">
@@ -29,17 +29,46 @@
 
                             <!-- Kullanici Email -->
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Kullanıcı Email</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10 form-group">
                                     <input class="form-control" name="email" type="email" placeholder="Kullanıcı Email...">
+                                    @error('email')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- Kullanici Email  -->
 
 
+                            <!-- Kullanici ADI -->
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">İsmi</label>
+                                <div class="col-sm-10 form-group">
+                                    <input class="form-control" name="username" type="text" placeholder="Kullanıcı İsmi...">
+                                    @error('username')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- Kullanici ADI  -->
+
+
+                            <!-- Kullanici TELEFOn -->
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Telefon</label>
+                                <div class="col-sm-10 form-group">
+                                    <input class="form-control" name="telefon" type="text" placeholder="Kullanıcı Telefonu...">
+                                    @error('telefon')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- Kullanici TELEFOn  -->
+
+
                             <!-- Kullanici Şifre   -->
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Kullanıcı Şifre</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Şifre</label>
                                 <div class="col-sm-10 form-group">
                                     <input class="form-control" name="password" type="password" placeholder="Kullanıcı Şifre...">
                                 </div>

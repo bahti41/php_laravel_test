@@ -69,12 +69,12 @@
                              <li class="title">Tag:</li>
                              <li class="tags-list">
                                  @foreach($etiket as $taglar)
-                                 <a href="#">{{$taglar}}</a>
+                                 <a>{{$taglar}}</a>
                                  @endforeach
 
                              </li>
                          </ul>
-                         <ul class="blog__details__social">
+                         <!-- <ul class="blog__details__social">
                              <li class="title">Share :</li>
                              <li class="social-icons">
                                  <a href="#"><i class="fab fa-facebook"></i></a>
@@ -82,9 +82,11 @@
                                  <a href="#"><i class="fab fa-linkedin"></i></a>
                                  <a href="#"><i class="fab fa-pinterest"></i></a>
                              </li>
-                         </ul>
+                         </ul> -->
                      </div>
-                     <div class="blog__next__prev">
+
+                     <!-- Blog Geciş HTMLSİ -->
+                     <!-- <div class="blog__next__prev">
                          <div class="row justify-content-between">
                              <div class="col-xl-5 col-md-6">
                                  <div class="blog__next__prev__item">
@@ -114,7 +116,10 @@
                                  </div>
                              </div>
                          </div>
-                     </div>
+                     </div> -->
+                     <!-- Blog Geciş HTMLSİ -->
+
+
                  </div>
              </div>
              <div class="col-lg-4">

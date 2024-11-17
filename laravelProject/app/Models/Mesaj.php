@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Mail;
 use App\Mail\MailGonder;
+use App\Models\Footer;
 
 class Mesaj extends Model
 {
@@ -18,7 +19,10 @@ class Mesaj extends Model
         parent::boot(); // MİRAS ALMAK İCİN KULLANILIR...
 
         static::created(function ($bilgi) { // DEGİŞLEN ATAMA PARAMETRE
-            $adminEmail = "bahtiyarsonmez41@gmail.com";
+
+            $email = Footer::find(1);
+
+            $adminEmail = $email->mail;
             Mail::to($adminEmail)->send(new MailGonder($bilgi));
         });
     }

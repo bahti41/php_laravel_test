@@ -46,7 +46,7 @@
                                         <label for="{{ $bloglar->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </td>
                                     <td>
-                                        @if(Auth::user()->can(' Blog.Duzenle'))
+                                        @if(Auth::user()->can('Blog.Duzenle'))
                                         <a href="{{route('blog.kategori.duzenle',$bloglar->id)}}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
                                         @endif
 

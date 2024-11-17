@@ -343,11 +343,21 @@ class RolController extends Controller
 
     public function KullaniciEkleForm(Request $request)
     {
+
+        $request->validate([
+            'email' => 'required | unique:users',
+            'username' => 'required | unique:users',
+            'telefon' => 'required | unique:users',
+        ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->username = $request->username;
+        $user->telefon = $request->telefon;
         $user->password = Hash::make($request->password);
         $user->rol = 'admin';
+        $user->durum = '1';
         $user->save();
 
         // if ($request->rol) {
@@ -393,9 +403,16 @@ class RolController extends Controller
 
     public function KullaniciGuncelleForm(Request $request, $id)
     {
+        // $request->validate([
+        //     'email' => 'required | unique:users',
+        //     'username' => 'required | unique:users',
+        //     'telefon' => 'required | unique:users',
+        // ]);
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->username = $request->username;
+        $user->telefon = $request->telefon;
         $user->rol = 'admin';
         $user->save();
 
