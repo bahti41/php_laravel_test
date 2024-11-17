@@ -165,7 +165,7 @@
                                 <li><a href="{{route('icerik.liste')}}">Liste</a></li>
                                 @endif
 
-                                @if(Auth::user()->can(' Blogicerik.Ekle'))
+                                @if(Auth::user()->can('Blogicerik.Ekle'))
                                 <li><a href="{{route('blog.icerik.ekle')}}">İcerik Ekle</a></li>
                                 @endif
 

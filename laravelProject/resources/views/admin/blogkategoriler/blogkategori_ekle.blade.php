@@ -39,6 +39,27 @@
                             <!-- Sıra No -->
 
 
+                            <!-- Anahtar -->
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-form-label">Anahtar</label>
+                                <div class="col-sm-12 form-group">
+                                    <input class="form-control" name="anahtar" type="text" placeholder="Blog Anahtar...">
+                                </div>
+                            </div>
+                            <!-- Anahtar -->
+
+
+                            <!-- Acıklama -->
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-form-label">Acıklama</label>
+                                <div class="col-sm-12 form-group">
+                                    <input class="form-control" name="aciklama" type="text" placeholder="Blog Acıklama...">
+                                </div>
+                            </div>
+                            <!-- Acıklama -->
+
+
+
 
                             <input type="submit" class="btn btn-info waves-effect wave-light" value="Blog Kategori Ekle">
 

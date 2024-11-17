@@ -48,7 +48,7 @@
  <section class="services__details">
      <div class="container">
          <div class="row">
-             <div class="col-lg-8">
+             <div class="col-lg-9">
                  <div class="services__details__thumb">
                      <img src="{{asset($urunler->resim)}}" alt="">
                  </div>
@@ -63,7 +63,7 @@
                              <li class="tags-list">
 
                                  @foreach($etiket as $etiketler)
-                                 <a href="#">{{$etiketler}}</a>
+                                 <a>{{$etiketler}}</a>
                                  @endforeach
 
                              </li>
@@ -71,7 +71,10 @@
                      </div>
                  </div>
              </div>
-             <div class="col-lg-4">
+
+             <!-- col-4 lük ürün bilgi alanı -->
+
+             <!-- <div class="col-lg-4">
                  <aside class="services__sidebar">
 
                      <div class="widget">
@@ -105,7 +108,10 @@
                          </ul>
                      </div>
                  </aside>
-             </div>
+             </div> -->
+
+             <!-- Project Information -->
+
          </div>
      </div>
  </section>

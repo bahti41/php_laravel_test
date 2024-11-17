@@ -48,6 +48,8 @@ class BlogkategoriController extends Controller
                 'kategori_adi' => $request->kategori_adi,
                 'url' => str()->slug($request->kategori_adi),
                 'sirano' => $request->sirano,
+                'aciklama' => $request->aciklama,
+                'anahtar' => $request->anahtar,
                 'durum' => 1,
                 'created_at' => Carbon::now(),
             ]
@@ -90,6 +92,8 @@ class BlogkategoriController extends Controller
                 'kategori_adi' => $request->kategori_adi,
                 'url' => str()->slug($request->kategori_adi),
                 'sirano' => $request->sirano,
+                'aciklama' => $request->aciklama,
+                'anahtar' => $request->anahtar,
             ]
         );
 

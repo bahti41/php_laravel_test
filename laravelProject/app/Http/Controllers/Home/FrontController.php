@@ -25,7 +25,7 @@ class FrontController extends Controller
 
     public function KategoriDetay(Request $request, $id, $url)
     {
-        $urunler = Urunler::where('durum', 1)->where('kategori_id', $id)->orderBy('sirano', 'ASC')->get();
+        $urunler = Urunler::where('durum', 1)->where('kategori_id', $id)->orderBy('sirano', 'ASC')->paginate(3);
         $kategoriler = Kategoriler::orderBy('kategori_adi', 'ASC')->get();
         $kategori = Kategoriler::where('id', $id)->first();
 
@@ -34,7 +34,7 @@ class FrontController extends Controller
 
     public function AltDetay(Request $request, $id, $url)
     {
-        $urunler = Urunler::where('durum', 1)->where('altkategori_id', $id)->orderBy('sirano', 'ASC')->get();
+        $urunler = Urunler::where('durum', 1)->where('altkategori_id', $id)->orderBy('sirano', 'ASC')->paginate(3);
         $altkategoriler = Altkategoriler::orderBy('altkategori_adi', 'ASC')->get();
         $altkategori = Altkategoriler::where('id', $id)->first();
 
@@ -46,7 +46,7 @@ class FrontController extends Controller
     {
         $icerikhepsi = Blogicerik::where('durum', 1)->orderBy('sirano', 'ASC')->limit(5)->get();
         $icerik = Blogicerik::findOrFail($id);
-        $kategoriler = Blogkategoriler::where('durum', 1)->orderBy('sirano', 'ASC')->get();
+        $kategoriler = Blogkategoriler::where('durum', 1)->orderBy('sirano', 'ASC')->limit(5)->get();
         $etiketler = $icerik->tag;
         $etiket = explode(',', $etiketler);
 
@@ -58,7 +58,7 @@ class FrontController extends Controller
     {
         $blogpost = Blogicerik::where('durum', 1)->where('kategori_id', $id)->orderBy('sirano', 'ASC')->paginate(2);
         $icerikhepsi = Blogicerik::where('durum', 1)->orderBy('sirano', 'ASC')->get();
-        $kategoriler = Blogkategoriler::where('durum', 1)->orderBy('sirano', 'ASC')->get();
+        $kategoriler = Blogkategoriler::where('durum', 1)->orderBy('sirano', 'ASC')->limit(5)->get();
         $kategoriadi = Blogkategoriler::findOrFail($id);
 
         return view('frontend.blog.kategori_icerik_detay', compact('blogpost', 'icerikhepsi', 'kategoriler', 'kategoriadi'));
